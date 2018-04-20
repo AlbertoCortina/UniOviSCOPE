@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import I18n from './app/resources/i18n/i18n';
 
 export default class App extends React.Component {
   render() {
