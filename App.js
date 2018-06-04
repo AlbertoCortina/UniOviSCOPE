@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import I18n from './app/resources/i18n/i18n';
-import LoginScreen from './app/components/screens/login';
+import LoginContainer from './app/containers/login-container';
 import store from './app/store';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
+import { Root } from 'native-base'
 
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-          <LoginScreen/>
-     </Provider>
+      <Root>
+        <Provider store={store}>
+          <LoginContainer />
+        </Provider>
+      </Root>
     );
   }
 }

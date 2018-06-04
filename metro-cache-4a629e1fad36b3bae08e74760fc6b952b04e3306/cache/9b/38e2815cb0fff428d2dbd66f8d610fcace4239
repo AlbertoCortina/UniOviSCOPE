@@ -1,0 +1,85 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.loginAction = loginAction;
+
+    var _reactNative = _require(_dependencyMap[0], "react-native");
+
+    function makingRequest() {
+        return {
+            type: 'IN_PROGRESS'
+        };
+    }
+
+    function emptyFields() {
+        return {
+            type: 'EMPTY'
+        };
+    }
+
+    function noInternetConnection() {
+        return {
+            type: 'OFFLINE'
+        };
+    }
+
+    function authorized() {
+        return {
+            type: 'LOGGED'
+        };
+    }
+
+    function notAuthorized() {
+        return {
+            type: 'NOT_LOGGED'
+        };
+    }
+
+    function error() {
+        return {
+            type: 'ERROR'
+        };
+    }
+
+    function loginAction(username, password) {
+        return function (dispatch) {
+            dispatch(makingRequest());
+
+            if (username.length == 0 || password.length == 0) {
+                dispatch(emptyFields());
+            } else {
+                _reactNative.NetInfo.isConnected.fetch().then(function (isConnected) {
+                    if (isConnected) {
+                        fetch('http://192.168.43.88:8080/uniovi-scope/common/logIn', {
+                            method: 'POST',
+                            headers: {
+                                Accept: 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                userName: username,
+                                password: password
+                            })
+                        }).then(function (response) {
+                            if (response.headers.get('Authorization') !== null) {
+                                _reactNative.AsyncStorage.removeItem('AUTHORIZATION', function () {
+                                    _reactNative.AsyncStorage.setItem('AUTHORIZATION', response.headers.get('Authorization'), function () {
+                                        dispatch(authorized());
+                                    });
+                                });
+                            } else {
+                                dispatch(notAuthorized());
+                            }
+                        }).catch(function (e) {
+                            console.log(e);
+                            dispatch(error());
+                        });
+                    } else {
+                        dispatch(noInternetConnection());
+                    }
+                });
+            }
+        };
+    }
+});

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { login } from './login'
+import { loginReducer } from './login-reducers'
+import { checkAuthenticationReducer } from './splash-reducers';
 
 export default combineReducers({
-    login: login
+    loginReducer,
+    checkAuthenticationReducer
 });

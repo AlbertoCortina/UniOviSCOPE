@@ -1,0 +1,405 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _react2 = _require(_dependencyMap[0], "react");
+
+    var _react3 = _interopRequireDefault(_react2);
+
+    var _index = _require(_dependencyMap[1], "./../../../node_modules/react-transform-hmr/lib/index.js");
+
+    var _index2 = _interopRequireDefault(_index);
+
+    var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/others/custom-sideBar.js";
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var _components = {
+        SideBar: {
+            displayName: "SideBar"
+        }
+    };
+
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/home/alberto/Git/UniOviSCOPE/app/components/others/custom-sideBar.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
+
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
+    }
+
+    var width = _reactNative.Dimensions.get('window').width;
+
+    var SideBar = _wrapComponent("SideBar")(function (_React$Component) {
+        _inherits(SideBar, _React$Component);
+
+        function SideBar() {
+            _classCallCheck(this, SideBar);
+
+            return _possibleConstructorReturn(this, (SideBar.__proto__ || Object.getPrototypeOf(SideBar)).apply(this, arguments));
+        }
+
+        _createClass(SideBar, [{
+            key: "render",
+            value: function render() {
+                var _this2 = this;
+
+                return _react3.default.createElement(
+                    _nativeBase.Container,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 15
+                        }
+                    },
+                    _react3.default.createElement(
+                        _nativeBase.Content,
+                        {
+                            style: {
+                                backgroundColor: '#e5fce8'
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 16
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            {
+                                style: {
+                                    flex: 1,
+                                    flexDirection: 'column',
+                                    backgroundColor: '#d3a01e',
+                                    height: 200,
+                                    paddingTop: _reactNative.StatusBar.currentHeight,
+                                    paddingHorizontal: 10,
+                                    paddingBottom: 10
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 17
+                                }
+                            },
+                            _react3.default.createElement(
+                                _reactNative.View,
+                                {
+                                    style: {
+                                        flexGrow: 1,
+                                        flex: 1,
+                                        justifyContent: 'center'
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 18
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        style: {
+                                            width: 80,
+                                            height: 80,
+                                            lineHeight: 80,
+                                            textAlign: 'center',
+                                            color: 'white',
+                                            borderRadius: 40,
+                                            backgroundColor: 'grey'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 23
+                                        }
+                                    },
+                                    "ACE"
+                                )
+                            ),
+                            _react3.default.createElement(
+                                _reactNative.View,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 33
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        style: {
+                                            alignContent: 'flex-end',
+                                            color: 'white',
+                                            fontSize: 16,
+                                            fontWeight: 'bold'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 34
+                                        }
+                                    },
+                                    "Alberto Cortina Eduarte"
+                                ),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        style: {
+                                            color: 'white',
+                                            fontSize: 14
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 35
+                                        }
+                                    },
+                                    "UO245930@uniovi.es"
+                                )
+                            )
+                        ),
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 38
+                                }
+                            },
+                            _react3.default.createElement(
+                                _nativeBase.Button,
+                                {
+                                    iconLeft: true,
+                                    transparent: true,
+                                    onPress: function onPress() {
+                                        return _this2.props.navigation.navigate('Home');
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 39
+                                    }
+                                },
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    style: {
+                                        color: 'black',
+                                        fontSize: 24
+                                    },
+                                    type: "FontAwesome",
+                                    name: "home",
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 40
+                                    }
+                                }),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        style: {
+                                            width: width,
+                                            color: 'black'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 41
+                                        }
+                                    },
+                                    "Inicio"
+                                )
+                            ),
+                            _react3.default.createElement(_reactNative.View, {
+                                style: {
+                                    borderBottomColor: '#008279',
+                                    borderBottomWidth: 1,
+                                    opacity: 0.5
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 43
+                                }
+                            }),
+                            _react3.default.createElement(
+                                _nativeBase.Button,
+                                {
+                                    iconLeft: true,
+                                    transparent: true,
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 49
+                                    }
+                                },
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    style: {
+                                        color: 'black',
+                                        fontSize: 24
+                                    },
+                                    type: "FontAwesome",
+                                    name: "check-square-o",
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 50
+                                    }
+                                }),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        style: {
+                                            width: width,
+                                            color: 'black'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 51
+                                        }
+                                    },
+                                    "Certificar presencia"
+                                )
+                            ),
+                            _react3.default.createElement(
+                                _nativeBase.Button,
+                                {
+                                    iconLeft: true,
+                                    transparent: true,
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 53
+                                    }
+                                },
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    style: {
+                                        color: 'black',
+                                        fontSize: 24
+                                    },
+                                    type: "FontAwesome",
+                                    name: "calendar-check-o",
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 54
+                                    }
+                                }),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        style: {
+                                            width: width,
+                                            color: 'black'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 55
+                                        }
+                                    },
+                                    "Revisar asistencias"
+                                )
+                            ),
+                            _react3.default.createElement(_reactNative.View, {
+                                style: {
+                                    borderBottomColor: '#008279',
+                                    borderBottomWidth: 1,
+                                    opacity: 0.5
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 57
+                                }
+                            }),
+                            _react3.default.createElement(
+                                _nativeBase.Button,
+                                {
+                                    iconLeft: true,
+                                    transparent: true,
+                                    onPress: function onPress() {
+                                        return _this2.props.navigation.navigate('Settings');
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 63
+                                    }
+                                },
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    style: {
+                                        color: 'black',
+                                        fontSize: 24
+                                    },
+                                    type: "FontAwesome",
+                                    name: "gear",
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 64
+                                    }
+                                }),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        style: {
+                                            width: width,
+                                            color: 'black'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 65
+                                        }
+                                    },
+                                    "Ajustes"
+                                )
+                            ),
+                            _react3.default.createElement(
+                                _nativeBase.Button,
+                                {
+                                    iconLeft: true,
+                                    transparent: true,
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 67
+                                    }
+                                },
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    style: {
+                                        color: 'black',
+                                        fontSize: 24
+                                    },
+                                    type: "FontAwesome",
+                                    name: "question",
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 68
+                                    }
+                                }),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        style: {
+                                            width: width,
+                                            color: 'black'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 69
+                                        }
+                                    },
+                                    "Acerca de"
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+        }]);
+
+        return SideBar;
+    }(_react3.default.Component));
+
+    exports.default = SideBar;
+});

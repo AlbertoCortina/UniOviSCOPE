@@ -1,0 +1,88 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.loginStyles = exports.splashStyles = exports.loadingStyles = undefined;
+
+    var _reactNative = _require(_dependencyMap[0], "react-native");
+
+    var widthscreen = _reactNative.Dimensions.get('window').width;
+
+    var heightscreen = _reactNative.Dimensions.get('window').height;
+
+    var loadingStyles = _reactNative.StyleSheet.create({
+        container: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
+        }
+    });
+
+    var splashStyles = _reactNative.StyleSheet.create({
+        container: {
+            backgroundColor: '#008279',
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
+        }
+    });
+
+    var loginStyles = _reactNative.StyleSheet.create({
+        container: {
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'stretch',
+            backgroundColor: '#e5fce8'
+        },
+        header: {
+            backgroundColor: '#e5fce8',
+            borderColor: '#e5fce8'
+        },
+        logo: {
+            height: (widthscreen - 40) * 70 / 100,
+            width: (widthscreen - 40) * 70 / 100,
+            alignSelf: 'center',
+            padding: 30
+        },
+        infoContainer: {
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: 200,
+            padding: 20
+        },
+        input: {
+            marginTop: 15,
+            marginBottom: 10,
+            backgroundColor: 'rgba(209, 209, 209, 0.5)',
+            height: 40
+        },
+        buttonContainer: {
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'stretch',
+            borderColor: 'red'
+        },
+        buttonText: {
+            textAlign: 'center',
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: 18
+        },
+        button: {
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            alignItems: 'stretch',
+            marginTop: 15,
+            backgroundColor: '#d3a01e'
+        }
+    });
+
+    exports.loadingStyles = loadingStyles;
+    exports.splashStyles = splashStyles;
+    exports.loginStyles = loginStyles;
+});

@@ -1,0 +1,26 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _reactNavigation = _require(_dependencyMap[0], "react-navigation");
+
+    var _homeContainer = _require(_dependencyMap[1], "../../containers/home-container");
+
+    var _homeContainer2 = _interopRequireDefault(_homeContainer);
+
+    var _settingsContainer = _require(_dependencyMap[2], "../../containers/settings-container");
+
+    var _settingsContainer2 = _interopRequireDefault(_settingsContainer);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    exports.default = (0, _reactNavigation.createDrawerNavigator)({
+        Home: {
+            screen: _homeContainer2.default
+        },
+        Settings: {
+            screen: _settingsContainer2.default
+        }
+    });
+});

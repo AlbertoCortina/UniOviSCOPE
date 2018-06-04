@@ -1,0 +1,405 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _react2 = _require(_dependencyMap[0], "react");
+
+    var _react3 = _interopRequireDefault(_react2);
+
+    var _index = _require(_dependencyMap[1], "./../../../node_modules/react-transform-hmr/lib/index.js");
+
+    var _index2 = _interopRequireDefault(_index);
+
+    var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+    var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/screens/settings-screen.js";
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    var _styles = _require(_dependencyMap[3], "../../resources/styles/styles");
+
+    var _nativeBase = _require(_dependencyMap[4], "native-base");
+
+    var _i18n = _require(_dependencyMap[5], "../../resources/i18n/i18n");
+
+    var _i18n2 = _interopRequireDefault(_i18n);
+
+    var _customSideBar = _require(_dependencyMap[6], "../others/custom-sideBar");
+
+    var _customSideBar2 = _interopRequireDefault(_customSideBar);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var _components = {
+        SettingsScreen: {
+            displayName: "SettingsScreen"
+        }
+    };
+
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/home/alberto/Git/UniOviSCOPE/app/components/screens/settings-screen.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
+
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
+    }
+
+    var widthscreen = _reactNative.Dimensions.get('window').width;
+
+    var SettingsScreen = _wrapComponent("SettingsScreen")(function (_React$Component) {
+        _inherits(SettingsScreen, _React$Component);
+
+        function SettingsScreen() {
+            var _ref;
+
+            var _temp, _this, _ret;
+
+            _classCallCheck(this, SettingsScreen);
+
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+            }
+
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SettingsScreen.__proto__ || Object.getPrototypeOf(SettingsScreen)).call.apply(_ref, [this].concat(args))), _this), _this.openDrawer = function () {
+                _this._drawer._root.open();
+            }, _temp), _possibleConstructorReturn(_this, _ret);
+        }
+
+        _createClass(SettingsScreen, [{
+            key: "render",
+            value: function render() {
+                var _this2 = this;
+
+                return _react3.default.createElement(
+                    _nativeBase.Drawer,
+                    {
+                        panOpenMask: .25,
+                        side: "left",
+                        ref: function ref(_ref2) {
+                            return _this2._drawer = _ref2;
+                        },
+                        content: _react3.default.createElement(_customSideBar2.default, _extends({}, this.props, {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 20
+                            }
+                        })),
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 20
+                        }
+                    },
+                    _react3.default.createElement(
+                        _nativeBase.Container,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 21
+                            }
+                        },
+                        _react3.default.createElement(
+                            _nativeBase.Header,
+                            {
+                                style: {
+                                    paddingTop: _reactNative.StatusBar.currentHeight,
+                                    height: 64 + _reactNative.StatusBar.currentHeight,
+                                    backgroundColor: '#008279'
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 22
+                                }
+                            },
+                            _react3.default.createElement(
+                                _nativeBase.Left,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 23
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _nativeBase.Button,
+                                    {
+                                        transparent: true,
+                                        onPress: function onPress() {
+                                            return _this2.openDrawer();
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 24
+                                        }
+                                    },
+                                    _react3.default.createElement(_nativeBase.Icon, {
+                                        name: "menu",
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 25
+                                        }
+                                    })
+                                )
+                            ),
+                            _react3.default.createElement(
+                                _nativeBase.Body,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 28
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _nativeBase.Title,
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 29
+                                        }
+                                    },
+                                    "Ajustes"
+                                )
+                            ),
+                            _react3.default.createElement(_nativeBase.Right, {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 31
+                                }
+                            })
+                        ),
+                        _react3.default.createElement(
+                            _nativeBase.Content,
+                            {
+                                padder: true,
+                                contentContainerStyle: {
+                                    flex: 1,
+                                    backgroundColor: '#e5fce8'
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 33
+                                }
+                            },
+                            _react3.default.createElement(
+                                _reactNative.View,
+                                {
+                                    style: {
+                                        flexDirection: 'row',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'flex-start'
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 34
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _reactNative.View,
+                                    {
+                                        style: {
+                                            flex: 1,
+                                            justifyContent: 'center',
+                                            alignSelf: 'center',
+                                            marginRight: 10
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 35
+                                        }
+                                    },
+                                    _react3.default.createElement(_nativeBase.Icon, {
+                                        style: {
+                                            fontSize: 40,
+                                            color: '#d3a01e'
+                                        },
+                                        type: "FontAwesome",
+                                        name: "smile-o",
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 36
+                                        }
+                                    })
+                                ),
+                                _react3.default.createElement(
+                                    _reactNative.View,
+                                    {
+                                        style: {
+                                            flex: 7
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 38
+                                        }
+                                    },
+                                    _react3.default.createElement(
+                                        _nativeBase.Text,
+                                        {
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 39
+                                            }
+                                        },
+                                        "Reconocimiento facial"
+                                    ),
+                                    _react3.default.createElement(
+                                        _nativeBase.Text,
+                                        {
+                                            note: true,
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 40
+                                            }
+                                        },
+                                        "Activar/Desactivar el reconocimiento facial para el proceso de certificaci\xF3n de asistencia (el profesor docenete ser\xE1 notificado)"
+                                    )
+                                ),
+                                _react3.default.createElement(
+                                    _reactNative.View,
+                                    {
+                                        style: {
+                                            flex: 1,
+                                            justifyContent: 'flex-end',
+                                            alignItems: 'flex-end'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 42
+                                        }
+                                    },
+                                    _react3.default.createElement(_nativeBase.Switch, {
+                                        value: true,
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 43
+                                        }
+                                    })
+                                )
+                            ),
+                            _react3.default.createElement(_reactNative.View, {
+                                style: {
+                                    marginVertical: 10,
+                                    borderBottomColor: '#008279',
+                                    borderBottomWidth: 1,
+                                    opacity: 0.5
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 46
+                                }
+                            }),
+                            _react3.default.createElement(
+                                _reactNative.View,
+                                {
+                                    style: {
+                                        flexDirection: 'row',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'flex-start'
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 53
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _reactNative.View,
+                                    {
+                                        style: {
+                                            flex: 1,
+                                            justifyContent: 'center',
+                                            alignSelf: 'center'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 54
+                                        }
+                                    },
+                                    _react3.default.createElement(_nativeBase.Icon, {
+                                        style: {
+                                            fontSize: 40,
+                                            color: '#d3a01e'
+                                        },
+                                        type: "FontAwesome",
+                                        name: "home",
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 55
+                                        }
+                                    })
+                                ),
+                                _react3.default.createElement(
+                                    _reactNative.View,
+                                    {
+                                        style: {
+                                            flex: 6
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 57
+                                        }
+                                    },
+                                    _react3.default.createElement(
+                                        _nativeBase.Text,
+                                        {
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 58
+                                            }
+                                        },
+                                        "Pantalla inicial"
+                                    ),
+                                    _react3.default.createElement(
+                                        _nativeBase.Text,
+                                        {
+                                            note: true,
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 59
+                                            }
+                                        },
+                                        "Activar/Desactivar el proceso de certificaci\xF3n de asistencia como pantalla inicial de la aplicaci\xF3n"
+                                    )
+                                ),
+                                _react3.default.createElement(
+                                    _reactNative.View,
+                                    {
+                                        style: {
+                                            flex: 1,
+                                            justifyContent: 'flex-end',
+                                            alignItems: 'flex-end'
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 61
+                                        }
+                                    },
+                                    _react3.default.createElement(_nativeBase.Switch, {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 62
+                                        }
+                                    })
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+        }]);
+
+        return SettingsScreen;
+    }(_react3.default.Component));
+
+    exports.default = SettingsScreen;
+});
