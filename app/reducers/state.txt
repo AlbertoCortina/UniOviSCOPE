@@ -1,8 +1,0 @@
-{
-    token: (token jwt),
-    isLoadingApp: TRUE | FALSE,
-    login :{
-        isLoading: TRUE | FALSE
-    }
-
-}

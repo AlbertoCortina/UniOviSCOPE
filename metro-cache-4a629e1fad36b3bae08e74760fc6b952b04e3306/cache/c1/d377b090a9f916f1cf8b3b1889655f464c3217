@@ -1,0 +1,35 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _redux = _require(_dependencyMap[0], "redux");
+
+    var _reactRedux = _require(_dependencyMap[1], "react-redux");
+
+    var _loginAction = _require(_dependencyMap[2], "../actions/login-action");
+
+    var _loginScreen = _require(_dependencyMap[3], "../components/screens/login-screen");
+
+    var _loginScreen2 = _interopRequireDefault(_loginScreen);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    var mapStateToProps = function mapStateToProps(state, props) {
+        return {
+            isLoadingApp: state.isLoadingApp,
+            isAuthenticated: state.loginData.token !== null && state.loginData.token !== undefined,
+            state: state.loginData.state
+        };
+    };
+
+    var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+        var actions = {
+            login: _loginAction.loginAction
+        };
+        return (0, _redux.bindActionCreators)(actions, dispatch);
+    };
+
+    var LoginContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_loginScreen2.default);
+    exports.default = LoginContainer;
+});

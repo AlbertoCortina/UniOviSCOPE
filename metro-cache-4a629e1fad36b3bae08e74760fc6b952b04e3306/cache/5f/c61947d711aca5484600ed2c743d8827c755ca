@@ -1,0 +1,6 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var createBaseFor = _require(_dependencyMap[0], './_createBaseFor');
+
+  var baseFor = createBaseFor();
+  module.exports = baseFor;
+});

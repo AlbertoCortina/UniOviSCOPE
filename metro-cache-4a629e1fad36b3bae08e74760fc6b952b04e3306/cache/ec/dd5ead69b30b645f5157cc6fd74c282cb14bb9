@@ -1,0 +1,15 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.deleteErrorAction = deleteErrorAction;
+
+    function deleteErrorAction(position) {
+        return function (dispatch) {
+            dispatch({
+                type: 'DELETE',
+                value: position
+            });
+        };
+    }
+});

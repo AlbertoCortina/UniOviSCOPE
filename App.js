@@ -1,17 +1,17 @@
-import React from 'react';
-import LoginContainer from './app/containers/login-container';
-import store from './app/store';
-import { Provider } from 'react-redux';
+import React from 'react'
+import { Provider } from 'react-redux'
 import { Root } from 'native-base'
+import store from './app2/store'
+import StartContainer from './app2/containers/start-container'
 
 export default class App extends React.Component {
   render() {
     return (
       <Root>
         <Provider store={store}>
-          <LoginContainer />
+          <StartContainer />
         </Provider>
       </Root>
-    );
+    )
   }
 }

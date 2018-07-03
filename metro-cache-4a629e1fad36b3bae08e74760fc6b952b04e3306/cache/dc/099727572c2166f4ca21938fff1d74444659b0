@@ -1,0 +1,12 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+   module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
+      "__packager_asset": true,
+      "httpServerLocation": "/assets/app2/resources/images",
+      "width": 1000,
+      "height": 1000,
+      "scales": [1],
+      "hash": "5b3327447d64212ec5ee9ca0c83101a2",
+      "name": "logo-circulo",
+      "type": "png"
+   });
+});

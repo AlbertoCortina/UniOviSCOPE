@@ -1,0 +1,50 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+    exports.default = loginDataReducer;
+
+    var _actions = _require(_dependencyMap[0], "../actions");
+
+    var initialState = {
+        token: null,
+        state: null,
+        username: null,
+        idStudent: null,
+        firstNameAndLastName: null,
+        dni: null,
+        email: null
+    };
+
+    function loginDataReducer() {
+        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+        var action = arguments[1];
+        console.log('Entra a: loginData-reducer');
+
+        switch (action.type) {
+            case _actions.AUTHENTICATE:
+                return _extends({}, state, {
+                    token: action.token,
+                    state: 'AUTHENTICATED',
+                    username: action.username,
+                    idStudent: action.idStudent,
+                    firstNameAndLastName: action.firstNameAndLastName,
+                    dni: action.dni,
+                    email: action.email
+                });
+
+            case _actions.DONT_AUTHENTICATE:
+                return _extends({}, state, {
+                    token: null,
+                    state: 'NOT_AUTHENTICATED',
+                    username: null
+                });
+
+            default:
+                return state;
+        }
+    }
+});

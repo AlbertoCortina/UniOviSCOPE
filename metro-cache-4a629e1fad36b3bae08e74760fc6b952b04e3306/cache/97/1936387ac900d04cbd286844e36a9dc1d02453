@@ -1,0 +1,83 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.loading = loading;
+    exports.notLoading = notLoading;
+    exports.offline = offline;
+    exports.error = error;
+    exports.authenticate = authenticate;
+    exports.dontAuthenticate = dontAuthenticate;
+    exports.changeToSplashScreen = changeToSplashScreen;
+    exports.changeToLoginScreen = changeToLoginScreen;
+    exports.changeToHomeScreen = changeToHomeScreen;
+    var LOADING = exports.LOADING = 'LOADING';
+    var NOT_LOADING = exports.NOT_LOADING = 'NOT_LOADING';
+    var OFFLINE = exports.OFFLINE = 'OFFLINE';
+    var ERROR = exports.ERROR = 'ERROR';
+    var AUTHENTICATE = exports.AUTHENTICATE = 'AUTHENTICATE';
+    var DONT_AUTHENTICATE = exports.DONT_AUTHENTICATE = 'DONT_AUTHENTICATE';
+    var SPLASH_SCREEN = exports.SPLASH_SCREEN = 'SPLASH_SCREEN';
+    var LOGIN_SCREEN = exports.LOGIN_SCREEN = 'LOGIN_SCREEN';
+    var HOME_SCREEN = exports.HOME_SCREEN = 'HOME_SCREEN';
+
+    function loading() {
+        return {
+            type: LOADING
+        };
+    }
+
+    function notLoading() {
+        return {
+            type: NOT_LOADING
+        };
+    }
+
+    function offline() {
+        return {
+            type: OFFLINE
+        };
+    }
+
+    function error() {
+        return {
+            type: ERROR
+        };
+    }
+
+    function authenticate(token, username, idStudent, dni, firstNameAndLastName, email) {
+        return {
+            type: AUTHENTICATE,
+            token: token,
+            username: username,
+            idStudent: idStudent,
+            dni: dni,
+            firstNameAndLastName: firstNameAndLastName,
+            email: email
+        };
+    }
+
+    function dontAuthenticate() {
+        return {
+            type: DONT_AUTHENTICATE
+        };
+    }
+
+    function changeToSplashScreen() {
+        return {
+            type: SPLASH_SCREEN
+        };
+    }
+
+    function changeToLoginScreen() {
+        return {
+            type: LOGIN_SCREEN
+        };
+    }
+
+    function changeToHomeScreen() {
+        return {
+            type: HOME_SCREEN
+        };
+    }
+});
