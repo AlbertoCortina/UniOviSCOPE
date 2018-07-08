@@ -19,11 +19,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _nativeBase = _require(_dependencyMap[3], "native-base");
 
-  var _store = _require(_dependencyMap[4], "./app2/store");
+  var _store = _require(_dependencyMap[4], "./app/store");
 
   var _store2 = _interopRequireDefault(_store);
 
-  var _startContainer = _require(_dependencyMap[5], "./app2/containers/start-container");
+  var _startContainer = _require(_dependencyMap[5], "./app/containers/start-container");
 
   var _startContainer2 = _interopRequireDefault(_startContainer);
 

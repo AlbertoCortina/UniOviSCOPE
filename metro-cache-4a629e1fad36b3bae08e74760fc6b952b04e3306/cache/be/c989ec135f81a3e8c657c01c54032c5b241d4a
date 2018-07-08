@@ -1,0 +1,33 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _reactNavigation = _require(_dependencyMap[0], "react-navigation");
+
+    var _certifyQrContainer = _require(_dependencyMap[1], "../../containers/certify-qr-container");
+
+    var _certifyQrContainer2 = _interopRequireDefault(_certifyQrContainer);
+
+    var _certifyRfContainer = _require(_dependencyMap[2], "../../containers/certify-rf-container");
+
+    var _certifyRfContainer2 = _interopRequireDefault(_certifyRfContainer);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    exports.default = (0, _reactNavigation.createStackNavigator)({
+        CertifyQR: {
+            screen: _certifyQrContainer2.default
+        },
+        CertifyRF: {
+            screen: _certifyRfContainer2.default
+        }
+    }, {
+        headerMode: 'none',
+        navigationOptions: {
+            header: {
+                visible: false
+            }
+        }
+    });
+});

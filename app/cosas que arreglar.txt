@@ -1,0 +1,6 @@
+// Login Screen
+    * Centrar todo
+    * Cuando esta en horizontal no va bien el scroll
+    * Color de la barra de estado
+    * Segundos del toast
+    * No como hacer que se muestren los errores que vienen del action

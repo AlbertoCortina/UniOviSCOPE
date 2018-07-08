@@ -1,0 +1,353 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _react2 = _require(_dependencyMap[0], "react");
+
+    var _react3 = _interopRequireDefault(_react2);
+
+    var _index = _require(_dependencyMap[1], "./../../../node_modules/react-transform-hmr/lib/index.js");
+
+    var _index2 = _interopRequireDefault(_index);
+
+    var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/screens/certify-qr-screen.js",
+        _class,
+        _temp2;
+
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+    var _styles = _require(_dependencyMap[4], "../../resources/styles");
+
+    var _i18n = _require(_dependencyMap[5], "../../resources/i18n");
+
+    var _i18n2 = _interopRequireDefault(_i18n);
+
+    var _customSideBar = _require(_dependencyMap[6], "../custom/custom-sideBar");
+
+    var _customSideBar2 = _interopRequireDefault(_customSideBar);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var _components = {
+        CertifyQRScreen: {
+            displayName: "CertifyQRScreen"
+        }
+    };
+
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/home/alberto/Git/UniOviSCOPE/app/components/screens/certify-qr-screen.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
+
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
+    }
+
+    var CustomHeader = function CustomHeader(_ref) {
+        var title = _ref.title,
+            subtitle = _ref.subtitle;
+        return _react3.default.createElement(
+            _reactNative.View,
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 9
+                }
+            },
+            _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 10
+                    }
+                },
+                title
+            ),
+            _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 11
+                    }
+                },
+                subtitle
+            )
+        );
+    };
+
+    var CertifyQRScreen = _wrapComponent("CertifyQRScreen")((_temp2 = _class = function (_React$Component) {
+        _inherits(CertifyQRScreen, _React$Component);
+
+        function CertifyQRScreen() {
+            var _ref2;
+
+            var _temp, _this, _ret;
+
+            _classCallCheck(this, CertifyQRScreen);
+
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+            }
+
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = CertifyQRScreen.__proto__ || Object.getPrototypeOf(CertifyQRScreen)).call.apply(_ref2, [this].concat(args))), _this), _this.openDrawer = function () {
+                _this._drawer._root.open();
+            }, _temp), _possibleConstructorReturn(_this, _ret);
+        }
+
+        _createClass(CertifyQRScreen, [{
+            key: "render",
+            value: function render() {
+                var _this2 = this;
+
+                return _react3.default.createElement(
+                    _nativeBase.Drawer,
+                    {
+                        panOpenMask: .25,
+                        side: "left",
+                        ref: function ref(_ref3) {
+                            return _this2._drawer = _ref3;
+                        },
+                        content: _react3.default.createElement(_customSideBar2.default, _extends({}, this.props, {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 56
+                            }
+                        })),
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 56
+                        }
+                    },
+                    _react3.default.createElement(
+                        _nativeBase.Container,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 57
+                            }
+                        },
+                        _react3.default.createElement(
+                            _nativeBase.Header,
+                            {
+                                style: _styles.settingsStyles.header,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 58
+                                }
+                            },
+                            _react3.default.createElement(
+                                _nativeBase.Left,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 59
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _nativeBase.Button,
+                                    {
+                                        transparent: true,
+                                        onPress: function onPress() {
+                                            return _this2.openDrawer();
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 60
+                                        }
+                                    },
+                                    _react3.default.createElement(_nativeBase.Icon, {
+                                        name: "menu",
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 61
+                                        }
+                                    })
+                                )
+                            ),
+                            _react3.default.createElement(
+                                _nativeBase.Body,
+                                {
+                                    style: {
+                                        flex: 2,
+                                        marginLeft: 20
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 64
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _nativeBase.Title,
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 65
+                                        }
+                                    },
+                                    _i18n2.default.t('certificar_presencia')
+                                ),
+                                _react3.default.createElement(
+                                    _nativeBase.Subtitle,
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 66
+                                        }
+                                    },
+                                    "prueba"
+                                )
+                            ),
+                            _react3.default.createElement(_nativeBase.Right, {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 68
+                                }
+                            })
+                        ),
+                        _react3.default.createElement(
+                            _nativeBase.Content,
+                            {
+                                padder: true,
+                                contentContainerStyle: _styles.settingsStyles.content,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 70
+                                }
+                            },
+                            _react3.default.createElement(
+                                _reactNative.View,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 71
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _nativeBase.Button,
+                                    {
+                                        onPress: function onPress() {
+                                            return _this2.props.navigation.navigate('Home');
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 72
+                                        }
+                                    },
+                                    _react3.default.createElement(
+                                        _nativeBase.Text,
+                                        {
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 73
+                                            }
+                                        },
+                                        "Home"
+                                    )
+                                ),
+                                _react3.default.createElement(
+                                    _nativeBase.Button,
+                                    {
+                                        onPress: function onPress() {
+                                            return _this2.props.navigation.push('CertifyRF');
+                                        },
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 76
+                                        }
+                                    },
+                                    _react3.default.createElement(
+                                        _nativeBase.Text,
+                                        {
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 77
+                                            }
+                                        },
+                                        "Reconocimiento"
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+        }]);
+
+        return CertifyQRScreen;
+    }(_react3.default.Component), _class.navigationOptions = {
+        headerTitle: _react3.default.createElement(CustomHeader, {
+            title: "Certificar presencia",
+            subtitle: "prueba",
+            __source: {
+                fileName: _jsxFileName,
+                lineNumber: 18
+            }
+        }),
+        headerStyle: {
+            backgroundColor: '#008279'
+        },
+        headerTitleStyle: {
+            color: 'white',
+            fontWeight: 'normal'
+        },
+        headerLeft: _react3.default.createElement(
+            _reactNative.TouchableOpacity,
+            {
+                style: {
+                    height: 45,
+                    width: 45,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(250, 250, 250, 0.7)',
+                    borderRadius: 50,
+                    margin: 5,
+                    shadowColor: 'black',
+                    shadowOpacity: 0.5,
+                    shadowOffset: {
+                        width: 2,
+                        height: 2
+                    }
+                },
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 27
+                }
+            },
+            _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                    style: {
+                        fontSize: 30,
+                        color: '#2980b9'
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 44
+                    }
+                },
+                "\u270C\uFE0E"
+            )
+        )
+    }, _temp2));
+
+    exports.default = CertifyQRScreen;
+});

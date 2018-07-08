@@ -1,0 +1,30 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _redux = _require(_dependencyMap[0], "redux");
+
+    var _reactRedux = _require(_dependencyMap[1], "react-redux");
+
+    var _certifyQrScreen = _require(_dependencyMap[2], "../components/screens/certify-qr-screen");
+
+    var _certifyQrScreen2 = _interopRequireDefault(_certifyQrScreen);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    var mapStateToProps = function mapStateToProps(state, props) {
+        return {
+            firstNameAndLastName: state.loginData.firstNameAndLastName,
+            email: state.loginData.email
+        };
+    };
+
+    var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+        var actions = {};
+        return (0, _redux.bindActionCreators)(actions, dispatch);
+    };
+
+    var CertifyQRContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_certifyQrScreen2.default);
+    exports.default = CertifyQRContainer;
+});

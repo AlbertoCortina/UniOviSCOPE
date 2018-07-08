@@ -1,8 +1,8 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Root } from 'native-base'
-import store from './app2/store'
-import StartContainer from './app2/containers/start-container'
+import store from './app/store'
+import StartContainer from './app/containers/start-container'
 
 export default class App extends React.Component {
   render() {

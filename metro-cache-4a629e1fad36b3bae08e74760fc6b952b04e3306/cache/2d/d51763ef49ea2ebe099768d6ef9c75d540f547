@@ -1,0 +1,48 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.Drawer = undefined;
+
+    var _reactNavigation = _require(_dependencyMap[0], "react-navigation");
+
+    var _homeContainer = _require(_dependencyMap[1], "../../containers/home-container");
+
+    var _homeContainer2 = _interopRequireDefault(_homeContainer);
+
+    var _settingsContainer = _require(_dependencyMap[2], "../../containers/settings-container");
+
+    var _settingsContainer2 = _interopRequireDefault(_settingsContainer);
+
+    var _certifyQrContainer = _require(_dependencyMap[3], "../../containers/certify-qr-container");
+
+    var _certifyQrContainer2 = _interopRequireDefault(_certifyQrContainer);
+
+    var _certifyRfContainer = _require(_dependencyMap[4], "../../containers/certify-rf-container");
+
+    var _certifyRfContainer2 = _interopRequireDefault(_certifyRfContainer);
+
+    var _checkSubjectsContainer = _require(_dependencyMap[5], "../../containers/check-subjects-container");
+
+    var _checkSubjectsContainer2 = _interopRequireDefault(_checkSubjectsContainer);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    var Drawer = exports.Drawer = (0, _reactNavigation.DrawerNavigator)({
+        Home: {
+            screen: _homeContainer2.default
+        },
+        Certify: {
+            screen: (0, _reactNavigation.StackNavigator)({
+                CertifyQR: {
+                    screen: _certifyQrContainer2.default
+                },
+                CertifyRF: {
+                    screen: _certifyRfContainer2.default
+                }
+            }, {
+                initialRouteName: 'CertifyQR'
+            })
+        }
+    });
+});

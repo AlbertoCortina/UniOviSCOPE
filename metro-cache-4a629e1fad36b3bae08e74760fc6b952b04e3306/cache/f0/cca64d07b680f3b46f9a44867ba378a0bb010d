@@ -1,0 +1,31 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = {
+    usuario: 'Usuario',
+    contrasenia: 'Contraseña',
+    iniciar_sesion: 'Iniciar sesión',
+    error_usuario_vacio: 'El campo nombre de usuario no puede estar vacío',
+    error_contrasenia_vacio: 'El campo contraseña no puede estar vacío',
+    error_campos_vacios: 'Los campos nombre de usuario y contraseña no pueden estar vacíos',
+    toast_aceptar: 'Aceptar',
+    error_sin_conexion: 'Sin conexión a internet. Por favor conéctese a internet',
+    error_sin_conexion_servicio: 'Imposible conectar con el servidor. Por favor inténtelo más tarde',
+    error_datos_invalidos: 'Usuario o contraseña incorrectos',
+    error_desconocido: 'Algo ha salido mal. Por favor inténtelo más tarde',
+    acerca_de: 'Acerca de',
+    version: 'Versión:',
+    universidad_oviedo: 'Universidad de Oviedo',
+    autor: '© 2018',
+    inicio: 'Inicio',
+    ajustes: 'Ajustes',
+    certificar_presencia: 'Certificar presencia',
+    revisar_asistencias: 'Revisar asistencias',
+    opcion_reconocimiento_facial: 'Reconocimiento facial',
+    descripcion_opcion_reconocimiento_facial: 'Activar/Desactivar el reconocimiento facial para el proceso de certificación de asistencia (el profesor docente será notificado)',
+    opcion_pantalla_inicial: 'Pantalla inicial',
+    descripcion_opcion_pantalla_inicial: 'Activar/Desactivar el proceso de certificación de asistencia como pantalla inicial de la aplicación',
+    asignaturas: 'Asignaturas'
+  };
+});

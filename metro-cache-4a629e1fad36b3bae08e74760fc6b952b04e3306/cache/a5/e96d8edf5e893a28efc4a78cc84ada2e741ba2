@@ -1,0 +1,20 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _redux = _require(_dependencyMap[0], "redux");
+
+  var _reduxThunk = _require(_dependencyMap[1], "redux-thunk");
+
+  var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+  var _reducers = _require(_dependencyMap[2], "../reducers");
+
+  var _reducers2 = _interopRequireDefault(_reducers);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default);
+  exports.default = (0, _redux.createStore)(_reducers2.default, middleware);
+});
