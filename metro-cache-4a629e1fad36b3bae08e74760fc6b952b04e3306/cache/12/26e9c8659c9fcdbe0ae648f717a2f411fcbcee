@@ -29,7 +29,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         firstNameAndLastName = response.firstName + ' ' + response.lastName;
                                         email = username + '@uniovi.es';
                                         dispatch((0, _actions.authenticate)(token, username, idStudent, dni, firstNameAndLastName, email));
-                                        dispatch((0, _actions.changeToHomeScreen)());
                                     }).catch(function () {
                                         rollback(dispatch);
                                     });

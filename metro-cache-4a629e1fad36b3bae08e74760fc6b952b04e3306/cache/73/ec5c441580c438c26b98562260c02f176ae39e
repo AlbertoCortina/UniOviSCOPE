@@ -9,15 +9,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _isLoadingAppReducer2 = _interopRequireDefault(_isLoadingAppReducer);
 
-    var _currentScreenReducer = _require(_dependencyMap[2], "./currentScreen-reducer");
-
-    var _currentScreenReducer2 = _interopRequireDefault(_currentScreenReducer);
-
-    var _loginDataReducer = _require(_dependencyMap[3], "./loginData-reducer");
+    var _loginDataReducer = _require(_dependencyMap[2], "./loginData-reducer");
 
     var _loginDataReducer2 = _interopRequireDefault(_loginDataReducer);
 
-    var _errorReducer = _require(_dependencyMap[4], "./error-reducer");
+    var _errorReducer = _require(_dependencyMap[3], "./error-reducer");
 
     var _errorReducer2 = _interopRequireDefault(_errorReducer);
 
@@ -25,7 +21,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var reducers = (0, _redux.combineReducers)({
         isLoadingApp: _isLoadingAppReducer2.default,
-        currentScreen: _currentScreenReducer2.default,
         loginData: _loginDataReducer2.default,
         errors: _errorReducer2.default
     });

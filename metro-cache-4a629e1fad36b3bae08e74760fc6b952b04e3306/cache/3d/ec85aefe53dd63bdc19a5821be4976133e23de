@@ -15,15 +15,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    var _loginContainer = _require(_dependencyMap[2], "../../containers/login-container");
+    var _reactNativeSplashScreen = _require(_dependencyMap[2], "react-native-splash-screen");
+
+    var _reactNativeSplashScreen2 = _interopRequireDefault(_reactNativeSplashScreen);
+
+    var _loginContainer = _require(_dependencyMap[3], "../../containers/login-container");
 
     var _loginContainer2 = _interopRequireDefault(_loginContainer);
 
-    var _navigators = _require(_dependencyMap[3], "../navigators");
-
-    var _reactNativeSplashScreen = _require(_dependencyMap[4], "react-native-splash-screen");
-
-    var _reactNativeSplashScreen2 = _interopRequireDefault(_reactNativeSplashScreen);
+    var _navigators = _require(_dependencyMap[4], "../navigators");
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65,8 +65,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             key: "componentDidMount",
             value: function componentDidMount() {
                 this.props.checkAuthentication();
-
-                _reactNativeSplashScreen2.default.hide();
+                setTimeout(function () {
+                    _reactNativeSplashScreen2.default.hide();
+                }, 500);
             }
         }, {
             key: "render",
@@ -75,14 +76,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     return _react3.default.createElement(_loginContainer2.default, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 14
+                            lineNumber: 16
                         }
                     });
                 } else if (this.props.isAuthenticated) {
                     return _react3.default.createElement(_navigators.Drawer, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 16
+                            lineNumber: 18
                         }
                     });
                 }

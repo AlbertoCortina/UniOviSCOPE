@@ -7,13 +7,13 @@ import CertifyQRContainer from '../../containers/certify-qr-container'
 import CertifyRFContainer from '../../containers/certify-rf-container'
 import CheckSubjectsContainer from '../../containers/check-subjects-container';
 
-export const Drawer = DrawerNavigator(
+export const Drawer = createDrawerNavigator (
     {
         Home: {
             screen: HomeContainer,
         },
         Certify: {
-            screen: StackNavigator(
+            screen: createStackNavigator (
                 {
                     CertifyQR: {
                         screen: CertifyQRContainer,
@@ -25,6 +25,13 @@ export const Drawer = DrawerNavigator(
                 {
                     initialRouteName: 'CertifyQR'
                 }),
+        },
+        Settings: {
+            screen: createStackNavigator({
+                Settings: {
+                    screen: SettingsContainer,
+                }
+            }),
         },
     }
 )

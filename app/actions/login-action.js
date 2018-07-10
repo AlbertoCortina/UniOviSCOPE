@@ -25,7 +25,6 @@ export function loginAction(username, password) {
                                     firstNameAndLastName = response.firstName + ' ' + response.lastName
                                     email = username + '@uniovi.es'
                                     dispatch(authenticate(token, username, idStudent, dni, firstNameAndLastName, email))
-                                    dispatch(changeToHomeScreen())
                                 }).catch(() => {
                                     rollback(dispatch)
                                 })

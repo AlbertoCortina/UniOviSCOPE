@@ -8,12 +8,10 @@ const widthscreen = Dimensions.get('window').width
 const heightscreen = Dimensions.get('window').height
 
 // Colores de la aplicación
-const darkGreen = '#008279'
-export const darkGreenBar = '#008279'
+export const darkGreen = '#008279'
 const lightGreen = '#e5fce8'
-export const lightGreenBar = '#ccfcd2'
 const orange = '#d3a01e'
-export const orangeBar = '#d3a01e'
+export const statusBarColor = '#00000033'
 
 // Estilos usados en Splash Screen
 export const splashStyles = StyleSheet.create({
@@ -98,9 +96,6 @@ export const separatorStyles = StyleSheet.create({
 
 //Estilos usados en Login Screen
 export const loginStyles = StyleSheet.create({
-    statusBar: {
-        backgroundColor: lightGreen,
-    },
     container: {
         alignItems: 'stretch',
         backgroundColor: lightGreen,
@@ -183,5 +178,8 @@ export const settingsStyles = StyleSheet.create({
     content: {
         backgroundColor: lightGreen,
         flex: 1,
+    },
+    headerStyles: {
+        backgroundColor: darkGreen,
     },
 })

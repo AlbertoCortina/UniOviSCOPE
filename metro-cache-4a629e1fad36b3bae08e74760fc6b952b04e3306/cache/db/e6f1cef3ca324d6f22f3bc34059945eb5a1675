@@ -13,42 +13,32 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     function checkAuthenticationAction() {
         console.log('Entra a: checkAuthentication-action');
         return function (dispatch) {
-            dispatch((0, _.loading)());
-            getAuthorizationToken().then(function (token) {
-                if (token !== null && token !== undefined) {
-                    getUsername().then(function (username) {
-                        if (username !== null && username !== undefined) {
-                            makingFindUserDetailsRequest(username, token, dispatch).then(function (response) {
-                                idStudent = response.id;
-                                dni = response.dni;
-                                firstNameAndLastName = response.firstName + ' ' + response.lastName;
-                                email = username + '@uniovi.es';
-                                dispatch((0, _.authenticate)(token, username, idStudent, dni, firstNameAndLastName, email));
-                                setTimeout(function () {
-                                    dispatch((0, _.notLoading)());
-                                    dispatch((0, _.changeToHomeScreen)());
-                                }, 1500);
+            _reactNative.NetInfo.isConnected.fetch().then(function (isConnected) {
+                if (isConnected) {
+                    getAuthorizationToken().then(function (token) {
+                        if (token !== null && token !== undefined) {
+                            getUsername().then(function (username) {
+                                if (username !== null && username !== undefined) {
+                                    makingFindUserDetailsRequest(username, token, dispatch).then(function (response) {
+                                        idStudent = response.id;
+                                        dni = response.dni;
+                                        firstNameAndLastName = response.firstName + ' ' + response.lastName;
+                                        email = username + '@uniovi.es';
+                                        dispatch((0, _.authenticate)(token, username, idStudent, dni, firstNameAndLastName, email));
+                                    }).catch(function () {
+                                        rollback(dispatch);
+                                    });
+                                }
                             }).catch(function () {
                                 rollback(dispatch);
                             });
-                        } else {
-                            setTimeout(function () {
-                                dispatch((0, _.notLoading)());
-                                dispatch((0, _.changeToLoginScreen)());
-                            }, 1500);
                         }
                     }).catch(function () {
                         rollback(dispatch);
                     });
                 } else {
-                    setTimeout(function () {
-                        dispatch((0, _.notLoading)());
-                        dispatch((0, _.changeToLoginScreen)());
-                    }, 1500);
+                    dispatch((0, _.noConnectionError)());
                 }
-            }).catch(function () {
-                console.error('Error obteniendo el token de autorización en: checkAuthentication-action');
-                rollback(dispatch);
             });
         };
     }
@@ -143,7 +133,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     function rollback(dispatch) {
         setAuthorizationToken(null).then(function () {
             setUsername(null).then(function () {
-                dispatch((0, _.changeToSplashScreen)());
                 dispatch(error());
             });
         });

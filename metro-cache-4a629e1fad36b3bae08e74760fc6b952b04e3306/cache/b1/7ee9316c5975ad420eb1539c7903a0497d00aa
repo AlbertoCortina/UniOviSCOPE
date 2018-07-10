@@ -13,9 +13,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-    var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/screens/settings-screen.js";
-
     var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _class,
+        _temp2,
+        _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/screens/settings-screen.js";
 
     var _reactNative = _require(_dependencyMap[2], "react-native");
 
@@ -62,7 +64,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         };
     }
 
-    var SettingsScreen = _wrapComponent("SettingsScreen")(function (_React$Component) {
+    var SettingsScreen = _wrapComponent("SettingsScreen")((_temp2 = _class = function (_React$Component) {
         _inherits(SettingsScreen, _React$Component);
 
         function SettingsScreen() {
@@ -97,12 +99,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         content: _react3.default.createElement(_customSideBar2.default, _extends({}, this.props, {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 17
+                                lineNumber: 49
                             }
                         })),
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 17
+                            lineNumber: 49
                         }
                     },
                     _react3.default.createElement(
@@ -110,73 +112,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 18
+                                lineNumber: 50
                             }
                         },
-                        _react3.default.createElement(
-                            _nativeBase.Header,
-                            {
-                                style: _styles.settingsStyles.header,
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 19
-                                }
-                            },
-                            _react3.default.createElement(
-                                _nativeBase.Left,
-                                {
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 20
-                                    }
-                                },
-                                _react3.default.createElement(
-                                    _nativeBase.Button,
-                                    {
-                                        transparent: true,
-                                        onPress: function onPress() {
-                                            return _this2.openDrawer();
-                                        },
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 21
-                                        }
-                                    },
-                                    _react3.default.createElement(_nativeBase.Icon, {
-                                        name: "menu",
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 22
-                                        }
-                                    })
-                                )
-                            ),
-                            _react3.default.createElement(
-                                _nativeBase.Body,
-                                {
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 25
-                                    }
-                                },
-                                _react3.default.createElement(
-                                    _nativeBase.Title,
-                                    {
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 26
-                                        }
-                                    },
-                                    _i18n2.default.t('ajustes')
-                                )
-                            ),
-                            _react3.default.createElement(_nativeBase.Right, {
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 28
-                                }
-                            })
-                        ),
                         _react3.default.createElement(
                             _nativeBase.Content,
                             {
@@ -184,7 +122,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 contentContainerStyle: _styles.settingsStyles.content,
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 30
+                                    lineNumber: 51
                                 }
                             },
                             _react3.default.createElement(
@@ -197,7 +135,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 31
+                                        lineNumber: 52
                                     }
                                 },
                                 _react3.default.createElement(
@@ -211,7 +149,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         },
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 32
+                                            lineNumber: 53
                                         }
                                     },
                                     _react3.default.createElement(_nativeBase.Icon, {
@@ -223,7 +161,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         name: "smile-o",
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 33
+                                            lineNumber: 54
                                         }
                                     })
                                 ),
@@ -236,7 +174,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         },
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 35
+                                            lineNumber: 56
                                         }
                                     },
                                     _react3.default.createElement(
@@ -244,7 +182,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         {
                                             __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 36
+                                                lineNumber: 57
                                             }
                                         },
                                         _i18n2.default.t('opcion_reconocimiento_facial')
@@ -255,7 +193,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                             note: true,
                                             __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 37
+                                                lineNumber: 58
                                             }
                                         },
                                         _i18n2.default.t('descripcion_opcion_reconocimiento_facial')
@@ -269,14 +207,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 39
+                                        lineNumber: 60
                                     }
                                 })
                             ),
                             _react3.default.createElement(_customSeparator2.default, {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 43
+                                    lineNumber: 64
                                 }
                             }),
                             _react3.default.createElement(
@@ -289,7 +227,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 44
+                                        lineNumber: 65
                                     }
                                 },
                                 _react3.default.createElement(
@@ -302,7 +240,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         },
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 45
+                                            lineNumber: 66
                                         }
                                     },
                                     _react3.default.createElement(_nativeBase.Icon, {
@@ -314,7 +252,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         name: "home",
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 46
+                                            lineNumber: 67
                                         }
                                     })
                                 ),
@@ -326,7 +264,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         },
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 48
+                                            lineNumber: 69
                                         }
                                     },
                                     _react3.default.createElement(
@@ -334,7 +272,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         {
                                             __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 49
+                                                lineNumber: 70
                                             }
                                         },
                                         _i18n2.default.t('opcion_pantalla_inicial')
@@ -345,7 +283,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                             note: true,
                                             __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 50
+                                                lineNumber: 71
                                             }
                                         },
                                         _i18n2.default.t('descripcion_opcion_pantalla_inicial')
@@ -359,7 +297,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 52
+                                        lineNumber: 73
                                     }
                                 })
                             )
@@ -370,7 +308,54 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }]);
 
         return SettingsScreen;
-    }(_react3.default.Component));
+    }(_react3.default.Component), _class.navigationOptions = {
+        title: _i18n2.default.t('ajustes'),
+        headerStyle: {
+            backgroundColor: '#008279'
+        },
+        headerTitleStyle: {
+            color: 'white',
+            fontWeight: 'normal'
+        },
+        headerLeft: _react3.default.createElement(
+            _reactNative.TouchableOpacity,
+            {
+                style: {
+                    height: 45,
+                    width: 45,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(250, 250, 250, 0.7)',
+                    borderRadius: 50,
+                    margin: 5,
+                    shadowColor: 'black',
+                    shadowOpacity: 0.5,
+                    shadowOffset: {
+                        width: 2,
+                        height: 2
+                    }
+                },
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 21
+                }
+            },
+            _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                    style: {
+                        fontSize: 30,
+                        color: '#2980b9'
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 38
+                    }
+                },
+                "\u270C\uFE0E"
+            )
+        )
+    }, _temp2));
 
     exports.default = SettingsScreen;
 });

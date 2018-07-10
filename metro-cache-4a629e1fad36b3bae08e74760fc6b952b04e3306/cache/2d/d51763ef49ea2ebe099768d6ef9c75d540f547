@@ -43,6 +43,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, {
                 initialRouteName: 'CertifyQR'
             })
+        },
+        Settings: {
+            screen: _settingsContainer2.default
         }
     });
 });

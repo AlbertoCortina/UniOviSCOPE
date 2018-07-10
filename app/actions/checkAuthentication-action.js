@@ -1,9 +1,9 @@
-import { AsyncStorage } from 'react-native'
-import { loading, notLoading, authenticate, dontAuthenticate, changeToSplashScreen, changeToLoginScreen, changeToHomeScreen } from './'
+import { NetInfo, AsyncStorage } from 'react-native'
+import { authenticate, noConnectionError } from './'
 import { API_URL } from '../util'
 
 export function checkAuthenticationAction() {
-    console.log('Entra a: checkAuthentication-action')
+    console.log('Entra a: checkAuthentication-action')    
     return (dispatch) => {
 
         /* AsyncStorage.clear().then(() => {
@@ -15,42 +15,32 @@ export function checkAuthenticationAction() {
          * Caso 1: hay token ✔
          * Caso 2: no hay token ✔
          */
-        dispatch(loading())
-        getAuthorizationToken().then((token) => {
-            if (token !== null && token !== undefined) {
-                getUsername().then((username) => {
-                    if (username !== null && username !== undefined) {
-                        makingFindUserDetailsRequest(username, token, dispatch).then(response => {
-                            idStudent = response.id
-                            dni = response.dni
-                            firstNameAndLastName = response.firstName + ' ' + response.lastName
-                            email = username + '@uniovi.es'
-                            dispatch(authenticate(token, username, idStudent, dni, firstNameAndLastName, email))
-                            setTimeout(() => {
-                                dispatch(notLoading())
-                                dispatch(changeToHomeScreen())
-                            }, 1500)
+        NetInfo.isConnected.fetch().then(isConnected => {
+            if (isConnected) {
+                getAuthorizationToken().then((token) => {
+                    if (token !== null && token !== undefined) {
+                        getUsername().then((username) => {
+                            if (username !== null && username !== undefined) {
+                                makingFindUserDetailsRequest(username, token, dispatch).then(response => {
+                                    idStudent = response.id
+                                    dni = response.dni
+                                    firstNameAndLastName = response.firstName + ' ' + response.lastName
+                                    email = username + '@uniovi.es'
+                                    dispatch(authenticate(token, username, idStudent, dni, firstNameAndLastName, email))
+                                }).catch(() => {
+                                    rollback(dispatch)
+                                })
+                            }
                         }).catch(() => {
                             rollback(dispatch)
                         })
-                    } else {
-                        setTimeout(() => {
-                            dispatch(notLoading())
-                            dispatch(changeToLoginScreen())
-                        }, 1500)
                     }
                 }).catch(() => {
                     rollback(dispatch)
                 })
             } else {
-                setTimeout(() => {
-                    dispatch(notLoading())
-                    dispatch(changeToLoginScreen())
-                }, 1500)
+                dispatch(noConnectionError())
             }
-        }).catch(() => {
-            console.error('Error obteniendo el token de autorización en: checkAuthentication-action')
-            rollback(dispatch)
         })
     }
 }
@@ -95,10 +85,13 @@ async function makingFindUserDetailsRequest(username, token, dispatch) {
     }
 }
 
+/**
+ * Método que hace "rollback" en caso de que falle algún otro método de la acción.
+ * @param {*} dispatch 
+ */
 function rollback(dispatch) {
     setAuthorizationToken(null).then(() => {
         setUsername(null).then(() => {
-            dispatch(changeToSplashScreen())
             dispatch(error())
         })
     })

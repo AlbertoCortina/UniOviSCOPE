@@ -1,7 +1,7 @@
 import React from 'react'
 import { StatusBar, Image, Keyboard, TouchableWithoutFeedback } from 'react-native'
-import { Container, Content, Input, Text, Icon, Button, Left, Toast, InputGroup } from 'native-base'
-import { loginStyles as styles, lightGreenBar } from '../../resources/styles'
+import { Container, Content, Input, Text, Icon, Button, Toast, InputGroup } from 'native-base'
+import { loginStyles as styles, statusBarColor } from '../../resources/styles'
 import Error from '../../containers/error-container'
 import I18n from '../../resources/i18n'
 
@@ -52,7 +52,8 @@ class LoginScreen extends React.Component {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 <Container style={styles.container}>
-                    <StatusBar backgroundColor={lightGreenBar} />
+                    <StatusBar translucent backgroundColor={statusBarColor}
+                        animated />
                     <Content padder>
                         <Image style={styles.logo}
                             resizeMode={'contain'}

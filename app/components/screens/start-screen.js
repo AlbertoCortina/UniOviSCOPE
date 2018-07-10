@@ -1,12 +1,14 @@
 import React from 'react'
+import SplashScreen from 'react-native-splash-screen'
 import LoginContainer from '../../containers/login-container'
 import { Drawer } from '../navigators'
-import SplashScreen from 'react-native-splash-screen'
 
 class StartScreen extends React.Component {
     componentDidMount() {
         this.props.checkAuthentication()
-        SplashScreen.hide()
+        setTimeout(() => {
+            SplashScreen.hide()
+        }, 500)
     }
 
     render() {

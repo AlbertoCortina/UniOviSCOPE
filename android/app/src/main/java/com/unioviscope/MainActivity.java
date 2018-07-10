@@ -1,16 +1,21 @@
 package com.unioviscope;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.facebook.react.ReactActivity;
+
 import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen.show(this,true);  // here
+        SplashScreen.show(this, true);
         super.onCreate(savedInstanceState);
     }
 
