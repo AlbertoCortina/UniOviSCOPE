@@ -1,8 +1,18 @@
 package com.unioviscope;
 
+import android.os.Bundle;
+import android.view.WindowManager;
+
 import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this,true);  // here
+        super.onCreate(savedInstanceState);
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.

@@ -18,9 +18,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     var mapStateToProps = function mapStateToProps(state, props) {
         console.log("Estado global redux:", state);
         return {
-            isLoadingApp: state.isLoadingApp,
-            isAuthenticated: state.loginData.token !== null && state.loginData.token !== undefined,
-            isSplashScreen: state.currentScreen === 'SPLASH_SCREEN'
+            isAuthenticated: state.loginData.token !== null && state.loginData.token !== undefined
         };
     };
 
