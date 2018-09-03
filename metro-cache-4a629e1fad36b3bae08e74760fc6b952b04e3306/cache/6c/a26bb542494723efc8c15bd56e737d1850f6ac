@@ -27,9 +27,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _i18n2 = _interopRequireDefault(_i18n);
 
-    var _customSideBar = _require(_dependencyMap[6], "../custom/custom-sideBar");
+    var _sideMenu = _require(_dependencyMap[6], "../custom/sideMenu");
 
-    var _customSideBar2 = _interopRequireDefault(_customSideBar);
+    var _sideMenu2 = _interopRequireDefault(_sideMenu);
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -91,7 +91,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         ref: function ref(_ref2) {
                             return _this2._drawer = _ref2;
                         },
-                        content: _react3.default.createElement(_customSideBar2.default, _extends({}, this.props, {
+                        content: _react3.default.createElement(_sideMenu2.default, _extends({}, this.props, {
                             __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 22

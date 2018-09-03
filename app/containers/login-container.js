@@ -5,9 +5,7 @@ import LoginScreen from '../components/screens/login-screen'
 
 const mapStateToProps = (state, props) => {
     return {
-        isLoadingApp: state.isLoadingApp,
-        isAuthenticated: state.loginData.token !== null && state.loginData.token !== undefined,
-        state: state.loginData.state,
+        isLoading: state.isLoadingApp
     }
 }
 

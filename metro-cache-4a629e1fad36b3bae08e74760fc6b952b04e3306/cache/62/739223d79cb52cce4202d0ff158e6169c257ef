@@ -11,9 +11,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _index2 = _interopRequireDefault(_index);
 
-    var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/screens/certify-rf-screen.js";
-
     var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/screens/certify-rf-screen.js",
+        _class,
+        _temp;
 
     var _reactNative = _require(_dependencyMap[2], "react-native");
 
@@ -27,9 +29,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _reactNavigation = _require(_dependencyMap[6], "react-navigation");
 
-    var _customSideBar = _require(_dependencyMap[7], "../custom/custom-sideBar");
+    var _sideMenu = _require(_dependencyMap[7], "../custom/sideMenu");
 
-    var _customSideBar2 = _interopRequireDefault(_customSideBar);
+    var _sideMenu2 = _interopRequireDefault(_sideMenu);
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58,7 +60,57 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         };
     }
 
-    var CertifyRFScreen = _wrapComponent("CertifyRFScreen")(function (_React$Component) {
+    var CustomHeader = function CustomHeader(_ref) {
+        var title = _ref.title,
+            subtitle = _ref.subtitle;
+        return _react3.default.createElement(
+            _reactNative.View,
+            {
+                style: {
+                    flex: 1,
+                    alignItems: 'flex-start',
+                    justifyContent: 'center',
+                    marginTop: _styles.marginHeader,
+                    marginLeft: 15
+                },
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 10
+                }
+            },
+            _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                    style: {
+                        color: 'white',
+                        fontWeight: 'bold',
+                        fontSize: 18
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 11
+                    }
+                },
+                title
+            ),
+            _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                    style: {
+                        color: 'white',
+                        fontSize: 14
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 12
+                    }
+                },
+                subtitle
+            )
+        );
+    };
+
+    var CertifyRFScreen = _wrapComponent("CertifyRFScreen")((_temp = _class = function (_React$Component) {
         _inherits(CertifyRFScreen, _React$Component);
 
         function CertifyRFScreen() {
@@ -89,84 +141,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 24
+                            lineNumber: 49
                         }
                     },
-                    _react3.default.createElement(
-                        _nativeBase.Header,
-                        {
-                            style: _styles.settingsStyles.header,
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 25
-                            }
-                        },
-                        _react3.default.createElement(
-                            _nativeBase.Left,
-                            {
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 26
-                                }
-                            },
-                            _react3.default.createElement(
-                                _nativeBase.Button,
-                                {
-                                    transparent: true,
-                                    onPress: function onPress() {
-                                        return _this2.props.navigation.goBack();
-                                    },
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 27
-                                    }
-                                },
-                                _react3.default.createElement(_nativeBase.Icon, {
-                                    type: "MaterialIcons",
-                                    name: "arrow-back",
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 28
-                                    }
-                                })
-                            )
-                        ),
-                        _react3.default.createElement(
-                            _nativeBase.Body,
-                            {
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 31
-                                }
-                            },
-                            _react3.default.createElement(
-                                _nativeBase.Title,
-                                {
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 32
-                                    }
-                                },
-                                _i18n2.default.t('certificar_presencia')
-                            ),
-                            _react3.default.createElement(
-                                _nativeBase.Subtitle,
-                                {
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 33
-                                    }
-                                },
-                                "prueba rf"
-                            )
-                        ),
-                        _react3.default.createElement(_nativeBase.Right, {
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 35
-                            }
-                        })
-                    ),
                     _react3.default.createElement(
                         _nativeBase.Content,
                         {
@@ -174,7 +151,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             contentContainerStyle: _styles.settingsStyles.content,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 37
+                                lineNumber: 50
                             }
                         },
                         _react3.default.createElement(
@@ -185,7 +162,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 38
+                                    lineNumber: 51
                                 }
                             },
                             _react3.default.createElement(
@@ -193,7 +170,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 {
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 39
+                                        lineNumber: 52
                                     }
                                 },
                                 "Home"
@@ -205,7 +182,55 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }]);
 
         return CertifyRFScreen;
-    }(_react3.default.Component));
+    }(_react3.default.Component), _class.navigationOptions = function (_ref2) {
+        var navigation = _ref2.navigation;
+        return {
+            headerTitle: _react3.default.createElement(CustomHeader, {
+                title: "Certificar presencia",
+                subtitle: "prueba recono",
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 19
+                }
+            }),
+            headerStyle: {
+                backgroundColor: _styles.darkGreen,
+                height: _styles.headerHeight
+            },
+            headerTitleStyle: {
+                color: 'white'
+            },
+            headerLeft: _react3.default.createElement(
+                _reactNative.TouchableOpacity,
+                {
+                    style: {
+                        padding: 20,
+                        marginTop: _styles.marginHeader
+                    },
+                    transparent: true,
+                    onPress: function onPress() {
+                        return navigation.goBack();
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 29
+                    }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                    style: {
+                        color: 'white'
+                    },
+                    type: "MaterialIcons",
+                    name: "arrow-back",
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 30
+                    }
+                })
+            ),
+            drawerLockMode: 'locked-closed'
+        };
+    }, _temp));
 
     exports.default = CertifyRFScreen;
 });

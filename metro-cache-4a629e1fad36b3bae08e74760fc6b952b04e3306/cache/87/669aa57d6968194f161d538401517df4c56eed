@@ -18,6 +18,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 return true;
 
             case _actions.NOT_LOADING:
+            case _actions.AUTHENTICATE:
+            case _actions.DONT_AUTHENTICATE:
+            case _actions.NO_CONNECTION:
+            case _actions.WRONG_CREDENTIALS:
+            case _actions.UNKNOWN_ERROR:
                 return false;
 
             default:

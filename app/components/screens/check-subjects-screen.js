@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { Container, Header, Drawer, Body, Title, Subtitle, List, ListItem, Icon, Content, Text, Button, Left, Right } from 'native-base'
 import { settingsStyles as styles } from '../../resources/styles'
 import I18n from '../../resources/i18n'
-import SideBar from '../custom/custom-sideBar'
+import SideBar from '../custom/sideMenu'
 
 class CheckSubjectsScreen extends React.Component {
     openDrawer = () => {

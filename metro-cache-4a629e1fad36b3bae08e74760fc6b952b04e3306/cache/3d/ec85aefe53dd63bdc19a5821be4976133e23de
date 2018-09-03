@@ -15,15 +15,19 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    var _reactNativeSplashScreen = _require(_dependencyMap[2], "react-native-splash-screen");
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    var _reactNativeSplashScreen = _require(_dependencyMap[3], "react-native-splash-screen");
 
     var _reactNativeSplashScreen2 = _interopRequireDefault(_reactNativeSplashScreen);
 
-    var _loginContainer = _require(_dependencyMap[3], "../../containers/login-container");
+    var _loginContainer = _require(_dependencyMap[4], "../../containers/login-container");
 
     var _loginContainer2 = _interopRequireDefault(_loginContainer);
 
-    var _navigators = _require(_dependencyMap[4], "../navigators");
+    var _navigation = _require(_dependencyMap[5], "../navigation");
+
+    var _navigation2 = _interopRequireDefault(_navigation);
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65,25 +69,35 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             key: "componentDidMount",
             value: function componentDidMount() {
                 this.props.checkAuthentication();
-                setTimeout(function () {
+
+                if (!this.props.isLoading) {
                     _reactNativeSplashScreen2.default.hide();
-                }, 500);
+                }
             }
         }, {
             key: "render",
             value: function render() {
-                if (!this.props.isAuthenticated) {
-                    return _react3.default.createElement(_loginContainer2.default, {
+                if (this.props.isAuthenticationChecked) {
+                    if (!this.props.isAuthenticated) {
+                        return _react3.default.createElement(_loginContainer2.default, {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 18
+                            }
+                        });
+                    } else if (this.props.isAuthenticated) {
+                        return _react3.default.createElement(_navigation2.default, {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 20
+                            }
+                        });
+                    }
+                } else {
+                    return _react3.default.createElement(_reactNative.View, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 16
-                        }
-                    });
-                } else if (this.props.isAuthenticated) {
-                    return _react3.default.createElement(_navigators.Drawer, {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 18
+                            lineNumber: 24
                         }
                     });
                 }

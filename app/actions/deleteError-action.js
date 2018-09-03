@@ -1,7 +1,7 @@
 import { deleteError } from '../actions'
 
 export function deleteErrorAction(position) {
-    return dispatch => {
+    return (dispatch) => {
         dispatch(deleteError(position))
     }
 }

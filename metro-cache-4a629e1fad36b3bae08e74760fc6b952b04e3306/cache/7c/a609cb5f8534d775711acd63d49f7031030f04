@@ -11,7 +11,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _index2 = _interopRequireDefault(_index);
 
-    var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/custom/custom-sideBar.js";
+    var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/custom/sideMenu.js";
 
     var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -46,7 +46,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
 
     var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-        filename: "/home/alberto/Git/UniOviSCOPE/app/components/custom/custom-sideBar.js",
+        filename: "/home/alberto/Git/UniOviSCOPE/app/components/custom/sideMenu.js",
         components: _components,
         locals: [module],
         imports: [_react3.default]
@@ -100,7 +100,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 35
+                            lineNumber: 37
                         }
                     },
                     _react3.default.createElement(
@@ -109,7 +109,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: _styles.drawerStyles.content,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 36
+                                lineNumber: 38
                             }
                         },
                         _react3.default.createElement(_reactNative.StatusBar, {
@@ -118,7 +118,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             animated: true,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 37
+                                lineNumber: 39
                             }
                         }),
                         _react3.default.createElement(
@@ -127,7 +127,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 style: _styles.drawerStyles.infoContainer,
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 39
+                                    lineNumber: 41
                                 }
                             },
                             _react3.default.createElement(
@@ -136,7 +136,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     style: _styles.drawerStyles.thumbnailContainer,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 40
+                                        lineNumber: 42
                                     }
                                 },
                                 _react3.default.createElement(
@@ -145,7 +145,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.drawerStyles.thumbnail,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 41
+                                            lineNumber: 43
                                         }
                                     },
                                     this.getInitials(this.props.firstNameAndLastName)
@@ -156,7 +156,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 {
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 43
+                                        lineNumber: 45
                                     }
                                 },
                                 _react3.default.createElement(
@@ -165,7 +165,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.drawerStyles.nameAndSurnameText,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 44
+                                            lineNumber: 46
                                         }
                                     },
                                     this.props.firstNameAndLastName
@@ -176,7 +176,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.drawerStyles.emailText,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 45
+                                            lineNumber: 47
                                         }
                                     },
                                     this.props.email
@@ -186,9 +186,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _react3.default.createElement(
                             _reactNative.View,
                             {
+                                style: _styles.drawerStyles.buttonContainer,
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 48
+                                    lineNumber: 50
                                 }
                             },
                             _react3.default.createElement(
@@ -202,7 +203,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 49
+                                        lineNumber: 51
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
@@ -211,7 +212,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     name: "home",
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 50
+                                        lineNumber: 52
                                     }
                                 }),
                                 _react3.default.createElement(
@@ -220,7 +221,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.drawerStyles.buttonText,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 51
+                                            lineNumber: 53
                                         }
                                     },
                                     _reactNativeI18n2.default.t('inicio')
@@ -229,7 +230,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             _react3.default.createElement(_customSeparator2.default, {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 53
+                                    lineNumber: 55
                                 }
                             }),
                             _react3.default.createElement(
@@ -243,7 +244,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 54
+                                        lineNumber: 56
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
@@ -252,7 +253,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     name: "check-square-o",
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 55
+                                        lineNumber: 57
                                     }
                                 }),
                                 _react3.default.createElement(
@@ -261,7 +262,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.drawerStyles.buttonText,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 56
+                                            lineNumber: 58
                                         }
                                     },
                                     _reactNativeI18n2.default.t('certificar_presencia')
@@ -278,7 +279,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 58
+                                        lineNumber: 60
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
@@ -287,7 +288,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     name: "calendar-check-o",
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 59
+                                        lineNumber: 61
                                     }
                                 }),
                                 _react3.default.createElement(
@@ -296,7 +297,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.drawerStyles.buttonText,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 60
+                                            lineNumber: 62
                                         }
                                     },
                                     _reactNativeI18n2.default.t('revisar_asistencias')
@@ -305,7 +306,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             _react3.default.createElement(_customSeparator2.default, {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 62
+                                    lineNumber: 64
                                 }
                             }),
                             _react3.default.createElement(
@@ -319,7 +320,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 63
+                                        lineNumber: 65
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
@@ -328,7 +329,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     name: "gear",
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 64
+                                        lineNumber: 66
                                     }
                                 }),
                                 _react3.default.createElement(
@@ -337,7 +338,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.drawerStyles.buttonText,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 65
+                                            lineNumber: 67
                                         }
                                     },
                                     _reactNativeI18n2.default.t('ajustes')
@@ -354,16 +355,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 67
+                                        lineNumber: 69
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
+                                    color: _styles.darkGreenBar,
                                     style: _styles.drawerStyles.buttonIcon,
                                     type: "FontAwesome",
                                     name: "question",
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 68
+                                        lineNumber: 70
                                     }
                                 }),
                                 _react3.default.createElement(
@@ -372,7 +374,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.drawerStyles.buttonText,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 69
+                                            lineNumber: 71
                                         }
                                     },
                                     _reactNativeI18n2.default.t('acerca_de')

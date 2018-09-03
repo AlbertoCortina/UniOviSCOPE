@@ -1,7 +1,7 @@
 /**
  * Estilos de la aplicación
  */
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions, StatusBar } from 'react-native'
 
 // Ancho y alto de la pantalla
 const widthscreen = Dimensions.get('window').width
@@ -12,6 +12,10 @@ export const darkGreen = '#008279'
 const lightGreen = '#e5fce8'
 const orange = '#d3a01e'
 export const statusBarColor = '#00000033'
+
+//Medidas header y statusBar (hay que revisar para iOS)
+export const headerHeight = 56 + StatusBar.currentHeight
+export const marginHeader = (headerHeight - StatusBar.currentHeight * 2) / 2
 
 // Estilos usados en Splash Screen
 export const splashStyles = StyleSheet.create({
@@ -71,7 +75,7 @@ export const drawerStyles = StyleSheet.create({
     button: {
 
     },
-    buttonIconContainer: {
+    buttonContainer: {
 
     },
     buttonIcon: {
@@ -159,7 +163,7 @@ export const homeStyles = StyleSheet.create({
     },
     button: {
         alignSelf: 'center',
-        backgroundColor: '#d3a01e',
+        backgroundColor: orange,
         marginTop: 15,
     },
     buttonIcon: {

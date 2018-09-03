@@ -18,7 +18,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     var mapStateToProps = function mapStateToProps(state, props) {
         console.log("Estado global redux:", state);
         return {
-            isAuthenticated: state.loginData.token !== null && state.loginData.token !== undefined
+            isAuthenticationChecked: state.loginData.token !== undefined,
+            isAuthenticated: state.loginData.token !== null && state.loginData.token !== undefined,
+            isLoading: state.isLoadingApp
         };
     };
 

@@ -2,7 +2,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.Drawer = undefined;
 
     var _reactNavigation = _require(_dependencyMap[0], "react-navigation");
 
@@ -26,26 +25,43 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _checkSubjectsContainer2 = _interopRequireDefault(_checkSubjectsContainer);
 
+    var _sideMenuContainer = _require(_dependencyMap[6], "../../containers/sideMenu-container");
+
+    var _sideMenuContainer2 = _interopRequireDefault(_sideMenuContainer);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    var Drawer = exports.Drawer = (0, _reactNavigation.DrawerNavigator)({
+    var HomeStack = (0, _reactNavigation.createStackNavigator)({
         Home: {
             screen: _homeContainer2.default
+        }
+    });
+    var CertifyStack = (0, _reactNavigation.createStackNavigator)({
+        CertifyQR: {
+            screen: _certifyQrContainer2.default
         },
-        Certify: {
-            screen: (0, _reactNavigation.StackNavigator)({
-                CertifyQR: {
-                    screen: _certifyQrContainer2.default
-                },
-                CertifyRF: {
-                    screen: _certifyRfContainer2.default
-                }
-            }, {
-                initialRouteName: 'CertifyQR'
-            })
-        },
+        CertifyRF: {
+            screen: _certifyRfContainer2.default
+        }
+    }, {
+        initialRouteName: 'CertifyQR'
+    });
+    var SettingsStack = (0, _reactNavigation.createStackNavigator)({
         Settings: {
             screen: _settingsContainer2.default
         }
+    });
+    exports.default = (0, _reactNavigation.createDrawerNavigator)({
+        Home: {
+            screen: HomeStack
+        },
+        Certify: {
+            screen: CertifyStack
+        },
+        Settings: {
+            screen: SettingsStack
+        }
+    }, {
+        contentComponent: _sideMenuContainer2.default
     });
 });

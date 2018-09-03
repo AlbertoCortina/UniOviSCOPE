@@ -1,10 +1,11 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import SplashScreen from '../components/screens/splash-screen'
+import SideMenu from '../components/custom/sideMenu'
 
 const mapStateToProps = (state, props) => {
     return {
-       
+        firstNameAndLastName: state.loginData.firstNameAndLastName,
+        email: state.loginData.email,
     }
 }
 
@@ -15,6 +16,6 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(actions, dispatch)
 }
 
-const SplashContainer = connect(mapStateToProps, mapDispatchToProps)(SplashScreen)
+const SideMenuContainer = connect(mapStateToProps, mapDispatchToProps)(SideMenu)
 
-export default SplashContainer
+export default SideMenuContainer

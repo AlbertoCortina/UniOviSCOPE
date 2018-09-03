@@ -26,7 +26,9 @@ class SideBar extends React.Component {
             [
                 { text: I18n.t('toast_aceptar') },
             ],
-            { cancelable: false }
+            {
+                cancelable: false
+            }
         )
     }
 
@@ -45,7 +47,7 @@ class SideBar extends React.Component {
                             <Text style={styles.emailText}>{this.props.email}</Text>
                         </View>
                     </View>
-                    <View>
+                    <View style={styles.buttonContainer}>
                         <Button style={styles.button} iconLeft transparent onPress={() => this.props.navigation.navigate('Home')}>
                             <Icon style={styles.buttonIcon} type='FontAwesome' name='home' />
                             <Text style={styles.buttonText}>{I18n.t('inicio')}</Text>
@@ -65,7 +67,7 @@ class SideBar extends React.Component {
                             <Text style={styles.buttonText}>{I18n.t('ajustes')}</Text>
                         </Button>
                         <Button style={styles.button} iconLeft transparent onPress={() => this.showAbout()}>
-                            <Icon style={styles.buttonIcon} type='FontAwesome' name='question' />
+                            <Icon color={darkGreenBar} style={styles.buttonIcon} type='FontAwesome' name='question' />
                             <Text style={styles.buttonText}>{I18n.t('acerca_de')}</Text>
                         </Button>
                     </View>

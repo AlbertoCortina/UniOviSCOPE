@@ -1,52 +1,57 @@
 import { NetInfo, AsyncStorage } from 'react-native'
-import { loading, notLoading, error, noConnectionError, authenticate, dontAuthenticate, changeToLoginScreen, changeToHomeScreen, wrongCredentialsError, unknownError } from '../actions'
+import { loading, notLoading, unknownError, noConnectionError, authenticate, dontAuthenticate, wrongCredentialsError } from '../actions'
 import { API_URL } from '../util'
 
 export function loginAction(username, password) {
     console.log('Entra a: login-action');
-    return dispatch => {
+    return (dispatch) => {
 		/**
 		 * Caso 2: Comprobar si tiene conexión a internet ✔
 		 * Caso 3: Hace la peticion y todo va bien ✔
 		 * Caso 4: Hace la peticion y no existe ningun usuario ✔
 		 * Caso 5: Hace la peticion pero el servicio esta caido ✔
 		 */
+        let token
         dispatch(loading())
-        NetInfo.isConnected.fetch().then(isConnected => {
-            if (isConnected) {
-                makingLogInRequest(username, password, dispatch).then(response => {
-                    token = response.headers.get('Authorization')
-                    if (token !== null) {
-                        setAuthorizationToken(token).then(() => {
-                            setUsername(username).then(() => {
-                                makingFindUserDetailsRequest(username, token, dispatch).then(response => {
-                                    idStudent = response.id
-                                    dni = response.dni
-                                    firstNameAndLastName = response.firstName + ' ' + response.lastName
-                                    email = username + '@uniovi.es'
-                                    dispatch(authenticate(token, username, idStudent, dni, firstNameAndLastName, email))
-                                }).catch(() => {
-                                    rollback(dispatch)
-                                })
-                            }).catch(() => {
-                                rollback(dispatch)
-                            })
+        NetInfo.isConnected.fetch()
+            .then((isConnected) => {
+                if (isConnected) {
+                    makingLogInRequest(username, password, dispatch)
+                        .then((response) => {
+                            token = response.headers.get('Authorization')
+                            if (token !== null) {
+                                return setAuthorizationToken(token)
+                            } else {
+                                throw 'WRONG_CREDENTIALS'
+                            }
                         })
-                    } else {
-                        dispatch(dontAuthenticate())
-                        dispatch(wrongCredentialsError())
-                    }
-                }).catch(() => {
-                    rollback(dispatch)
-                })
-            } else {
-                dispatch(dontAuthenticate())
-                dispatch(noConnectionError())
-            }
-        }).catch(() => {
-            rollback(dispatch)
-        })
-        dispatch(notLoading())
+                        .then(() => {
+                            return setUsername(username)
+                        })
+                        .then(() => {
+                            return makingFindUserDetailsRequest(username, token, dispatch)
+                        })
+                        .then((response) => {
+                            idStudent = response.id
+                            dni = response.dni
+                            firstNameAndLastName = response.firstName + ' ' + response.lastName
+                            email = username + '@uniovi.es'
+                            dispatch(authenticate(token, username, idStudent, dni, firstNameAndLastName, email))
+                        })
+                        .catch((error) => {
+                            if (error === 'WRONG_CREDENTIALS') {
+                                dispatch(wrongCredentialsError())
+                            } else {
+                                rollback(dispatch)
+                            }
+                        })                        
+                } else {
+                    dispatch(noConnectionError())
+                }
+            })
+            .catch((error) => {
+                rollback(dispatch)
+            })
     }
 }
 
@@ -66,8 +71,8 @@ async function makingLogInRequest(username, password, dispatch) {
             }),
         })
     } catch (error) {
+        return null
         console.log('Error haciendo petición de login en login-action')
-        rollback(dispatch)
     }
 }
 
@@ -80,6 +85,7 @@ async function setAuthorizationToken(token) {
             AsyncStorage.setItem('AUTHORIZATION', token)
         })
     } catch (error) {
+        return null
         console.log('Error guardando el token de autorización en: login-action')
     }
 }
@@ -98,7 +104,7 @@ async function makingFindUserDetailsRequest(username, token, dispatch) {
         })
         return await response.json()
     } catch (error) {
-        rollback(dispatch)
+        return null
     }
 }
 
@@ -111,6 +117,7 @@ async function setUsername(username) {
             AsyncStorage.setItem('USERNAME', username)
         })
     } catch (error) {
+        return null
         console.log('Error guardando el nombre de usuario en: login-action')
     }
 }

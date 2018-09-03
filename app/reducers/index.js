@@ -6,7 +6,7 @@ import errorReducer from './error-reducer'
 const reducers = combineReducers({
     isLoadingApp: isLoadingAppReducer,
     loginData: loginDataReducer,
-    errors:errorReducer,
-}) 
+    errors: errorReducer,
+})
 
 export default reducers

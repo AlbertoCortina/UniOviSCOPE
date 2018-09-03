@@ -6,7 +6,9 @@ import StartScreen from '../components/screens/start-screen'
 const mapStateToProps = (state, props) => {
     console.log("Estado global redux:", state);
     return {
+        isAuthenticationChecked: state.loginData.token !== undefined,
         isAuthenticated: state.loginData.token !== null && state.loginData.token !== undefined,
+        isLoading: state.isLoadingApp
     }
 }
 

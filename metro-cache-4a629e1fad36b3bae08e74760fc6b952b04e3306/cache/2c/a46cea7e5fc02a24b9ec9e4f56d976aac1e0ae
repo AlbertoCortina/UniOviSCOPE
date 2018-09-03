@@ -29,6 +29,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _i18n2 = _interopRequireDefault(_i18n);
 
+    var _customLoader = _require(_dependencyMap[7], "../custom/custom-loader");
+
+    var _customLoader2 = _interopRequireDefault(_customLoader);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -113,13 +117,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             value: function render() {
                 var _this2 = this;
 
+                console.log("Render login " + this.props.isLoading);
                 return _react3.default.createElement(
                     _reactNative.TouchableWithoutFeedback,
                     {
                         onPress: _reactNative.Keyboard.dismiss,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 53
+                            lineNumber: 55
                         }
                     },
                     _react3.default.createElement(
@@ -128,7 +133,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: _styles.loginStyles.container,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 54
+                                lineNumber: 56
                             }
                         },
                         _react3.default.createElement(_reactNative.StatusBar, {
@@ -137,7 +142,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             animated: true,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 55
+                                lineNumber: 57
                             }
                         }),
                         _react3.default.createElement(
@@ -146,16 +151,16 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 padder: true,
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 57
+                                    lineNumber: 59
                                 }
                             },
                             _react3.default.createElement(_reactNative.Image, {
                                 style: _styles.loginStyles.logo,
                                 resizeMode: 'contain',
-                                source: _require(_dependencyMap[7], '../../resources/images/logo.png'),
+                                source: _require(_dependencyMap[8], '../../resources/images/logo.png'),
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 58
+                                    lineNumber: 60
                                 }
                             }),
                             _react3.default.createElement(
@@ -165,7 +170,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     style: _styles.loginStyles.userInput,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 61
+                                        lineNumber: 63
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
@@ -174,7 +179,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     style: _styles.loginStyles.inputIcon,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 62
+                                        lineNumber: 64
                                     }
                                 }),
                                 _react3.default.createElement(_nativeBase.Input, {
@@ -193,7 +198,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 63
+                                        lineNumber: 65
                                     }
                                 })
                             ),
@@ -204,7 +209,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     style: _styles.loginStyles.passwordInput,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 70
+                                        lineNumber: 72
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
@@ -213,7 +218,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     style: _styles.loginStyles.inputIcon,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 71
+                                        lineNumber: 73
                                     }
                                 }),
                                 _react3.default.createElement(_nativeBase.Input, {
@@ -232,7 +237,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 72
+                                        lineNumber: 74
                                     }
                                 })
                             ),
@@ -247,7 +252,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 80
+                                        lineNumber: 82
                                     }
                                 },
                                 _react3.default.createElement(
@@ -256,7 +261,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                         style: _styles.loginStyles.buttonText,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 83
+                                            lineNumber: 85
                                         }
                                     },
                                     _i18n2.default.t('iniciar_sesion')
@@ -267,14 +272,22 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     style: _styles.loginStyles.buttonIcon,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 84
+                                        lineNumber: 86
                                     }
                                 })
                             ),
                             _react3.default.createElement(_errorContainer2.default, {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 86
+                                    lineNumber: 88
+                                }
+                            }),
+                            _react3.default.createElement(_customLoader2.default, {
+                                style: {},
+                                isLoading: this.props.isLoading,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 89
                                 }
                             })
                         )

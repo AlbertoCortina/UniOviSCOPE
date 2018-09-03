@@ -1,47 +1,64 @@
 import { NetInfo, AsyncStorage } from 'react-native'
-import { authenticate, noConnectionError } from './'
+import { authenticate, noConnectionError, unknownError, notLoading, loading, dontAuthenticate } from './'
 import { API_URL } from '../util'
 
 export function checkAuthenticationAction() {
-    console.log('Entra a: checkAuthentication-action')    
+    console.log('Entra a: checkAuthentication-action')
     return (dispatch) => {
 
-        /* AsyncStorage.clear().then(() => {
+        AsyncStorage.clear().then(() => {
             dispatch({ type: 'NOT_AUTHENTICATED' })
-        }) */
+        })
 
 
         /**
          * Caso 1: hay token ✔
          * Caso 2: no hay token ✔
          */
-        NetInfo.isConnected.fetch().then(isConnected => {
-            if (isConnected) {
-                getAuthorizationToken().then((token) => {
-                    if (token !== null && token !== undefined) {
-                        getUsername().then((username) => {
-                            if (username !== null && username !== undefined) {
-                                makingFindUserDetailsRequest(username, token, dispatch).then(response => {
-                                    idStudent = response.id
-                                    dni = response.dni
-                                    firstNameAndLastName = response.firstName + ' ' + response.lastName
-                                    email = username + '@uniovi.es'
-                                    dispatch(authenticate(token, username, idStudent, dni, firstNameAndLastName, email))
-                                }).catch(() => {
-                                    rollback(dispatch)
-                                })
+        let token;
+        let username;
+        dispatch(loading())
+        NetInfo.isConnected.fetch()
+            .then((isConnected) => {
+                if (isConnected) {
+                    getAuthorizationToken()
+                        .then((tokenResponse) => {                           
+                            token = tokenResponse
+                            if (token !== null && token !== undefined) {
+                                return getUsername()
+                            } else {
+                                throw 'NO_TOKEN'
                             }
-                        }).catch(() => {
-                            rollback(dispatch)
                         })
-                    }
-                }).catch(() => {
-                    rollback(dispatch)
-                })
-            } else {
-                dispatch(noConnectionError())
-            }
-        })
+                        .then((usernameResponse) => {
+                            username = usernameResponse
+                            if (username !== null) {
+                                return makingFindUserDetailsRequest(username, token, dispatch)
+                            } else {
+                                throw 'NO_USERNAME'
+                            }
+                        })
+                        .then((response) => {
+                            idStudent = response.id
+                            dni = response.dni
+                            firstNameAndLastName = response.firstName + ' ' + response.lastName
+                            email = username + '@uniovi.es'
+                            dispatch(authenticate(token, username, idStudent, dni, firstNameAndLastName, email))
+                        })
+                        .catch((error) => {
+                            if (error === 'NO_TOKEN' || error === 'NO_USERNAME') {
+                                dispatch(dontAuthenticate())
+                            } else {
+                                rollback(dispatch)
+                            }
+                        })
+                } else {
+                    dispatch(noConnectionError())
+                }
+            })
+            .catch((error) => {
+                rollback(dispatch)
+            })
     }
 }
 
@@ -52,6 +69,7 @@ async function getAuthorizationToken() {
     try {
         return await AsyncStorage.getItem('AUTHORIZATION')
     } catch (error) {
+        return null
         console.error('Error obteniendo el token de autorización en: checkAuthentication-action')
     }
 }
@@ -63,6 +81,7 @@ async function getUsername() {
     try {
         return await AsyncStorage.getItem('USERNAME')
     } catch (error) {
+        return null
         console.error('Error obteniendo el nombre de usuario en: checkAuthentication-action')
     }
 }
@@ -81,7 +100,7 @@ async function makingFindUserDetailsRequest(username, token, dispatch) {
         })
         return await response.json()
     } catch (error) {
-        rollback(dispatch)
+        return null
     }
 }
 
@@ -92,7 +111,7 @@ async function makingFindUserDetailsRequest(username, token, dispatch) {
 function rollback(dispatch) {
     setAuthorizationToken(null).then(() => {
         setUsername(null).then(() => {
-            dispatch(error())
+            dispatch(unknownError())
         })
     })
 }

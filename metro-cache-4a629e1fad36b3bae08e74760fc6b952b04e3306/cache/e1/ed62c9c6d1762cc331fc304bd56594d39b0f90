@@ -10,7 +10,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     var _actions = _require(_dependencyMap[0], "../actions");
 
     var initialState = {
-        token: null,
+        token: undefined,
         username: null,
         idStudent: null,
         firstNameAndLastName: null,

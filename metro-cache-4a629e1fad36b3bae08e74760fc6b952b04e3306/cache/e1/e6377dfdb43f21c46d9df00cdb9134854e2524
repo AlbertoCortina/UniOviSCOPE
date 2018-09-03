@@ -11,8 +11,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _index2 = _interopRequireDefault(_index);
 
-    var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
     var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
     var _jsxFileName = "/home/alberto/Git/UniOviSCOPE/app/components/screens/certify-qr-screen.js",
@@ -21,17 +19,19 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _reactNative = _require(_dependencyMap[2], "react-native");
 
-    var _nativeBase = _require(_dependencyMap[3], "native-base");
+    var _reactNativeCamera = _require(_dependencyMap[3], "react-native-camera");
 
-    var _styles = _require(_dependencyMap[4], "../../resources/styles");
+    var _nativeBase = _require(_dependencyMap[4], "native-base");
 
-    var _i18n = _require(_dependencyMap[5], "../../resources/i18n");
+    var _styles = _require(_dependencyMap[5], "../../resources/styles");
+
+    var _i18n = _require(_dependencyMap[6], "../../resources/i18n");
 
     var _i18n2 = _interopRequireDefault(_i18n);
 
-    var _customSideBar = _require(_dependencyMap[6], "../custom/custom-sideBar");
+    var _sideMenu = _require(_dependencyMap[7], "../custom/sideMenu");
 
-    var _customSideBar2 = _interopRequireDefault(_customSideBar);
+    var _sideMenu2 = _interopRequireDefault(_sideMenu);
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60,23 +60,39 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         };
     }
 
+    var widthscreen = _reactNative.Dimensions.get('window').width;
+
+    var heightscreen = _reactNative.Dimensions.get('window').height;
+
     var CustomHeader = function CustomHeader(_ref) {
         var title = _ref.title,
             subtitle = _ref.subtitle;
         return _react3.default.createElement(
             _reactNative.View,
             {
+                style: {
+                    flex: 1,
+                    alignItems: 'flex-start',
+                    justifyContent: 'center',
+                    marginTop: _styles.marginHeader,
+                    marginLeft: 15
+                },
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 9
+                    lineNumber: 16
                 }
             },
             _react3.default.createElement(
                 _nativeBase.Text,
                 {
+                    style: {
+                        color: 'white',
+                        fontWeight: 'bold',
+                        fontSize: 18
+                    },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 10
+                        lineNumber: 17
                     }
                 },
                 title
@@ -84,12 +100,44 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _react3.default.createElement(
                 _nativeBase.Text,
                 {
+                    style: {
+                        color: 'white',
+                        fontSize: 14
+                    },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 11
+                        lineNumber: 18
                     }
                 },
                 subtitle
+            )
+        );
+    };
+
+    var PendingView = function PendingView() {
+        return _react3.default.createElement(
+            _reactNative.View,
+            {
+                style: {
+                    flex: 1,
+                    backgroundColor: 'lightgreen',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                },
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 23
+                }
+            },
+            _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 31
+                    }
+                },
+                "Waiting"
             )
         );
     };
@@ -108,8 +156,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 args[_key] = arguments[_key];
             }
 
-            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = CertifyQRScreen.__proto__ || Object.getPrototypeOf(CertifyQRScreen)).call.apply(_ref2, [this].concat(args))), _this), _this.openDrawer = function () {
-                _this._drawer._root.open();
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = CertifyQRScreen.__proto__ || Object.getPrototypeOf(CertifyQRScreen)).call.apply(_ref2, [this].concat(args))), _this), _this.showAbout = function (e) {
+                console.log(e);
+                console.log(e.type);
+                console.log(e.data);
+                alert("Barcode Found!", "Type: " + e.type + "\nData: " + e.data);
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
@@ -119,173 +170,107 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 var _this2 = this;
 
                 return _react3.default.createElement(
-                    _nativeBase.Drawer,
+                    _nativeBase.Container,
                     {
-                        panOpenMask: .25,
-                        side: "left",
-                        ref: function ref(_ref3) {
-                            return _this2._drawer = _ref3;
-                        },
-                        content: _react3.default.createElement(_customSideBar2.default, _extends({}, this.props, {
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 56
-                            }
-                        })),
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 56
+                            lineNumber: 63
                         }
                     },
                     _react3.default.createElement(
-                        _nativeBase.Container,
+                        _nativeBase.Content,
                         {
+                            contentContainerStyle: {
+                                flex: 1,
+                                flexDirection: 'column'
+                            },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 57
+                                lineNumber: 64
                             }
                         },
                         _react3.default.createElement(
-                            _nativeBase.Header,
+                            _reactNativeCamera.RNCamera,
                             {
-                                style: _styles.settingsStyles.header,
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 58
-                                }
-                            },
-                            _react3.default.createElement(
-                                _nativeBase.Left,
-                                {
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 59
-                                    }
+                                ref: function ref(_ref3) {
+                                    _this2.camera = _ref3;
                                 },
-                                _react3.default.createElement(
-                                    _nativeBase.Button,
+                                style: {
+                                    flex: 1,
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                },
+                                autoFocus: _reactNativeCamera.RNCamera.Constants.AutoFocus.on,
+                                type: _reactNativeCamera.RNCamera.Constants.Type.back,
+                                flashMode: _reactNativeCamera.RNCamera.Constants.FlashMode.off,
+                                onBarCodeRead: this.showAbout,
+                                barCodeTypes: [_reactNativeCamera.RNCamera.Constants.BarCodeType.qr],
+                                notAuthorizedView: _react3.default.createElement(
+                                    _reactNative.View,
                                     {
-                                        transparent: true,
-                                        onPress: function onPress() {
-                                            return _this2.openDrawer();
+                                        style: _styles.settingsStyles.content,
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 82
+                                        }
+                                    },
+                                    _react3.default.createElement(
+                                        _nativeBase.Text,
+                                        {
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 82
+                                            }
                                         },
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 60
-                                        }
-                                    },
-                                    _react3.default.createElement(_nativeBase.Icon, {
-                                        name: "menu",
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 61
-                                        }
-                                    })
-                                )
-                            ),
-                            _react3.default.createElement(
-                                _nativeBase.Body,
-                                {
-                                    style: {
-                                        flex: 2,
-                                        marginLeft: 20
-                                    },
+                                        "pruebaaa"
+                                    )
+                                ),
+                                pendingAuthorizationView: _react3.default.createElement(PendingView, {
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 64
+                                        lineNumber: 83
                                     }
-                                },
-                                _react3.default.createElement(
-                                    _nativeBase.Title,
-                                    {
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 65
-                                        }
-                                    },
-                                    _i18n2.default.t('certificar_presencia')
-                                ),
-                                _react3.default.createElement(
-                                    _nativeBase.Subtitle,
-                                    {
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 66
-                                        }
-                                    },
-                                    "prueba"
-                                )
-                            ),
-                            _react3.default.createElement(_nativeBase.Right, {
+                                }),
+                                permissionDialogTitle: null,
+                                permissionDialogMessage: null,
                                 __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 68
                                 }
-                            })
-                        ),
-                        _react3.default.createElement(
-                            _nativeBase.Content,
-                            {
-                                padder: true,
-                                contentContainerStyle: _styles.settingsStyles.content,
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 70
-                                }
                             },
                             _react3.default.createElement(
-                                _reactNative.View,
+                                _nativeBase.Button,
                                 {
+                                    onPress: function onPress() {
+                                        return _this2.props.navigation.push('CertifyRF');
+                                    },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 71
+                                        lineNumber: 88
                                     }
                                 },
                                 _react3.default.createElement(
-                                    _nativeBase.Button,
+                                    _nativeBase.Text,
                                     {
-                                        onPress: function onPress() {
-                                            return _this2.props.navigation.navigate('Home');
-                                        },
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 72
+                                            lineNumber: 89
                                         }
                                     },
-                                    _react3.default.createElement(
-                                        _nativeBase.Text,
-                                        {
-                                            __source: {
-                                                fileName: _jsxFileName,
-                                                lineNumber: 73
-                                            }
-                                        },
-                                        "Home"
-                                    )
-                                ),
-                                _react3.default.createElement(
-                                    _nativeBase.Button,
-                                    {
-                                        onPress: function onPress() {
-                                            return _this2.props.navigation.push('CertifyRF');
-                                        },
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 76
-                                        }
-                                    },
-                                    _react3.default.createElement(
-                                        _nativeBase.Text,
-                                        {
-                                            __source: {
-                                                fileName: _jsxFileName,
-                                                lineNumber: 77
-                                            }
-                                        },
-                                        "Reconocimiento"
-                                    )
+                                    "Reconocimiento"
                                 )
-                            )
+                            ),
+                            _react3.default.createElement(_reactNative.View, {
+                                style: {
+                                    borderWidth: 5,
+                                    height: widthscreen / 1.3,
+                                    width: widthscreen / 1.3
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 91
+                                }
+                            })
                         )
                     )
                 );
@@ -293,60 +278,52 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }]);
 
         return CertifyQRScreen;
-    }(_react3.default.Component), _class.navigationOptions = {
-        headerTitle: _react3.default.createElement(CustomHeader, {
-            title: "Certificar presencia",
-            subtitle: "prueba",
-            __source: {
-                fileName: _jsxFileName,
-                lineNumber: 18
-            }
-        }),
-        headerStyle: {
-            backgroundColor: '#008279'
-        },
-        headerTitleStyle: {
-            color: 'white',
-            fontWeight: 'normal'
-        },
-        headerLeft: _react3.default.createElement(
-            _reactNative.TouchableOpacity,
-            {
-                style: {
-                    height: 45,
-                    width: 45,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: 'rgba(250, 250, 250, 0.7)',
-                    borderRadius: 50,
-                    margin: 5,
-                    shadowColor: 'black',
-                    shadowOpacity: 0.5,
-                    shadowOffset: {
-                        width: 2,
-                        height: 2
-                    }
-                },
+    }(_react3.default.Component), _class.navigationOptions = function (_ref4) {
+        var navigation = _ref4.navigation;
+        return {
+            headerTitle: _react3.default.createElement(CustomHeader, {
+                title: "Certificar presencia",
+                subtitle: "prueba",
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 27
+                    lineNumber: 38
                 }
+            }),
+            headerStyle: {
+                backgroundColor: _styles.darkGreen,
+                height: _styles.headerHeight
             },
-            _react3.default.createElement(
-                _nativeBase.Text,
+            headerTitleStyle: {
+                color: 'white'
+            },
+            headerLeft: _react3.default.createElement(
+                _reactNative.TouchableOpacity,
                 {
                     style: {
-                        fontSize: 30,
-                        color: '#2980b9'
+                        padding: 20,
+                        marginTop: _styles.marginHeader
+                    },
+                    transparent: true,
+                    onPress: function onPress() {
+                        return navigation.openDrawer();
                     },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 44
+                        lineNumber: 47
                     }
                 },
-                "\u270C\uFE0E"
+                _react3.default.createElement(_nativeBase.Icon, {
+                    style: {
+                        color: 'white'
+                    },
+                    name: "menu",
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 48
+                    }
+                })
             )
-        )
+        };
     }, _temp2));
 
     exports.default = CertifyQRScreen;

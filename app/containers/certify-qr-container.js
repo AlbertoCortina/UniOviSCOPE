@@ -4,8 +4,7 @@ import CertifyQRScreen from '../components/screens/certify-qr-screen'
 
 const mapStateToProps = (state, props) => {
     return {
-        firstNameAndLastName: state.loginData.firstNameAndLastName,
-        email: state.loginData.email,
+        
     }
 }
 

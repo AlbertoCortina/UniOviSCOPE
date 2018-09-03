@@ -4,6 +4,7 @@ import { Container, Content, Input, Text, Icon, Button, Toast, InputGroup } from
 import { loginStyles as styles, statusBarColor } from '../../resources/styles'
 import Error from '../../containers/error-container'
 import I18n from '../../resources/i18n'
+import Loader from '../custom/custom-loader'
 
 class LoginScreen extends React.Component {
     constructor() {
@@ -49,6 +50,7 @@ class LoginScreen extends React.Component {
     }
 
     render() {
+        console.log("Render login "+ this.props.isLoading)
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 <Container style={styles.container}>
@@ -84,6 +86,7 @@ class LoginScreen extends React.Component {
                             <Icon type='FontAwesome' name='sign-in' style={styles.buttonIcon} />
                         </Button>
                         <Error />
+                        <Loader style={{}} isLoading={this.props.isLoading}/>
                     </Content>
                 </Container>
             </TouchableWithoutFeedback>

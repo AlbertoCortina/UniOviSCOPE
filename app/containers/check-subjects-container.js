@@ -4,8 +4,7 @@ import CheckSubjectsScreen from '../components/screens/check-subjects-screen'
 
 const mapStateToProps = (state, props) => {
     return {
-        firstNameAndLastName: state.loginData.firstNameAndLastName,
-        email: state.loginData.email,
+        
     }
 }
 

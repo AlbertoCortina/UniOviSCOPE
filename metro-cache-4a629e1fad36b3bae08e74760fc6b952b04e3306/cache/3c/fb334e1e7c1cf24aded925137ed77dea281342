@@ -17,9 +17,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var mapStateToProps = function mapStateToProps(state, props) {
         return {
-            isLoadingApp: state.isLoadingApp,
-            isAuthenticated: state.loginData.token !== null && state.loginData.token !== undefined,
-            state: state.loginData.state
+            isLoading: state.isLoadingApp
         };
     };
 

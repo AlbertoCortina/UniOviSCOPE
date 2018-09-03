@@ -13,6 +13,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     function loginAction(username, password) {
         console.log('Entra a: login-action');
         return function (dispatch) {
+            var token = void 0;
             dispatch((0, _actions.loading)());
 
             _reactNative.NetInfo.isConnected.fetch().then(function (isConnected) {
@@ -21,37 +22,33 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         token = response.headers.get('Authorization');
 
                         if (token !== null) {
-                            setAuthorizationToken(token).then(function () {
-                                setUsername(username).then(function () {
-                                    makingFindUserDetailsRequest(username, token, dispatch).then(function (response) {
-                                        idStudent = response.id;
-                                        dni = response.dni;
-                                        firstNameAndLastName = response.firstName + ' ' + response.lastName;
-                                        email = username + '@uniovi.es';
-                                        dispatch((0, _actions.authenticate)(token, username, idStudent, dni, firstNameAndLastName, email));
-                                    }).catch(function () {
-                                        rollback(dispatch);
-                                    });
-                                }).catch(function () {
-                                    rollback(dispatch);
-                                });
-                            });
+                            return setAuthorizationToken(token);
                         } else {
-                            dispatch((0, _actions.dontAuthenticate)());
-                            dispatch((0, _actions.wrongCredentialsError)());
+                            throw 'WRONG_CREDENTIALS';
                         }
-                    }).catch(function () {
-                        rollback(dispatch);
+                    }).then(function () {
+                        return setUsername(username);
+                    }).then(function () {
+                        return makingFindUserDetailsRequest(username, token, dispatch);
+                    }).then(function (response) {
+                        idStudent = response.id;
+                        dni = response.dni;
+                        firstNameAndLastName = response.firstName + ' ' + response.lastName;
+                        email = username + '@uniovi.es';
+                        dispatch((0, _actions.authenticate)(token, username, idStudent, dni, firstNameAndLastName, email));
+                    }).catch(function (error) {
+                        if (error === 'WRONG_CREDENTIALS') {
+                            dispatch((0, _actions.wrongCredentialsError)());
+                        } else {
+                            rollback(dispatch);
+                        }
                     });
                 } else {
-                    dispatch((0, _actions.dontAuthenticate)());
                     dispatch((0, _actions.noConnectionError)());
                 }
-            }).catch(function () {
+            }).catch(function (error) {
                 rollback(dispatch);
             });
-
-            dispatch((0, _actions.notLoading)());
         };
     }
 
@@ -79,8 +76,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     case 6:
                         _context.prev = 6;
                         _context.t0 = _context["catch"](0);
-                        console.log('Error haciendo petición de login en login-action');
-                        rollback(dispatch);
+                        return _context.abrupt("return", null);
 
                     case 10:
                     case "end":
@@ -107,9 +103,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     case 6:
                         _context2.prev = 6;
                         _context2.t0 = _context2["catch"](0);
-                        console.log('Error guardando el token de autorización en: login-action');
+                        return _context2.abrupt("return", null);
 
-                    case 9:
+                    case 10:
                     case "end":
                         return _context2.stop();
                 }
@@ -144,7 +140,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     case 9:
                         _context3.prev = 9;
                         _context3.t0 = _context3["catch"](0);
-                        rollback(dispatch);
+                        return _context3.abrupt("return", null);
 
                     case 12:
                     case "end":
@@ -171,9 +167,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     case 6:
                         _context4.prev = 6;
                         _context4.t0 = _context4["catch"](0);
-                        console.log('Error guardando el nombre de usuario en: login-action');
+                        return _context4.abrupt("return", null);
 
-                    case 9:
+                    case 10:
                     case "end":
                         return _context4.stop();
                 }

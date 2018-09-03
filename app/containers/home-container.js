@@ -4,8 +4,7 @@ import HomeScreen from '../components/screens/home-screen'
 
 const mapStateToProps = (state, props) => {
     return {
-        firstNameAndLastName: state.loginData.firstNameAndLastName,
-        email: state.loginData.email,
+        
     }
 }
 

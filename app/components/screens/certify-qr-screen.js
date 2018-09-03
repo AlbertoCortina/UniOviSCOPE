@@ -1,86 +1,99 @@
 import React from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import { Alert, View, TouchableOpacity } from 'react-native'
+import { RNCamera } from 'react-native-camera'
 import { Container, Header, Drawer, Body, Title, Subtitle, Icon, Content, Text, Button, Left, Right } from 'native-base'
-import { settingsStyles as styles, darkGreen } from '../../resources/styles'
+import { settingsStyles as styles, darkGreen, headerHeight, marginHeader } from '../../resources/styles'
 import I18n from '../../resources/i18n'
-import SideBar from '../custom/custom-sideBar'
+import SideBar from '../custom/sideMenu'
+
+import { Dimensions } from 'react-native'
+
+// Ancho y alto de la pantalla
+const widthscreen = Dimensions.get('window').width
+const heightscreen = Dimensions.get('window').height
 
 const CustomHeader = ({ title, subtitle }) => (
-    <View >
-        <Text >{title}</Text>
-        <Text >{subtitle}</Text>
+    <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center', marginTop: marginHeader, marginLeft: 15, }}>
+        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }} >{title}</Text>
+        <Text style={{ color: 'white', fontSize: 14 }} >{subtitle}</Text>
+    </View>
+)
+
+const PendingView = () => (
+    <View
+        style={{
+            flex: 1,
+            backgroundColor: 'lightgreen',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}
+    >
+        <Text>Waiting</Text>
     </View>
 );
 
 class CertifyQRScreen extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
         headerTitle: <CustomHeader title='Certificar presencia' subtitle='prueba' />,
         headerStyle: {
-            backgroundColor: '#008279', // <-- orangey red
+            backgroundColor: darkGreen,
+            height: headerHeight,
         },
         headerTitleStyle: {
             color: 'white',
-            fontWeight: 'normal',
         },
         headerLeft: (
-            <TouchableOpacity
-                style={{
-                    height: 45,
-                    width: 45,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: 'rgba(250, 250, 250, 0.7)',
-                    borderRadius: 50,
-                    margin: 5,
-                    shadowColor: 'black',
-                    shadowOpacity: 0.5,
-                    shadowOffset: {
-                        width: 2,
-                        height: 2,
-                    }
-                }}
-            >
-                <Text style={{ fontSize: 30, color: '#2980b9' }}>
-                    ✌︎
-                </Text>
-            </TouchableOpacity>)
-    }
+            <TouchableOpacity style={{ padding: 20, marginTop: marginHeader }} transparent onPress={() => navigation.openDrawer()}>
+                <Icon style={{ color: 'white' }} name='menu' />
+            </TouchableOpacity>
+        )
+    })
 
-    openDrawer = () => {
-        this._drawer._root.open()
+    showAbout = (e) => {
+        console.log(e)
+        console.log(e.type)
+        console.log(e.data)
+        alert("Barcode Found!",
+            "Type: " + e.type + "\nData: " + e.data);
     }
 
     render() {
         return (
-            <Drawer panOpenMask={.25} side="left" ref={(ref) => this._drawer = ref} content={<SideBar {...this.props} />} >
-                <Container>
-                    <Header style={styles.header}>
-                        <Left>
-                            <Button transparent onPress={() => this.openDrawer()}>
-                                <Icon name='menu' />
-                            </Button>
-                        </Left>
-                        <Body style={{ flex: 2, marginLeft: 20 }}>
-                            <Title>{I18n.t('certificar_presencia')}</Title>
-                            <Subtitle>prueba</Subtitle>
-                        </Body>
-                        <Right />
-                    </Header>
-                    <Content padder contentContainerStyle={styles.content}>
-                        <View>
-                            <Button onPress={() => this.props.navigation.navigate('Home')}>
-                                <Text>Home</Text>
-                            </Button>
+            <Container>
+                <Content contentContainerStyle={{
+                    flex: 1,
+                    flexDirection: 'column',
+                }}>
+                    <RNCamera
+                        ref={ref => {
+                            this.camera = ref;
+                        }}
+                        style={{
+                            flex: 1,
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                        autoFocus={RNCamera.Constants.AutoFocus.on}
+                        type={RNCamera.Constants.Type.back}
+                        flashMode={RNCamera.Constants.FlashMode.off}
+                        onBarCodeRead={this.showAbout}
+                        barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
+                        notAuthorizedView={<View style={styles.content}><Text>pruebaaa</Text></View>}
+                        pendingAuthorizationView={<PendingView></PendingView>}
+                        permissionDialogTitle={null}
+                        permissionDialogMessage={null}
 
-                            <Button onPress={() => this.props.navigation.push('CertifyRF')}>
-                                <Text>Reconocimiento</Text>
-                            </Button>
+                    >
+                        <Button onPress={() => this.props.navigation.push('CertifyRF')}>
+                            <Text>Reconocimiento</Text>
+                        </Button>
+                        <View style={{ borderWidth: 5, height: widthscreen / 1.3, width: widthscreen / 1.3 }} >
 
                         </View>
-                    </Content>
-                </Container>
-            </Drawer>
+                    </RNCamera>
+                </Content>
+            </Container>
         )
     }
 }

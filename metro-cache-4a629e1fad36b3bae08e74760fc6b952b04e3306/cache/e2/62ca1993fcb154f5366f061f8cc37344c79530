@@ -2,7 +2,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.settingsStyles = exports.homeStyles = exports.loginStyles = exports.separatorStyles = exports.drawerStyles = exports.loadingStyles = exports.splashStyles = exports.statusBarColor = exports.darkGreen = undefined;
+    exports.settingsStyles = exports.homeStyles = exports.loginStyles = exports.separatorStyles = exports.drawerStyles = exports.loadingStyles = exports.splashStyles = exports.marginHeader = exports.headerHeight = exports.statusBarColor = exports.darkGreen = undefined;
 
     var _reactNative = _require(_dependencyMap[0], "react-native");
 
@@ -14,6 +14,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     var lightGreen = '#e5fce8';
     var orange = '#d3a01e';
     var statusBarColor = exports.statusBarColor = '#00000033';
+    var headerHeight = exports.headerHeight = 56 + _reactNative.StatusBar.currentHeight;
+    var marginHeader = exports.marginHeader = (headerHeight - _reactNative.StatusBar.currentHeight * 2) / 2;
 
     var splashStyles = exports.splashStyles = _reactNative.StyleSheet.create({
         container: {
@@ -69,7 +71,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             fontSize: 14
         },
         button: {},
-        buttonIconContainer: {},
+        buttonContainer: {},
         buttonIcon: {
             color: darkGreen,
             height: 30,
@@ -152,7 +154,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         },
         button: {
             alignSelf: 'center',
-            backgroundColor: '#d3a01e',
+            backgroundColor: orange,
             marginTop: 15
         },
         buttonIcon: {},
@@ -166,6 +168,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         content: {
             backgroundColor: lightGreen,
             flex: 1
+        },
+        headerStyles: {
+            backgroundColor: darkGreen
         }
     });
 });

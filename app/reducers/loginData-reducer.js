@@ -1,7 +1,7 @@
 import { AUTHENTICATE, DONT_AUTHENTICATE } from '../actions'
 
 const initialState = {
-    token: null,
+    token: undefined,
     username: null,
     idStudent: null,
     firstNameAndLastName: null,

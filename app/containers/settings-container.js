@@ -4,8 +4,7 @@ import SettingsScreen from '../components/screens/settings-screen'
 
 const mapStateToProps = (state, props) => {
     return {
-        firstNameAndLastName: state.loginData.firstNameAndLastName,
-        email: state.loginData.email,
+        
     }
 }
 
