@@ -17,25 +17,7 @@ export const statusBarColor = '#00000033'
 export const headerHeight = 56 + StatusBar.currentHeight
 export const marginHeader = (headerHeight - StatusBar.currentHeight * 2) / 2
 
-// Estilos usados en Splash Screen
-export const splashStyles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        backgroundColor: darkGreen,
-        flex: 1,
-        justifyContent: 'center',
-    }
-})
-
-// Estilos usados en Custom Loading
-export const loadingStyles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        flex: 1,
-        justifyContent: 'center',
-    },
-})
-
+/* 
 //Estilos usados en Custom Drawer
 export const drawerStyles = StyleSheet.create({
     content: {
@@ -96,16 +78,54 @@ export const separatorStyles = StyleSheet.create({
         borderBottomWidth: 1,
         opacity: 0.5,
     },
+}) */
+
+// Estilos usado en Custom ActivityIndicator
+export const activityIndicatorSytles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'center',
+    },
+    imageBackground: {
+       
+    },
+    animatedImage: {
+        
+    }
+})
+
+// Estilos usados en Custom Loader
+export const loaderStyles = StyleSheet.create({
+    screen: {
+        alignItems: 'center',
+        backgroundColor: statusBarColor,
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+    },
+    modal: {
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 10,
+        display: 'flex',
+        height: 100,
+        justifyContent: 'space-around',
+        width: 100,
+    },
 })
 
 //Estilos usados en Login Screen
 export const loginStyles = StyleSheet.create({
     container: {
-        alignItems: 'stretch',
+        alignItems: 'stretch', // Si pongo stretch o center se expande o no toda la pantalla 
         backgroundColor: lightGreen,
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
+    },
+    content: {
+
     },
     logo: {
         alignSelf: 'center',
@@ -117,10 +137,16 @@ export const loginStyles = StyleSheet.create({
         backgroundColor: 'rgba(209, 209, 209, 0.5)',
         height: 40,
     },
+    userInputText: {
+        fontFamily: 'Montserrat',
+    },
     passwordInput: {
         marginTop: 15,
         backgroundColor: 'rgba(209, 209, 209, 0.5)',
         height: 40,
+    },
+    passwordInputText: {
+        fontFamily: 'Montserrat',
     },
     inputIcon: {
         color: darkGreen,
@@ -130,8 +156,6 @@ export const loginStyles = StyleSheet.create({
     button: {
         alignSelf: 'flex-end',
         backgroundColor: orange,
-        flex: 1,
-        flexDirection: 'column',
         height: 40,
         justifyContent: 'flex-end',
         marginTop: 20,

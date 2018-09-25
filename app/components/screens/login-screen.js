@@ -1,3 +1,8 @@
+/**
+ * Login Screen
+ * 
+ * Pantalla de inicio de sesión a la aplicación.
+ */
 import React from 'react'
 import { StatusBar, Image, Keyboard, TouchableWithoutFeedback } from 'react-native'
 import { Container, Content, Input, Text, Icon, Button, Toast, InputGroup } from 'native-base'
@@ -7,6 +12,7 @@ import I18n from '../../resources/i18n'
 import Loader from '../custom/custom-loader'
 
 class LoginScreen extends React.Component {
+
     constructor() {
         super()
 
@@ -50,13 +56,12 @@ class LoginScreen extends React.Component {
     }
 
     render() {
-        console.log("Render login "+ this.props.isLoading)
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 <Container style={styles.container}>
                     <StatusBar translucent backgroundColor={statusBarColor}
                         animated />
-                    <Content padder>
+                    <Content padder contentContainerStyle={styles.content}>
                         <Image style={styles.logo}
                             resizeMode={'contain'}
                             source={require('../../resources/images/logo.png')} />
@@ -67,7 +72,8 @@ class LoginScreen extends React.Component {
                                 autoCorrect={false}
                                 onSubmitEditing={(event) => this._txtPassword._root.focus()}
                                 value={this.state.username}
-                                onChangeText={(username) => this.setState({ username })} />
+                                onChangeText={(username) => this.setState({ username })}
+                                style={styles.userInputText} />
                         </InputGroup>
                         <InputGroup rounded style={styles.passwordInput}>
                             <Icon type='Entypo' name='lock' style={styles.inputIcon} />
@@ -77,7 +83,8 @@ class LoginScreen extends React.Component {
                                 autoCorrect={false}
                                 ref={(password) => this._txtPassword = password}
                                 value={this.state.password}
-                                onChangeText={(password) => this.setState({ password })} />
+                                onChangeText={(password) => this.setState({ password })}
+                                style={styles.passwordInputText} />
                         </InputGroup>
                         <Button rounded iconRight style={styles.button} onPress={() => {
                             this.validateFields() && this.props.login(this.state.username, this.state.password);
@@ -86,7 +93,7 @@ class LoginScreen extends React.Component {
                             <Icon type='FontAwesome' name='sign-in' style={styles.buttonIcon} />
                         </Button>
                         <Error />
-                        <Loader style={{}} isLoading={this.props.isLoading}/>
+                        <Loader isLoading={this.props.isLoading} />
                     </Content>
                 </Container>
             </TouchableWithoutFeedback>

@@ -3,7 +3,6 @@ import { LOADING, NOT_LOADING, AUTHENTICATE, DONT_AUTHENTICATE, NO_CONNECTION, W
 const initialState = false
 
 export default function isLoadingAppReducer(state = initialState, action) {
-    console.log('Entra a: isLoadingApp-reducer')
     switch (action.type) {
         case LOADING:
             return true

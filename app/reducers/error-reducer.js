@@ -4,7 +4,6 @@ import I18n from '../resources/i18n'
 const initialState = []
 
 export default function errorReducer(state = initialState, action) {
-    console.log('Entra a: error-reducer')
     switch (action.type) {
         case NO_CONNECTION:
             return [...state, { description: I18n.t('error_sin_conexion'), errorType: 'danger' }]

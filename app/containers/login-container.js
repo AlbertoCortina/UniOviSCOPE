@@ -5,13 +5,13 @@ import LoginScreen from '../components/screens/login-screen'
 
 const mapStateToProps = (state, props) => {
     return {
-        isLoading: state.isLoadingApp
+        isLoading: state.isLoading,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     const actions = {
-         login: loginAction,
+        login: loginAction,
     }
     return bindActionCreators(actions, dispatch)
 }

@@ -52,6 +52,8 @@
 		5DC91F21B5E044CD9B253510 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B930B0D149D64874854029E6 /* SimpleLineIcons.ttf */; };
 		9BB7CF15005144E6B801CDD5 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4F46FCAF7D040AFA0BE6324 /* Zocial.ttf */; };
 		A59B8AF80D684BB8AF26E71B /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E43AA51F8AA455588C41415 /* libRNCamera.a */; };
+		96D56C3582734EB6BE9FBFA9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72C10B17010D4D2F9A71396D /* Feather.ttf */; };
+		2DD3C1301EF04EC095E1C1A0 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD4C404DBC944E10BB432E27 /* MaterialCommunityIcons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +322,8 @@
 		D4F46FCAF7D040AFA0BE6324 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		9C466F6F96164CA3A2E9567C /* RNCamera.xcodeproj */ = {isa = PBXFileReference; name = "RNCamera.xcodeproj"; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		5E43AA51F8AA455588C41415 /* libRNCamera.a */ = {isa = PBXFileReference; name = "libRNCamera.a"; path = "libRNCamera.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		72C10B17010D4D2F9A71396D /* Feather.ttf */ = {isa = PBXFileReference; name = "Feather.ttf"; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DD4C404DBC944E10BB432E27 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; name = "MaterialCommunityIcons.ttf"; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -595,6 +599,8 @@
 				A4574530202E4105AF896AA3 /* Octicons.ttf */,
 				B930B0D149D64874854029E6 /* SimpleLineIcons.ttf */,
 				D4F46FCAF7D040AFA0BE6324 /* Zocial.ttf */,
+				72C10B17010D4D2F9A71396D /* Feather.ttf */,
+				DD4C404DBC944E10BB432E27 /* MaterialCommunityIcons.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1002,6 +1008,8 @@
 				E67EB4F8399444C39D46859D /* Octicons.ttf in Resources */,
 				5DC91F21B5E044CD9B253510 /* SimpleLineIcons.ttf in Resources */,
 				9BB7CF15005144E6B801CDD5 /* Zocial.ttf in Resources */,
+				96D56C3582734EB6BE9FBFA9 /* Feather.ttf in Resources */,
+				2DD3C1301EF04EC095E1C1A0 /* MaterialCommunityIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
     "react-test-renderer": "16.3.0-alpha.1"
   },
   "scripts": {
-    "start": "sudo sysctl -w fs.inotify.max_user_instances=1024;sudo sysctl -w fs.inotify.max_user_watches=12288; react-native start",
+    "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest"
@@ -29,6 +29,12 @@
     "react-navigation": "^2.0.4",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.2.0"
+  },
+  "rnpm": {
+    "assets": [
+      ".app/resources/fonts"
+    ]
   }
 }

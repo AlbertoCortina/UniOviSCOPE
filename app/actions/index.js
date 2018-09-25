@@ -5,12 +5,8 @@ export const NO_CONNECTION = 'NO_CONNECTION'
 export const WRONG_CREDENTIALS = 'WRONG_CREDENTIALS'
 export const DELETE_ERROR = 'DELETE_ERROR'
 export const UNKNOWN_ERROR = 'UNKNOWN_ERROR'
-export const ERROR = 'ERROR'
 export const AUTHENTICATE = 'AUTHENTICATE'
 export const DONT_AUTHENTICATE = 'DONT_AUTHENTICATE'
-export const SPLASH_SCREEN = 'SPLASH_SCREEN'
-export const LOGIN_SCREEN = 'LOGIN_SCREEN'
-export const HOME_SCREEN = 'HOME_SCREEN'
 
 // Creadores de acciones
 export function loading() {
@@ -25,51 +21,24 @@ export function notLoading() {
     }
 }
 
-export function offline() {
-    return {
-        type: OFFLINE,
-    }
-}
-
-export function error() {
-    return {
-        type: ERROR,
-    }
-}
-
-export function authenticate(token, username, idStudent, dni, firstNameAndLastName, email) {
+export function authenticate(token, id, dni, username, firstname, lastname, firstnameAndLastname, email, role) {
     return {
         type: AUTHENTICATE,
         token,
-        username,
-        idStudent,
+        id,
         dni,
-        firstNameAndLastName,
+        username,
+        firstname,
+        lastname,
+        firstnameAndLastname,
         email,
+        role,
     }
 }
 
 export function dontAuthenticate() {
     return {
         type: DONT_AUTHENTICATE,
-    }
-}
-
-export function changeToSplashScreen() {
-    return {
-        type: SPLASH_SCREEN,
-    }
-}
-
-export function changeToLoginScreen() {
-    return {
-        type: LOGIN_SCREEN,
-    }
-}
-
-export function changeToHomeScreen() {
-    return {
-        type: HOME_SCREEN,
     }
 }
 

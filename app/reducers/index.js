@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import isLoadingAppReducer from './isLoadingApp-reducer'
-import loginDataReducer from './loginData-reducer'
+import userDataReducer from './userData-reducer'
 import errorReducer from './error-reducer'
 
 const reducers = combineReducers({
-    isLoadingApp: isLoadingAppReducer,
-    loginData: loginDataReducer,
+    isLoading: isLoadingAppReducer,
+    userData: userDataReducer,
     errors: errorReducer,
 })
 
