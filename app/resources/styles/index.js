@@ -10,12 +10,15 @@ const heightscreen = Dimensions.get('window').height
 // Colores de la aplicación
 export const darkGreen = '#008279'
 const lightGreen = '#e5fce8'
-const orange = '#d3a01e'
+export const orange = '#d3a01e'
 export const statusBarColor = '#00000033'
+export const white = '#FFFFFF'
 
 //Medidas header y statusBar (hay que revisar para iOS)
-export const headerHeight = 56 + StatusBar.currentHeight
-export const marginHeader = (headerHeight - StatusBar.currentHeight * 2) / 2
+// 56 es el ancho de la barra de navegacion en Android por defecto
+const standardHeaderHeight = 56
+export const headerHeight = standardHeaderHeight + StatusBar.currentHeight
+export const marginHeader = headerHeight / 4
 
 /* 
 //Estilos usados en Custom Drawer
@@ -88,10 +91,10 @@ export const activityIndicatorSytles = StyleSheet.create({
         justifyContent: 'center',
     },
     imageBackground: {
-       
+
     },
     animatedImage: {
-        
+
     }
 })
 
@@ -118,32 +121,38 @@ export const loaderStyles = StyleSheet.create({
 //Estilos usados en Login Screen
 export const loginStyles = StyleSheet.create({
     container: {
-        alignItems: 'stretch', // Si pongo stretch o center se expande o no toda la pantalla 
+        alignItems: 'center', // Si pongo stretch o center se expande o no toda la pantalla 
         backgroundColor: lightGreen,
         flex: 1,
-        flexDirection: 'column',
+        flexDirection: 'row',
         justifyContent: 'center',
     },
     content: {
-
+        paddingHorizontal: 30,
+        paddingTop: 50,
+        paddingBottom: 60,
     },
     logo: {
         alignSelf: 'center',
-        height: (widthscreen - 40) * 70 / 100,
-        width: (widthscreen - 40) * 70 / 100,
+        height: (widthscreen) * 55 / 100,
+        width: (widthscreen) * 55 / 100,
+        marginBottom: 40,
+        marginTop: -20,
     },
     userInput: {
-        marginTop: 25,
-        backgroundColor: 'rgba(209, 209, 209, 0.5)',
+        marginTop: 10,
+        backgroundColor: 'rgba(209, 209, 209, 0.3)',
         height: 40,
+        borderColor: 'grey'
     },
     userInputText: {
         fontFamily: 'Montserrat',
     },
     passwordInput: {
         marginTop: 15,
-        backgroundColor: 'rgba(209, 209, 209, 0.5)',
+        backgroundColor: 'rgba(209, 209, 209, 0.3)',
         height: 40,
+        borderColor: 'grey'
     },
     passwordInputText: {
         fontFamily: 'Montserrat',
@@ -195,6 +204,16 @@ export const homeStyles = StyleSheet.create({
     },
     buttonText: {
 
+    },
+})
+
+//Estilos usados en Profile Screen
+export const profileStyles = StyleSheet.create({
+    content: {
+        alignItems: 'center',
+        backgroundColor: lightGreen,
+        flex: 1,
+        justifyContent: 'center',
     },
 })
 

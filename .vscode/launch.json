@@ -13,10 +13,13 @@
             "outDir": "${workspaceRoot}/.vscode/.react"
         },
         {
-            "type": "node",
+            "name": "Debug Android",
+            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+            "type": "reactnative",
             "request": "launch",
-            "name": "Iniciar programa",
-            "program": "${workspaceFolder}/start"
+            "platform": "android",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/.vscode/.react"
         }
     ]
 }

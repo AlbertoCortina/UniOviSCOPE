@@ -59,13 +59,12 @@ class LoginScreen extends React.Component {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 <Container style={styles.container}>
-                    <StatusBar translucent backgroundColor={statusBarColor}
-                        animated />
-                    <Content padder contentContainerStyle={styles.content}>
+                    <StatusBar translucent animated backgroundColor={statusBarColor} />
+                    <Content contentContainerStyle={styles.content}>
                         <Image style={styles.logo}
                             resizeMode={'contain'}
                             source={require('../../resources/images/logo.png')} />
-                        <InputGroup rounded style={styles.userInput}>
+                        <InputGroup style={styles.userInput}>
                             <Icon type='Entypo' name='user' style={styles.inputIcon} />
                             <Input placeholder={I18n.t('usuario')} keyboardType='default'
                                 returnKeyType='next'
@@ -75,7 +74,7 @@ class LoginScreen extends React.Component {
                                 onChangeText={(username) => this.setState({ username })}
                                 style={styles.userInputText} />
                         </InputGroup>
-                        <InputGroup rounded style={styles.passwordInput}>
+                        <InputGroup style={styles.passwordInput}>
                             <Icon type='Entypo' name='lock' style={styles.inputIcon} />
                             <Input placeholder={I18n.t('contrasenia')}
                                 returnKeyType='done'
@@ -86,11 +85,17 @@ class LoginScreen extends React.Component {
                                 onChangeText={(password) => this.setState({ password })}
                                 style={styles.passwordInputText} />
                         </InputGroup>
-                        <Button rounded iconRight style={styles.button} onPress={() => {
+                        <Button style={{
+                            alignSelf: 'stretch',
+                            justifyContent: 'center',
+                            backgroundColor: '#d3a01e',
+                            height: 40,
+                            marginTop: 15,
+                        }} onPress={() => {
                             this.validateFields() && this.props.login(this.state.username, this.state.password);
                         }}>
                             <Text style={styles.buttonText}>{I18n.t('iniciar_sesion')}</Text>
-                            <Icon type='FontAwesome' name='sign-in' style={styles.buttonIcon} />
+
                         </Button>
                         <Error />
                         <Loader isLoading={this.props.isLoading} />
