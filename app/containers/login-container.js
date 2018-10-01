@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { loginAction } from '../actions/login-action'
+import { logInAction } from '../actions/logIn-action'
 import LoginScreen from '../components/screens/login-screen'
 
 const mapStateToProps = (state, props) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
     const actions = {
-        login: loginAction,
+        logIn: logInAction,
     }
     return bindActionCreators(actions, dispatch)
 }

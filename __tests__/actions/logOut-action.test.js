@@ -36,4 +36,5 @@ describe('LogOut Action', () => {
         jest.runAllTimers()
         expect(store.getActions()).toEqual(expectedActions)
     })
+
 })

@@ -2,6 +2,7 @@ import * as actions from '../../app/actions'
 import {LOADING} from "../../app/actions";
 
 describe('Action creators', () => {
+
     it('Should create loading action', () => {
         const expectedAction = {
             type: actions.LOADING

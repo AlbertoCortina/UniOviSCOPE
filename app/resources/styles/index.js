@@ -210,10 +210,10 @@ export const homeStyles = StyleSheet.create({
 //Estilos usados en Profile Screen
 export const profileStyles = StyleSheet.create({
     content: {
-        alignItems: 'center',
         backgroundColor: lightGreen,
         flex: 1,
-        justifyContent: 'center',
+        alignItems:'center',
+        justifyContent:'flex-start'
     },
 })
 

@@ -1,8 +1,8 @@
 import { NetInfo, } from 'react-native'
-import { loading, unknownError, noConnectionError, authenticate, wrongCredentialsError, } from '../actions'
+import { loading, unknownError, UNKNOWN_ERROR, noConnectionError, NO_CONNECTION, authenticate, wrongCredentialsError, WRONG_CREDENTIALS } from '../actions'
 import { API_URL, LOG_IN_URL, FIND_USER_DETAILS_URL } from '../util'
 
-export function loginAction(username, password) {    
+export function logInAction(username, password) {
     return (dispatch) => {
 		/**
 		 * Caso 2: Comprobar si tiene conexión a internet ✔
@@ -25,45 +25,44 @@ function logIn(username, password, dispatch) {
     NetInfo.isConnected.fetch()
         .then((isConnected) => {
             if (isConnected) {
-                makingLogInRequest(username, password)
-                    .then((response) => {
-                        token = response.headers.get('Authorization')
-                        if (token !== null) {
-                            return
-                        } else {
-                            throw 'WRONG_CREDENTIALS'
-                        }
-                    })
-                    .then(() => {
-                        return makingFindUserDetailsRequest(username, token)
-                    })
-                    .then((response) => {
-                        id = response.id
-                        dni = response.dni
-                        firstname = response.firstName
-                        lastname = response.lastName
-                        firstnameAndLastname = response.firstName + ' ' + response.lastName
-                        email = username + '@uniovi.es'
-                        role = response.role
-                        dispatch(authenticate(token, id, dni, username, firstname, lastname, firstnameAndLastname, email, role))
-                    })
-                    .catch((error) => {
-                        switch (error) {
-                            case 'WRONG_CREDENTIALS':
-                                dispatch(wrongCredentialsError())
-                                break
-                            case 'UNKNOWN_ERROR':
-                            default:
-                                dispatch(unknownError())
-                        }
-                    })
+               return
             } else {
-                dispatch(noConnectionError())
+                throw NO_CONNECTION
             }
+        })
+        .then(() => {
+            return makingLogInRequest(username, password)
+        })
+        .then((response) => {
+            token = response.headers.get('Authorization')
+            if (token !== null) {
+                console.log('entra 3')
+                return
+            } else {
+                throw WRONG_CREDENTIALS
+            }
+        })
+        .then(() => {
+            return makingFindUserDetailsRequest(username, token)
+        })
+        .then((response) => {
+            id = response.id
+            dni = response.dni
+            firstname = response.firstName
+            lastname = response.lastName
+            firstnameAndLastname = response.firstName + ' ' + response.lastName
+            email = username + '@uniovi.es'
+            role = response.role
+            dispatch(authenticate(token, id, dni, username, firstname, lastname, firstnameAndLastname, email, role))
         })
         .catch((error) => {
             switch (error) {
-                case 'UNKNOWN_ERROR':
+                case WRONG_CREDENTIALS:
+                    dispatch(wrongCredentialsError())
+                    break
+                case NO_CONNECTION:
+                    dispatch(noConnectionError())
+                case UNKNOWN_ERROR:
                 default:
                     dispatch(unknownError())
             }
@@ -86,7 +85,7 @@ async function makingLogInRequest(username, password) {
             }),
         })
     } catch (error) {
-        throw 'UNKNOWN_ERROR'
+        throw UNKNOWN_ERROR
     }
 }
 
@@ -104,6 +103,6 @@ async function makingFindUserDetailsRequest(username, token) {
         })
         return await response.json()
     } catch (error) {
-        throw 'UNKNOWN_ERROR'
+        throw UNKNOWN_ERROR
     }
 }

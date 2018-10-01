@@ -9,7 +9,7 @@ import { Container, Content, Input, Text, Icon, Button, Toast, InputGroup } from
 import { loginStyles as styles, statusBarColor } from '../../resources/styles'
 import Error from '../../containers/error-container'
 import I18n from '../../resources/i18n'
-import Loader from '../custom/custom-loader'
+import ActivityIndicator from '../custom/custom-activityIndicator'
 
 class LoginScreen extends React.Component {
 
@@ -92,13 +92,12 @@ class LoginScreen extends React.Component {
                             height: 40,
                             marginTop: 15,
                         }} onPress={() => {
-                            this.validateFields() && this.props.login(this.state.username, this.state.password);
+                            this.validateFields() && this.props.logIn(this.state.username, this.state.password);
                         }}>
                             <Text style={styles.buttonText}>{I18n.t('iniciar_sesion')}</Text>
-
                         </Button>
                         <Error />
-                        <Loader isLoading={this.props.isLoading} />
+                        <ActivityIndicator isLoading={this.props.isLoading} />
                     </Content>
                 </Container>
             </TouchableWithoutFeedback>

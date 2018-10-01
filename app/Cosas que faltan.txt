@@ -1,3 +1,25 @@
 Centrar la pantalla de login
 
 Limitar solo a portrait?
+
+Al iniciar la aplicación da como un pantallazo blanco (ver si se puede poner algun tipo de animacion)
+
+Hacer test jasmine y mirar si se puede integrar con Travis
+
+Poner bonito el github
+
+Mirar la posibilidad de incorporar las mediciones wifi
+
+Icono aplicacion 
+
+Al poner la aplicacion en menu de aplicaciones la barra de arriba se ve blanca (ponerla verde)
+
+Iconos tab navigation dependientes plataforma
+
+Seleccionar pestaña en funcion de la preferencia
+
+En settings sacar la accion de mostrar la informacion a metodo
+
+Hacer que se pueda guardar foto de perfil o algo asi, aunqeu sea en local
+
+Espaciado entre los campos en el perfil
