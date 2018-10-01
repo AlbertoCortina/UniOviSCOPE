@@ -1,9 +1,0 @@
-__d(function (global, _require, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  var API_URL = exports.API_URL = 'http://192.168.1.57:8080/uniovi-scope';
-  var APP_NAME = exports.APP_NAME = 'UniOviSCOPE';
-  var APP_VERSION = exports.APP_VERSION = '0.1.1';
-  var APP_AUTHOR = exports.APP_AUTHOR = 'Alberto Cortina Eduarte';
-});
