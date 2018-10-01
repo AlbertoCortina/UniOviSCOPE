@@ -55,3 +55,4 @@ buck-out/
 .vscode/
 .expo/
 metro*/
+coverage
