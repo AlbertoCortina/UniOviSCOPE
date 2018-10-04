@@ -18,7 +18,9 @@
     "log-android": "react-native log-android"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "dependencies": {
     "babel-core": "^6.26.3",
