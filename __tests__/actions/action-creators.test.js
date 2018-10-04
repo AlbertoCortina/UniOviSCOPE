@@ -1,7 +1,6 @@
 import * as actions from '../../app/actions'
-import {LOADING} from "../../app/actions";
 
-describe('Action creators', () => {
+describe('Action Creators', () => {
 
     it('Should create loading action', () => {
         const expectedAction = {
@@ -16,4 +15,5 @@ describe('Action creators', () => {
         }
         expect(actions.notLoading()).toEqual(expectedAction)
     })
+
 })

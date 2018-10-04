@@ -1,6 +1,6 @@
 import { deleteError } from '../actions'
 
-export function deleteErrorAction(position) {    
+export default function deleteErrorAction(position) {
     return (dispatch) => {
         dispatch(deleteError(position))
     }

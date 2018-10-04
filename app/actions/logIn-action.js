@@ -2,7 +2,7 @@ import { NetInfo, } from 'react-native'
 import { loading, unknownError, UNKNOWN_ERROR, noConnectionError, NO_CONNECTION, authenticate, wrongCredentialsError, WRONG_CREDENTIALS } from '../actions'
 import { API_URL, LOG_IN_URL, FIND_USER_DETAILS_URL } from '../util'
 
-export function logInAction(username, password) {
+export default function logInAction(username, password) {
     return (dispatch) => {
 		/**
 		 * Caso 2: Comprobar si tiene conexión a internet ✔
@@ -36,8 +36,7 @@ function logIn(username, password, dispatch) {
         .then((response) => {
             token = response.headers.get('Authorization')
             if (token !== null) {
-                console.log('entra 3')
-                return
+               return
             } else {
                 throw WRONG_CREDENTIALS
             }

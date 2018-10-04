@@ -1,7 +1,7 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import ProfileScreen from '../components/screens/profile-screen'
-import {logOutAction} from "../actions/logOut-action"
+import logOutAction from "../actions/logOut-action"
 
 const mapStateToProps = (state, props) => {
     return {

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { logInAction } from '../actions/logIn-action'
+import logInAction from '../actions/logIn-action'
 import LoginScreen from '../components/screens/login-screen'
 
 const mapStateToProps = (state, props) => {
