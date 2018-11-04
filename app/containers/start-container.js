@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import StartScreen from '../components/screens/start-screen'
 
 const mapStateToProps = (state, props) => {
-    console.log("Estado global redux:", state)
+    // console.log("Estado global redux:", state)
     return {
         isAuthenticated: state.userData.token !== null,
     }

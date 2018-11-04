@@ -10,6 +10,7 @@ export default {
     error_sin_conexion: 'No internet connection. Please connect to internet',
     error_sin_conexion_servicio: 'Can not connect to the server.Please try it later',
     error_datos_invalidos: 'Username or password wrong',
+    error_qr_invalido: 'Invalid QR code. Please try again',
     error_desconocido: 'Something went wrong. Please try it later',
     acerca_de: 'About',
     version: 'Version:',
@@ -19,6 +20,7 @@ export default {
     ajustes: 'Settings',
     perfil: 'Profile',
     certificar_presencia: 'Certify presence',
+    certificar_presencia_qr: 'Scan QR code',
     certificar_presencia_short: 'Certify',
     revisar_asistencias: 'Check assistences',
     revisar_asistencias_short: 'Check',
@@ -29,5 +31,9 @@ export default {
     asignaturas: 'Subjects',
     nombre_apellidos: 'First and last name',
     dni: 'DNI',
-    email: 'Email'
+    email: 'Email',
+    error_codigo_qr_invalido: 'Código QR inválido',
+    error_codigo_qr_invalido_descripcion: 'El código QR escaneado es inválido. Por favor inténtelo de nuevo.',
+    error_certificar_presencia: 'No se ha podido certificar su presencia. Ya ha confirmado su asistencia a esta sesion.',
+    certificar_presencia_correcto: 'Se ha certificado su presencia a esta sesión correctamente'
 }

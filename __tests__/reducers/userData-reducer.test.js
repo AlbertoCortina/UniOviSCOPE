@@ -1,9 +1,5 @@
 import reducer from '../../app/reducers/userData-reducer'
 import {
-    noConnectionError,
-    wrongCredentialsError,
-    unknownError,
-    deleteError,
     authenticate,
     dontAuthenticate
 } from "../../app/actions";

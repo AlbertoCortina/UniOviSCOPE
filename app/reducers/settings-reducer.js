@@ -1,31 +1,38 @@
-import { LANDING_SCREEN_HOME_SCREEN, LANDING_SCREEN_CERTIFY_SCREEN, FACE_RECOGNITION_ON, FACE_RECOGNITION_OFF } from '../actions'
+import {
+    LANDING_SCREEN_HOME_SCREEN,
+    LANDING_SCREEN_CERTIFY_SCREEN,
+    FACE_RECOGNITION_ON,
+    FACE_RECOGNITION_OFF,
+    HOME_SCREEN,
+    CERTIFY_SCREEN, ON, OFF,
+} from '../actions'
 
 const initialState = {
-    landingScreen: 'HOME',
-    faceRecognition: 'ON'
+    landingScreen: HOME_SCREEN,
+    faceRecognition: OFF
 }
 
-export default function errorReducer(state = initialState, action) {
+export default function settingsReducer(state = initialState, action) {
     switch (action.type) {
         case LANDING_SCREEN_HOME_SCREEN:
             return {
                 ...state,
-                landingScreen: 'HOME'
+                landingScreen: HOME_SCREEN
             }
         case LANDING_SCREEN_CERTIFY_SCREEN:
             return {
                 ...state,
-                landingScreen: 'CERTIFY'
+                landingScreen: CERTIFY_SCREEN
             }
         case FACE_RECOGNITION_ON:
             return {
                 ...state,
-                faceRecognition: 'ON'
+                faceRecognition: ON
             }
         case FACE_RECOGNITION_OFF:
             return {
                 ...state,
-                faceRecognition: 'OFF'
+                faceRecognition: OFF
             }
         default:
             return state

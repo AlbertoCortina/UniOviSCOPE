@@ -1,7 +1,4 @@
-/**
- * Estilos de la aplicación
- */
-import { StyleSheet, Dimensions, StatusBar } from 'react-native'
+import {Dimensions, StyleSheet} from 'react-native'
 
 // Ancho y alto de la pantalla
 const widthscreen = Dimensions.get('window').width
@@ -9,103 +6,22 @@ const heightscreen = Dimensions.get('window').height
 
 // Colores de la aplicación
 export const darkGreen = '#008279'
-const lightGreen = '#e5fce8'
-export const orange = '#d3a01e'
-export const statusBarColor = '#00000033'
+export const lightGreen = '#E5FCE8'
 export const white = '#FFFFFF'
+export const black = '#000000'
+export const orange = '#D3A01E'
+export const statusBarLightGreenColor = '#B7C9B9'
+export const statusBarDarkGreenColor = '#006860'
+export const translucent = '#00000033'
 
-//Medidas header y statusBar (hay que revisar para iOS)
-// 56 es el ancho de la barra de navegacion en Android por defecto
-const standardHeaderHeight = 56
-export const headerHeight = standardHeaderHeight + StatusBar.currentHeight
-export const marginHeader = headerHeight / 4
-
-/* 
-//Estilos usados en Custom Drawer
-export const drawerStyles = StyleSheet.create({
-    content: {
-        backgroundColor: lightGreen,
-    },
-    infoContainer: {
-        backgroundColor: orange,
-        flex: 1,
-        flexDirection: 'column',
-        height: 200,
-        paddingBottom: 10,
-        paddingHorizontal: 10,
-    },
-    thumbnailContainer: {
-        flex: 1,
-        flexGrow: 1,
-        justifyContent: 'center',
-    },
-    thumbnail: {
-        backgroundColor: 'grey',
-        borderRadius: 40,
-        color: 'white',
-        height: 80,
-        lineHeight: 80,
-        textAlign: 'center',
-        width: 80,
-    },
-    nameAndSurnameText: {
-        alignContent: 'flex-end',
-        color: 'white', fontSize: 16,
-        fontWeight: 'bold',
-    },
-    emailText: {
-        color: 'white',
-        fontSize: 14,
-    },
-    button: {
-
-    },
-    buttonContainer: {
-
-    },
-    buttonIcon: {
-        color: darkGreen,
-        height: 30,
-        width: 30,
-    },
-    buttonText: {
-        color: 'black',
-        width: widthscreen,
-    },
-})
-
-//Estilos usados en Custom Drawer
-export const separatorStyles = StyleSheet.create({
-    separator: {
-        borderBottomColor: darkGreen,
-        borderBottomWidth: 1,
-        opacity: 0.5,
-    },
-}) */
-
-// Estilos usado en Custom ActivityIndicator
-export const activityIndicatorSytles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        flex: 1,
-        justifyContent: 'center',
-    },
-    imageBackground: {
-
-    },
-    animatedImage: {
-
-    }
-})
-
-// Estilos usados en Custom Loader
-export const loaderStyles = StyleSheet.create({
+// Estilos usados en Custom ActivityIndicator
+export const activityIndicatorStyles = StyleSheet.create({
     screen: {
         alignItems: 'center',
-        backgroundColor: statusBarColor,
+        backgroundColor: translucent,
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
     },
     modal: {
         alignItems: 'center',
@@ -121,16 +37,11 @@ export const loaderStyles = StyleSheet.create({
 //Estilos usados en Login Screen
 export const loginStyles = StyleSheet.create({
     container: {
-        alignItems: 'center', // Si pongo stretch o center se expande o no toda la pantalla 
         backgroundColor: lightGreen,
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
-    },
-    content: {
-        paddingHorizontal: 30,
-        paddingTop: 50,
-        paddingBottom: 60,
+        paddingHorizontal: 15,
     },
     logo: {
         alignSelf: 'center',
@@ -147,6 +58,7 @@ export const loginStyles = StyleSheet.create({
     },
     userInputText: {
         fontFamily: 'Montserrat',
+        fontSize: 16,
     },
     passwordInput: {
         marginTop: 15,
@@ -156,21 +68,23 @@ export const loginStyles = StyleSheet.create({
     },
     passwordInputText: {
         fontFamily: 'Montserrat',
+        fontSize: 16,
     },
     inputIcon: {
         color: darkGreen,
         fontSize: 25,
-        paddingLeft: 5,
+        paddingHorizontal: 5,
     },
     button: {
-        alignSelf: 'flex-end',
+        alignSelf: 'stretch',
+        justifyContent: 'center',
         backgroundColor: orange,
         height: 40,
-        justifyContent: 'flex-end',
-        marginTop: 20,
+        marginVertical: 15,
     },
     buttonText: {
         color: 'white',
+        fontSize: 14
     },
     buttonIcon: {
         fontSize: 20,
@@ -199,34 +113,139 @@ export const homeStyles = StyleSheet.create({
         backgroundColor: orange,
         marginTop: 15,
     },
-    buttonIcon: {
-
-    },
-    buttonText: {
-
-    },
+    buttonIcon: {},
+    buttonText: {},
 })
 
 //Estilos usados en Profile Screen
 export const profileStyles = StyleSheet.create({
-    content: {
-        backgroundColor: lightGreen,
-        flex: 1,
-        alignItems:'center',
-        justifyContent:'flex-start'
+    container: {
+        flexGrow: 1,
+        padding: 15,
+        backgroundColor: lightGreen
     },
+    iconRow: {
+        flexDirection: 'row',
+        flex: 9,
+        justifyContent: 'center',
+        marginTop: 10,
+        marginBottom: 20,
+    },
+    formRow: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flex: 3
+    },
+    label: {
+        fontFamily: 'Montserrat',
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 16
+    },
+    input: {
+        fontFamily: 'Montserrat',
+        opacity: 0.5,
+        fontSize: 16
+    },
+    buttonRow: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flex: 1,
+    },
+    button: {
+        backgroundColor: orange,
+        height: 40,
+        marginTop: 15,
+    }
 })
 
 //Estilos usados en Settings Screen
 export const settingsStyles = StyleSheet.create({
-    header: {
-        backgroundColor: darkGreen,
-    },
-    content: {
-        backgroundColor: lightGreen,
+    container: {
         flex: 1,
+        padding: 15,
+        backgroundColor: lightGreen,
+        alignItems: 'flex-start',
     },
-    headerStyles: {
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start'
+    },
+    textContainer: {
+        flex: 9,
+    },
+    title: {
+        fontFamily: 'Montserrat',
+        color: black,
+        fontWeight: 'bold',
+        fontSize: 16
+    },
+    subtitle: {
+        fontFamily: 'Montserrat',
+        fontSize: 14,
+    },
+    switchContainer: {
+        flex: 2,
+    },
+    divider: {
+        flex: 1,
         backgroundColor: darkGreen,
+        marginTop: 12,
+        marginBottom: 10,
+    }
+})
+
+// Estilos usados en BottomTabNavigator
+export const navigationStyles = StyleSheet.create({
+    customHeaderContainer: {
+        flex: 1,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        marginHorizontal: 16
     },
+    customHeaderTitle: {
+        fontFamily: 'Montserrat',
+        fontWeight: 'bold',
+        color: white,
+        fontSize: 20
+    },
+    customHeaderSubtitle: {
+        fontFamily: 'Montserrat',
+        color: white,
+        fontSize: 12
+    },
+    customHeaderLeft: {
+        padding: 20
+    },
+    customHeaderRight: {
+        padding: 20
+    },
+    headerStyle: {
+        backgroundColor: darkGreen
+    },
+    headerTitleStyle: {
+        fontFamily: 'Montserrat',
+        fontWeight: 'bold',
+        color: white,
+        fontSize: 20
+    },
+    barStyle: {
+        backgroundColor: darkGreen
+    }
+})
+
+export const certifyQRStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: lightGreen,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    camera: {
+        flex: 1
+    },
+    text: {
+        fontFamily: 'Montserrat',
+        fontSize: 16
+    }
 })

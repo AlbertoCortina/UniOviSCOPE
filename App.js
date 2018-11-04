@@ -6,10 +6,15 @@ import {PersistGate} from 'redux-persist/integration/react'
 import StartContainer from './app/containers/start-container'
 import SplashScreen from 'react-native-splash-screen'
 
-export default class App extends React.Component {
+/**
+ * Clase App.
+ *
+ * Componente principal de la aplicación.
+ */
+class App extends React.Component {
 
     renderLoading() {
-        SplashScreen.hide()
+        setTimeout(() => SplashScreen.hide() , 1000);
     }
 
     render() {
@@ -23,4 +28,7 @@ export default class App extends React.Component {
             </Root>
         )
     }
+
 }
+
+export default App

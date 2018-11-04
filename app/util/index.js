@@ -4,6 +4,27 @@ export const APP_VERSION = '0.1.1'
 export const APP_AUTHOR = 'Alberto Cortina Eduarte'
 
 //API URLs
-export const API_URL = 'http://ec2-52-203-177-158.compute-1.amazonaws.com:8080/UniOviSCOPE'
-export const LOG_IN_URL = '/common/logIn'
-export const FIND_USER_DETAILS_URL = '/common/findUserDetails?userName='
+// export const API_URL = 'http://ec2-52-203-177-158.compute-1.amazonaws.com:8080/UniOviSCOPE'
+export const API_URL = 'http://192.168.219.80:8080/uniovi-scope'
+export const LOG_IN_URL = API_URL + '/common/logIn'
+export const FIND_USER_DETAILS_URL = API_URL + '/common/findUserDetails?userName={0}'
+export const FIND_LAST_YEAR_SUBJECTS_URL = API_URL + '/student/findLastYearSubjects?studentId={0}'
+export const FIND_LAST_YEAR_SUBJECTS_SESSIONS_URL = API_URL + '/student/findLastYearSubjectSessions?studentId={0}&&subjectId={1}&&groupType={2}'
+export const FIND_STUDENT_SESSION_ATTENDANCE_URL = API_URL + '/student/findStudentSessionAttendance?studentId={0}&&sessionId={1}'
+export const VERIFY_ATTENDANCE_CERTIFICATE_URL = API_URL + '/student/verifyAttendanceCertificate'
+export const CERTIFY_ATTENDANCE_URL = API_URL + '/student/certifyAttendance'
+
+/**
+ * Función creada para emular String.format()
+ */
+if (!String.format) {
+    String.format = function (format) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        return format.replace(/{(\d+)}/g, function (match, number) {
+            return typeof args[number] != 'undefined'
+                ? args[number]
+                : match
+                ;
+        });
+    };
+}

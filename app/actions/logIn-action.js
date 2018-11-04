@@ -1,19 +1,31 @@
-import { NetInfo, } from 'react-native'
-import { loading, unknownError, UNKNOWN_ERROR, noConnectionError, NO_CONNECTION, authenticate, wrongCredentialsError, WRONG_CREDENTIALS } from '../actions'
-import { API_URL, LOG_IN_URL, FIND_USER_DETAILS_URL } from '../util'
+import {NetInfo,} from 'react-native'
+import {
+    loading,
+    notLoading,
+    unknownError,
+    UNKNOWN_ERROR,
+    noConnectionError,
+    NO_CONNECTION,
+    authenticate,
+    wrongCredentialsError,
+    WRONG_CREDENTIALS
+} from '../actions'
+import {API_URL, LOG_IN_URL, FIND_USER_DETAILS_URL} from '../util'
 
 export default function logInAction(username, password) {
     return (dispatch) => {
-		/**
-		 * Caso 2: Comprobar si tiene conexión a internet ✔
-		 * Caso 3: Hace la peticion y todo va bien ✔
-		 * Caso 4: Hace la peticion y no existe ningun usuario ✔
-		 * Caso 5: Hace la peticion pero el servicio esta caido ✔
-		 */
+        /**
+         * Caso 2: Comprobar si tiene conexión a internet ✔
+         * Caso 3: Hace la peticion y todo va bien ✔
+         * Caso 4: Hace la peticion y no existe ningun usuario ✔
+         * Caso 5: Hace la peticion pero el servicio esta caido ✔
+         */
         dispatch(loading())
+
         setTimeout(function () {
             logIn(username, password, dispatch)
         }, 1000);
+
     }
 }
 
@@ -25,24 +37,24 @@ function logIn(username, password, dispatch) {
     NetInfo.isConnected.fetch()
         .then((isConnected) => {
             if (isConnected) {
-               return
+                return
             } else {
                 throw NO_CONNECTION
             }
         })
         .then(() => {
-            return makingLogInRequest(username, password)
+            return makeLogInRequest(username, password)
         })
         .then((response) => {
             token = response.headers.get('Authorization')
             if (token !== null) {
-               return
+                return
             } else {
                 throw WRONG_CREDENTIALS
             }
         })
         .then(() => {
-            return makingFindUserDetailsRequest(username, token)
+            return makeFindUserDetailsRequest(username, token)
         })
         .then((response) => {
             id = response.id
@@ -61,6 +73,7 @@ function logIn(username, password, dispatch) {
                     break
                 case NO_CONNECTION:
                     dispatch(noConnectionError())
+                    break
                 case UNKNOWN_ERROR:
                 default:
                     dispatch(unknownError())
@@ -71,9 +84,9 @@ function logIn(username, password, dispatch) {
 /**
  * Método que realiza la petición del log in.
  */
-async function makingLogInRequest(username, password) {
+async function makeLogInRequest(username, password) {
     try {
-        return await fetch(API_URL + LOG_IN_URL, {
+        return await fetch(LOG_IN_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -91,9 +104,9 @@ async function makingLogInRequest(username, password) {
 /**
  * Método que realiza la petición de buscar los datos del usuario.
  */
-async function makingFindUserDetailsRequest(username, token) {
+async function makeFindUserDetailsRequest(username, token) {
     try {
-        let response = await fetch(API_URL + FIND_USER_DETAILS_URL + username, {
+        let response = await fetch(String.format(FIND_USER_DETAILS_URL, username), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

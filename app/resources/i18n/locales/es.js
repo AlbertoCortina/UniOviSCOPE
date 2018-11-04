@@ -10,6 +10,7 @@ export default {
     error_sin_conexion: 'Sin conexión a internet. Por favor conéctese a internet',
     error_sin_conexion_servicio: 'Imposible conectar con el servidor. Por favor inténtelo más tarde',
     error_datos_invalidos: 'Usuario o contraseña incorrectos',
+    error_qr_invalido: 'Código QR inválido. Por favor inténtelo de nuevo',
     error_desconocido: 'Algo ha salido mal. Por favor inténtelo más tarde',
     acerca_de: 'Acerca de',
     version: 'Versión:',
@@ -19,6 +20,7 @@ export default {
     ajustes: 'Ajustes',
     perfil: 'Perfil',
     certificar_presencia: 'Certificar presencia',
+    certificar_presencia_qr: 'Escanee el código QR',
     certificar_presencia_short: 'Certificar',
     revisar_asistencias: 'Revisar asistencias',
     revisar_asistencias_short: 'Revisar',
@@ -29,5 +31,9 @@ export default {
     asignaturas: 'Asignaturas',
     nombre_apellidos: 'Nombre y apellidos',
     dni: 'DNI',
-    email: 'Email'
+    email: 'Email',
+    error_codigo_qr_invalido: 'Código QR inválido',
+    error_codigo_qr_invalido_descripcion: 'El código QR escaneado es inválido. Por favor inténtelo de nuevo.',
+    error_certificar_presencia: 'No se ha podido certificar su presencia. Ya ha confirmado su asistencia a esta sesion.',
+    certificar_presencia_correcto: 'Se ha certificado su presencia a esta sesión correctamente'
 }

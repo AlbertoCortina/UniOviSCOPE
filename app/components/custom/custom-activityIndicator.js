@@ -1,29 +1,71 @@
-/**
- * Custom ActivityIndicator.
- * 
- * Componente personalizado para los tiempos de espera.
- */
 import React from 'react';
-import { View, Modal } from 'react-native';
-import { loaderStyles as styles } from '../../resources/styles';
-import ActivityIndicatorAnimation from './custom-activityIndicatorAnimation'
+import {View, Modal, Animated, Easing, ImageBackground} from 'react-native';
+import {activityIndicatorStyles as styles} from '../../resources/styles';
 
+/**
+ * Clase ActivityIndicator.
+ *
+ * Componente personalizado para los tiempos de espera.
+ *
+ * @author Alberto Cortina Eduarte
+ */
 class ActivityIndicator extends React.Component {
 
+    constructor() {
+        super()
+        this.spinValue = new Animated.Value(0)
+    }
+
+    componentDidMount() {
+        this.spin()
+    }
+
+    spin() {
+        this.spinValue.setValue(0)
+        Animated.timing(
+            this.spinValue,
+            {
+                toValue: 1,
+                duration: 2000,
+                easing: Easing.linear
+            }
+        ).start(() => this.spin())
+    }
+
     render() {
+        const spin = this.spinValue.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['0deg', '360deg']
+        })
+
         return (
             <Modal
                 transparent={true}
                 animationType={'none'}
                 visible={this.props.isLoading}
-                onRequestClose={() => { }}>
+                onRequestClose={() => {
+                }}>
                 <View style={styles.screen}>
-                    <ActivityIndicatorAnimation
-                        width={80} height={80} />
+                    <ImageBackground resizeMode={'contain'}
+                                     style={styles.imageBackground}
+                                     style={{
+                                         width: this.props.size,
+                                         height: this.props.size
+                                     }}
+                                     source={require('../../resources/images/logo-letras.png')}>
+                        <Animated.Image resizeMode={'contain'}
+                                        style={{
+                                            width: this.props.size,
+                                            height: this.props.size,
+                                            transform: [{rotate: spin}]
+                                        }}
+                                        source={require('../../resources/images/logo-circulo.png')}/>
+                    </ImageBackground>
                 </View>
             </Modal>
         )
     }
+
 }
 
 export default ActivityIndicator

@@ -1,0 +1,4 @@
+Cabeceras : 20
+Texto normal: 16
+Texto explicativo: 12.
+Texto botones: 14
