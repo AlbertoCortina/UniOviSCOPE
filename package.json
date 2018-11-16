@@ -1,10 +1,10 @@
 {
   "name": "UniOviSCOPE",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "react-native start --reset-cache",
-    "test": "jest",
+    "test": "jest -u",
     "android": "react-native run-android",
     "log-android": "react-native log-android"
   },
@@ -44,11 +44,6 @@
     },
     "transformIgnorePatterns": [
       "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native|native-base)"
-    ]
-  },
-  "rnpm": {
-    "assets": [
-      ".app/resources/fonts"
     ]
   }
 }

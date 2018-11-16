@@ -1,10 +1,8 @@
 import React from 'react'
-import {Image, Platform, ScrollView, StatusBar} from 'react-native'
+import {Image, Platform, ScrollView} from 'react-native'
 import {Button, Input, InputGroup, Text, Toast} from 'native-base'
-import {loginStyles as styles, statusBarLightGreenColor} from '../../resources/styles'
-import Error from '../../containers/error-container'
+import {loginStyles as styles} from '../../resources/styles'
 import I18n from '../../resources/i18n'
-import ActivityIndicator from '../custom/custom-activityIndicator'
 import {Icon} from "react-native-elements";
 
 /**
@@ -61,15 +59,17 @@ class LoginScreen extends React.Component {
     render() {
         return (
             <ScrollView contentContainerStyle={styles.container}>
-                <StatusBar opaque animated backgroundColor={statusBarLightGreenColor}/>
                 <Image style={styles.logo}
                        resizeMode={'contain'}
                        source={require('../../resources/images/logo.png')}/>
                 <InputGroup style={styles.userInput}>
-                    <Icon type='ionicon' name={
-                        Platform.OS === 'ios' ? 'ios-person' : 'md-person'
-                    } iconStyle={styles.inputIcon}/>
-                    <Input placeholder={I18n.t('usuario')} keyboardType='default'
+                    <Icon type='ionicon'
+                          name={
+                              Platform.OS === 'ios' ? 'ios-person' : 'md-person'
+                          }
+                          iconStyle={styles.inputIcon}/>
+                    <Input placeholder={I18n.t('usuario')}
+                           keyboardType='default'
                            returnKeyType='next'
                            autoCorrect={false}
                            onSubmitEditing={(event) => this._txtPassword._root.focus()}
@@ -78,9 +78,11 @@ class LoginScreen extends React.Component {
                            style={styles.userInputText}/>
                 </InputGroup>
                 <InputGroup style={styles.passwordInput}>
-                    <Icon type='ionicon' name={
-                        Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'
-                    } iconStyle={styles.inputIcon}/>
+                    <Icon type='ionicon'
+                          name={
+                              Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'
+                          }
+                          iconStyle={styles.inputIcon}/>
                     <Input placeholder={I18n.t('contrasenia')}
                            returnKeyType='done'
                            secureTextEntry
@@ -90,16 +92,17 @@ class LoginScreen extends React.Component {
                            onChangeText={(password) => this.setState({password})}
                            style={styles.passwordInputText}/>
                 </InputGroup>
-                <Button style={styles.button} onPress={() => {
-                    this.validateFields() && this.props.logIn(this.state.username, this.state.password);
-                }}>
-                    <Text style={styles.buttonText}>{I18n.t('iniciar_sesion')}</Text>
+                <Button style={styles.button}
+                        onPress={() => {
+                            this.validateFields() && this.props.logIn(this.state.username, this.state.password);
+                        }}>
+                    <Text
+                        style={styles.buttonText}>{I18n.t('iniciar_sesion')}</Text>
                 </Button>
-                <Error/>
-                <ActivityIndicator isLoading={this.props.isLoading} size={80}/>
             </ScrollView>
         )
     }
+
 }
 
 export default LoginScreen

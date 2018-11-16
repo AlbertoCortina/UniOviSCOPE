@@ -1,9 +1,9 @@
 import React from 'react'
-import {ScrollView, StatusBar, Switch, Text, View} from 'react-native'
+import {ScrollView, Switch, Text, View} from 'react-native'
 import {Divider} from 'react-native-elements'
 import I18n from '../../resources/i18n'
 import {CERTIFY_SCREEN, HOME_SCREEN, OFF, ON} from '../../actions'
-import {settingsStyles as styles, statusBarDarkGreenColor} from '../../resources/styles'
+import {settingsStyles as styles} from '../../resources/styles'
 
 /**
  * Clase SettingsScreen.
@@ -33,11 +33,12 @@ class SettingsScreen extends React.Component {
     render() {
         return (
             <ScrollView contentContainerStyle={styles.container}>
-                <StatusBar opaque animated backgroundColor={statusBarDarkGreenColor}/>
                 <View style={styles.row}>
                     <View style={styles.textContainer}>
-                        <Text style={styles.title}>{I18n.t('opcion_reconocimiento_facial')}</Text>
-                        <Text style={styles.subtitle}>{I18n.t('descripcion_opcion_reconocimiento_facial')}</Text>
+                        <Text
+                            style={styles.title}>{I18n.t('opcion_reconocimiento_facial')}</Text>
+                        <Text
+                            style={styles.subtitle}>{I18n.t('descripcion_opcion_reconocimiento_facial')}</Text>
                     </View>
 
                     <View style={styles.switchContainer}>
@@ -54,8 +55,10 @@ class SettingsScreen extends React.Component {
 
                 <View style={styles.row}>
                     <View style={styles.textContainer}>
-                        <Text style={styles.title}>{I18n.t('opcion_pantalla_inicial')}</Text>
-                        <Text style={styles.subtitle}>{I18n.t('descripcion_opcion_pantalla_inicial')}</Text>
+                        <Text
+                            style={styles.title}>{I18n.t('opcion_pantalla_inicial')}</Text>
+                        <Text
+                            style={styles.subtitle}>{I18n.t('descripcion_opcion_pantalla_inicial')}</Text>
                     </View>
 
                     <View style={styles.switchContainer}>

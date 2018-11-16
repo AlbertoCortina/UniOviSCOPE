@@ -1,9 +1,9 @@
 import React from 'react'
-import {StatusBar, Text, View} from 'react-native'
+import {StatusBar, Text, View, Button} from 'react-native'
 import {RNCamera} from 'react-native-camera'
 import {withNavigationFocus} from 'react-navigation'
 import {Container} from 'native-base'
-import Error from '../../containers/error-container'
+import Error from '../containers/notification-container'
 import {certifyQRStyles as styles, statusBarDarkGreenColor} from '../../resources/styles'
 import {OFF, ON} from '../../actions'
 
@@ -22,25 +22,34 @@ const CommonView = ({text}) => (
  */
 class CertifyQrScreen extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            display: 'block'
+        };
+    }
+
     qrCodeRead(sessionToken) {
-        this.props.verifyQRCode(sessionToken, this.props.token, this.props.username)
+        this.props.verifyQRCode(sessionToken, this.props.bearerToken, this.props.username)
 
         if (this.props.certificate.validated && this.props.faceRecognition === OFF) {
-            this.props.certifyAttendance(this.props.certificate, this.props.token)
+            this.props.certifyAttendance(this.props.certificate, this.props.bearerToken)
             this.props.navigation.navigate('Home')
         } else if (this.props.certificate.validated && this.props.faceRecognition === ON) {
-            //Navegar a la pantalla de reconocimiento facial
+            this.props.navigation.navigate('CertifyFR')
         }
     }
 
     renderCamera() {
+
         const isFocused = this.props.navigation.isFocused();
 
         if (!isFocused) {
-            return null
+            return <View/>
         } else if (isFocused) {
             return (
                 <RNCamera
+                    style={{display: this.state.display}}
                     ref={ref => {
                         this.camera = ref;
                     }}
@@ -52,6 +61,8 @@ class CertifyQrScreen extends React.Component {
                     barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
                     notAuthorizedView={<CommonView/>}
                     pendingAuthorizationView={<CommonView/>}>
+                    <Button onPress={() => this.setState({display: 'block'})} title={"Resume Preview"}></Button>
+                    <Button onPress={() => this.setState({display: 'none'})} title={"Pause Preview"}></Button>
                 </RNCamera>
             )
         }
@@ -62,7 +73,6 @@ class CertifyQrScreen extends React.Component {
             <Container>
                 <StatusBar opaque animated backgroundColor={statusBarDarkGreenColor}/>
                 {this.renderCamera()}
-                <Error/>
             </Container>
         )
     }

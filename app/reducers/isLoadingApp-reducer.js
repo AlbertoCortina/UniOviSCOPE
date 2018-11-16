@@ -11,7 +11,7 @@ import {
     LANDING_SCREEN_HOME_SCREEN,
     FACE_RECOGNITION_OFF,
     FACE_RECOGNITION_ON,
-    DELETE_ERROR,
+    NOTIFICATION,
 } from '../actions'
 
 const initialState = false
@@ -28,7 +28,7 @@ export default function isLoadingAppReducer(state = initialState, action) {
         case UNKNOWN_ERROR:
         case FACE_RECOGNITION_OFF:
         case FACE_RECOGNITION_ON:
-        case DELETE_ERROR:
+        case NOTIFICATION:
         case SUBJECTS:
             return false
         default:

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import HomeScreen from '../components/screens/home-screen'
+import HomeScreen from '../screens/home-screen'
 
 const mapStateToProps = (state, props) => {
     return {

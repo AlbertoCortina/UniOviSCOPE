@@ -1,5 +1,5 @@
 /**
- * CheckAssistence Screen
+ * CheckAttendance Screen
  *
  * Pantalla de perfil a la aplicación.
  */
@@ -14,20 +14,26 @@ import {List, ListItem, SearchBar, Avatar} from 'react-native-elements'
 let first_semester = {data: [], title: 'Primer semestre'}
 let second_semester = {data: [], title: 'Segundo semestre'}
 
-class CheckAssistenceScreen extends React.Component {
+function quitarAcentos(origen) {
+    return origen
+        .replace(/á|Á/, 'a')
+        .replace(/é|É/, 'e')
+}
+
+class CheckAttendanceScreen extends React.Component {
 
     componentDidMount() {
-        this.props.getSubjects(this.props.token, this.props.idStudent)
+        this.props.getSubjects(this.props.bearerToken, this.props.idStudent)
     }
 
     getSubjectInitials = (subjectName) => {
         let words = subjectName.split(' ')
         let initials = '';
-        for (i = 0; i < words.length; i++) {
-            if (words[i].charAt(0) == words[i].charAt(0).toUpperCase()) {
-                initials += words[i].charAt(0)
+        words.forEach(word => {
+            if (word.charAt(0) == word.charAt(0).toUpperCase()) {
+                initials += word.charAt(0)
             }
-        }
+        });
         return initials
     }
 
@@ -84,11 +90,11 @@ class CheckAssistenceScreen extends React.Component {
                              )}
                              sections={[
                                  {
-                                     data: this.props.subjects.filter(subject => subject.temporality === 'FIRST_SEMESTER').sort((a, b) => a.denomination.localeCompare(b.denomination)),
+                                     data: this.props.subjects.filter(subject => subject.temporality === 'FIRST_SEMESTER').sort((a, b) => quitarAcentos(a.denomination).localeCompare(quitarAcentos(b.denomination))),
                                      title: 'Primer Semestre'
                                  },
                                  {
-                                     data: this.props.subjects.filter(subject => subject.temporality === 'SECOND_SEMESTER').sort((a, b) => a.denomination.localeCompare(b.denomination)),
+                                     data: this.props.subjects.filter(subject => subject.temporality === 'SECOND_SEMESTER').sort((a, b) => quitarAcentos(a.denomination).localeCompare(quitarAcentos(b.denomination))),
                                      title: 'Segundo Semestre'
                                  }
                              ]}
@@ -107,7 +113,7 @@ class CheckAssistenceScreen extends React.Component {
                                  </View>
                              }
                              refreshing={this.props.isLoading}
-                             onRefresh={() => this.props.getSubjects(this.props.token, this.props.idStudent)}
+                             onRefresh={() => this.props.getSubjects(this.props.bearerToken, this.props.idStudent)}
                 >
                 </SectionList>
             </View>
@@ -116,7 +122,7 @@ class CheckAssistenceScreen extends React.Component {
     }
 }
 
-export default CheckAssistenceScreen
+export default CheckAttendanceScreen
 
 // renderSectionHeader={({section: {title}}) => (
 //     <Text style={{fontWeight: 'bold'}}>{title}</Text>

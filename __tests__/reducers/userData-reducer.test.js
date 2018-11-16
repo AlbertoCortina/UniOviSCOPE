@@ -5,13 +5,13 @@ import {
 } from "../../app/actions";
 
 const initialState = {
-    token: null,
+    bearerToken: null,
     id: null,
     dni: null,
     username: null,
     firstname: null,
     lastname: null,
-    firstNameAndLastName: null,
+    firstnameAndLastname: null,
     email: null,
     role: null,
 }
@@ -23,15 +23,15 @@ describe('UserData Reducer', () => {
     })
 
     it('Should handle AUTHENTICATE', () => {
-        expect(reducer(initialState, authenticate('test token', 'test id', 'test dni', 'test username', 'test firstname', 'test lastname', 'test firstNameAndLastName', 'test email', 'test role'))).toEqual(
+        expect(reducer(initialState, authenticate('test bearerToken', 'test id', 'test dni', 'test username', 'test firstname', 'test lastname', 'test firstnameAndLastname', 'test email', 'test role'))).toEqual(
             {
-                token: 'test token',
+                bearerToken: 'test bearerToken',
                 id: 'test id',
                 dni: 'test dni',
                 username: 'test username',
                 firstname: 'test firstname',
                 lastname: 'test lastname',
-                firstNameAndLastName: 'test firstNameAndLastName',
+                firstnameAndLastname: 'test firstnameAndLastname',
                 email: 'test email',
                 role: 'test role',
             }

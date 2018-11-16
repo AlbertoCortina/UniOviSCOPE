@@ -11,11 +11,13 @@ import {API_URL, FIND_LAST_YEAR_SUBJECTS_URL} from "../util";
 
 export default function getSubjectsAction(token, idStudent) {
     return (dispatch) => {
-        dispatch(loading('SUBJECTS'))
+
+        dispatch(loading())
 
         setTimeout(function () {
             findSubjects(token, idStudent, dispatch)
         }, 1000);
+        
     }
 }
 

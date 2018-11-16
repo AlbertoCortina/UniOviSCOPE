@@ -66,7 +66,7 @@ async function makeVerifyAttendanceCertificateRequest(bearerToken, username, ses
             },
             body: JSON.stringify({
                 userName: username,
-                token: sessionToken,
+                bearerToken: sessionToken,
                 scanned: timestamp
             }),
         })

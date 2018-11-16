@@ -1,6 +1,6 @@
-import React from 'react';
-import {View, Modal, Animated, Easing, ImageBackground} from 'react-native';
-import {activityIndicatorStyles as styles} from '../../resources/styles';
+import React from 'react'
+import {Animated, Easing, ImageBackground, Modal, View} from 'react-native'
+import {activityIndicatorStyles as styles} from '../../resources/styles'
 
 /**
  * Clase ActivityIndicator.
@@ -40,7 +40,7 @@ class ActivityIndicator extends React.Component {
 
         return (
             <Modal
-                transparent={true}
+                transparent
                 animationType={'none'}
                 visible={this.props.isLoading}
                 onRequestClose={() => {

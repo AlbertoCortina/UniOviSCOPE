@@ -3,5 +3,6 @@ import thunk from 'redux-thunk'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
+let store = mockStore()
 
-export default mockStore
+export default store

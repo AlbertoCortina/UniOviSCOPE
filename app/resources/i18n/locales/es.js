@@ -25,9 +25,10 @@ export default {
     revisar_asistencias: 'Revisar asistencias',
     revisar_asistencias_short: 'Revisar',
     opcion_reconocimiento_facial: 'Reconocimiento facial',
-    descripcion_opcion_reconocimiento_facial: 'Activar/Desactivar el reconocimiento facial para el proceso de certificación de asistencia (el profesor docente será notificado)',
+    descripcion_opcion_reconocimiento_facial: 'Activar el reconocimiento' +
+        ' facial para el proceso de certificación de asistencia (el profesor docente será notificado)',
     opcion_pantalla_inicial: 'Pantalla inicial',
-    descripcion_opcion_pantalla_inicial: 'Activar/Desactivar el proceso de certificación de asistencia como pantalla inicial de la aplicación',
+    descripcion_opcion_pantalla_inicial: 'Activar el proceso de certificación de asistencia como pantalla inicial de la aplicación',
     asignaturas: 'Asignaturas',
     nombre_apellidos: 'Nombre y apellidos',
     dni: 'DNI',

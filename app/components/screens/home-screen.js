@@ -14,7 +14,6 @@ class HomeScreen extends React.Component {
     render() {
         return (
             <Container>
-                <StatusBar opaque animated backgroundColor={statusBarDarkGreenColor}/>
                 <Content padder contentContainerStyle={styles.content}>
                     <ImageBackground resizeMode={'contain'}
                                      style={styles.imageBackground}

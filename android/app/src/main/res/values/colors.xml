@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="darkGreen">#008279</color>
+    <color name="colorPrimaryDark">#008279</color>
+    <color name="colorPrimary">#008279</color>
 </resources>

@@ -5,14 +5,14 @@ const widthscreen = Dimensions.get('window').width
 const heightscreen = Dimensions.get('window').height
 
 // Colores de la aplicación
+export const black = '#000000'
 export const darkGreen = '#008279'
 export const lightGreen = '#E5FCE8'
-export const white = '#FFFFFF'
-export const black = '#000000'
 export const orange = '#D3A01E'
-export const statusBarLightGreenColor = '#B7C9B9'
 export const statusBarDarkGreenColor = '#006860'
+export const statusBarLightGreenColor = '#B7C9B9'
 export const translucent = '#00000033'
+export const white = '#FFFFFF'
 
 // Estilos usados en Custom ActivityIndicator
 export const activityIndicatorStyles = StyleSheet.create({
@@ -25,13 +25,20 @@ export const activityIndicatorStyles = StyleSheet.create({
     },
     modal: {
         alignItems: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: white,
         borderRadius: 10,
         display: 'flex',
         height: 100,
         justifyContent: 'space-around',
         width: 100,
     },
+})
+
+//Estilos usados en Start Screen
+export const startStyles = StyleSheet.create({
+    container: {
+        flex: 1
+    }
 })
 
 //Estilos usados en Login Screen
@@ -234,6 +241,7 @@ export const navigationStyles = StyleSheet.create({
     }
 })
 
+// Estilos usados en CertifyQR Screen
 export const certifyQRStyles = StyleSheet.create({
     container: {
         flex: 1,

@@ -3,14 +3,14 @@ export const LOADING = 'LOADING'
 export const NOT_LOADING = 'NOT_LOADING'
 export const NO_CONNECTION = 'NO_CONNECTION'
 export const WRONG_CREDENTIALS = 'WRONG_CREDENTIALS'
-export const DELETE_ERROR = 'DELETE_ERROR'
+export const NOTIFICATION = 'NOTIFICATION'
 export const UNKNOWN_ERROR = 'UNKNOWN_ERROR'
 export const AUTHENTICATE = 'AUTHENTICATE'
 export const DONT_AUTHENTICATE = 'DONT_AUTHENTICATE'
 export const LANDING_SCREEN_HOME_SCREEN = 'LANDING_SCREEN_HOME_SCREEN'
 export const HOME_SCREEN = 'Home'
 export const LANDING_SCREEN_CERTIFY_SCREEN = 'LANDING_SCREEN_CERTIFY_SCREEN'
-export const CERTIFY_SCREEN = 'CertifyPresence'
+export const CERTIFY_SCREEN = 'CertifyAttendance'
 export const FACE_RECOGNITION_ON = 'FACE_RECOGNITION_ON'
 export const ON = 'ON'
 export const FACE_RECOGNITION_OFF = 'FACE_RECOGNITION_OFF'
@@ -38,18 +38,18 @@ export function notLoading() {
     }
 }
 
-export function authenticate(token, id, dni, username, firstname, lastname, firstnameAndLastname, email, role) {
+export function authenticate(bearerToken, id, dni, username, firstname, lastname, firstnameAndLastname, email, role) {
     return {
         type: AUTHENTICATE,
-        token,
-        id,
-        dni,
-        username,
-        firstname,
-        lastname,
-        firstnameAndLastname,
-        email,
-        role,
+        bearerToken: bearerToken,
+        id: id,
+        dni: dni,
+        username: username,
+        firstname: firstname,
+        lastname: lastname,
+        firstnameAndLastname: firstnameAndLastname,
+        email: email,
+        role: role,
     }
 }
 
@@ -77,10 +77,10 @@ export function unknownError() {
     }
 }
 
-export function deleteError(position) {
+export function deleteNotification(position) {
     return {
-        type: DELETE_ERROR,
-        position,
+        type: NOTIFICATION,
+        position: position,
     }
 }
 
@@ -132,7 +132,7 @@ export function practiceSessions(sessionsValues) {
 export function seminarSessions(sessionsValues) {
     return {
         type: SEMINAR_SESSIONS,
-        sessionsValues,
+        sessionsValues:sessionsValues,
     }
 }
 

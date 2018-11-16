@@ -1,6 +1,6 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import BottomTabNavigator from '../components/navigation'
+import BottomTabNavigator from '../navigation/index'
 
 const mapStateToProps = (state, props) => {
     return {

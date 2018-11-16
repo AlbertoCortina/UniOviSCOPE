@@ -1,13 +1,17 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import CertifyFrScreen from '../components/screens/certifyFr-screen'
+import CertifyFrScreen from '../screens/certifyFr-screen'
 
 const mapStateToProps = (state, props) => {
-    return {}
+    return {
+
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    const actions = {}
+    const actions = {
+
+    }
     return bindActionCreators(actions, dispatch)
 }
 

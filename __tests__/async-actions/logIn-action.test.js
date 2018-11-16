@@ -1,60 +1,234 @@
-import configureMockStore from 'redux-mock-store'
 import * as actions from '../../app/actions/index'
-import thunk from 'redux-thunk'
 import logInAction from '../../app/actions/logIn-action'
-import logOutAction from "../../app/actions/logOut-action";
 import fetchMock from 'fetch-mock'
-import {LOG_IN_URL} from "../../app/util";
+import {FIND_USER_DETAILS_URL, LOG_IN_URL} from "../../app/util";
+import store from '../util/redux-mock-store'
 
-const middlewares = [thunk]
-const mockStore = configureMockStore(middlewares)
-
-jest.useFakeTimers()
-
-describe('LogIn Action', () => {
-    let store
+describe('LogIn Action Tests', () => {
 
     beforeEach(() => {
-        store = mockStore({
-            userData: {
-                token: null,
-                id: null,
-                dni: null,
-                username: null,
-                firstname: null,
-                lastname: null,
-                firstNameAndLastName: null,
-                email: null,
-                role: null,
-            }
-        })
+
     })
 
     afterEach(() => {
+        fetchMock.reset()
         fetchMock.restore()
+        store.clearActions()
+        jest.resetModules()
     })
 
-    test('Should dispatch loading and noConnection', () => {
+    test('Should dispatch loading and noConnection', (done) => {
+
         const expectedActions = [
             {type: actions.LOADING},
             {type: actions.NO_CONNECTION}
         ]
 
+        jest.mock('NetInfo', () => {
+            return {
+                isConnected: {
+                    fetch: () => {
+                        return new Promise((accept, resolve) => {
+                            accept(false);
+                        })
+                    }
+                }
+            }
+        });
+
         store.dispatch(logInAction('UO123456', '123456'))
-        jest.runAllTimers()
-        expect(store.getActions()).toEqual(expectedActions)
+
+        setTimeout(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+            done()
+        }, 1500)
+
     })
 
-    test('Should dispatch loadging and wrongCredentials', () => {
+    test('Should dispatch loading and wrongCredentials', (done) => {
+
         const expectedActions = [
             {type: actions.LOADING},
-            {type: actions.AUTHENTICATE}
+            {type: actions.WRONG_CREDENTIALS}
         ]
+
+        jest.mock('NetInfo', () => {
+            return {
+                isConnected: {
+                    fetch: () => {
+                        return new Promise((accept, resolve) => {
+                            accept(true);
+                        })
+                    }
+                }
+            }
+        });
 
         fetchMock.mock(LOG_IN_URL, 200)
 
-        store.dispatch(logInAction('UO123456', '123456'))
-        jest.runAllTimers()
-        expect(store.getActions()).toEqual(expectedActions)
+        store.dispatch(logInAction('username', 'password'))
+
+        setTimeout(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+
+            done()
+        }, 1500)
+
     })
+
+    test('Should dispatch loading and authenticate', (done) => {
+
+        const expectedActions = [
+            {type: actions.LOADING},
+            {
+                type: actions.AUTHENTICATE,
+                bearerToken: 'bearerToken',
+                id: 'id',
+                dni: 'dni',
+                username: 'username',
+                firstname: 'firstname',
+                lastname: 'lastname',
+                firstnameAndLastname: 'firstname lastname',
+                email: 'username@uniovi.es',
+                role: 'role'
+            }
+        ]
+
+        jest.mock('NetInfo', () => {
+            return {
+                isConnected: {
+                    fetch: () => {
+                        return new Promise((accept, resolve) => {
+                            accept(true);
+                        })
+                    }
+                }
+            }
+        });
+
+        fetchMock
+            .mock(LOG_IN_URL,
+                {
+                    headers: {
+                        'Authorization': 'bearerToken'
+                    }
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: {
+                        userName: 'username',
+                        password: 'password'
+                    }
+                })
+            .mock(String.format(FIND_USER_DETAILS_URL, 'username'),
+                {
+                    headers: {
+                        'Authorization': 'bearerToken'
+                    },
+                    id: 'id',
+                    dni: 'dni',
+                    userName: 'username',
+                    firstName: 'firstname',
+                    lastName: 'lastname',
+                    role: 'role'
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'bearerToken'
+                    },
+                })
+
+        store.dispatch(logInAction('username', 'password'))
+
+        setTimeout(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+
+            done()
+        }, 1500)
+
+    })
+
+    test('Should dispatch loading and unknownError (fails log in' +
+        ' request)', (done) => {
+
+        const expectedActions = [
+            {type: actions.LOADING},
+            {type: actions.UNKNOWN_ERROR}
+        ]
+
+        jest.mock('NetInfo', () => {
+            return {
+                isConnected: {
+                    fetch: () => {
+                        return new Promise((accept, resolve) => {
+                            accept(true);
+                        })
+                    }
+                }
+            }
+        });
+
+        fetchMock.mock(LOG_IN_URL, {throws: 'Server not found'})
+
+        store.dispatch(logInAction('username', 'password'))
+
+        setTimeout(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+
+            done()
+        }, 1500)
+
+    })
+
+    test('Should dispatch loading and unknownError (fails find user details' +
+        ' request)', (done) => {
+
+        const expectedActions = [
+            {type: actions.LOADING},
+            {type: actions.UNKNOWN_ERROR}
+        ]
+
+        jest.mock('NetInfo', () => {
+            return {
+                isConnected: {
+                    fetch: () => {
+                        return new Promise((accept, resolve) => {
+                            accept(true);
+                        })
+                    }
+                }
+            }
+        });
+
+        fetchMock
+            .mock(LOG_IN_URL,
+                {
+                    headers: {
+                        'Authorization': 'bearerToken'
+                    }
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: {
+                        userName: 'username',
+                        password: 'password'
+                    }
+                })
+            .mock(String.format(FIND_USER_DETAILS_URL, 'username'), {throws: 'Server not found'})
+
+        store.dispatch(logInAction('username', 'password'))
+
+        setTimeout(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+
+            done()
+        }, 1500)
+
+    })
+
 })

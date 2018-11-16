@@ -1,70 +1,71 @@
 import {NetInfo,} from 'react-native'
 import {
-    loading,
-    notLoading,
-    unknownError,
-    UNKNOWN_ERROR,
-    noConnectionError,
-    NO_CONNECTION,
     authenticate,
-    wrongCredentialsError,
-    WRONG_CREDENTIALS
+    loading,
+    NO_CONNECTION,
+    noConnectionError,
+    UNKNOWN_ERROR,
+    unknownError,
+    WRONG_CREDENTIALS,
+    wrongCredentialsError
 } from '../actions'
-import {API_URL, LOG_IN_URL, FIND_USER_DETAILS_URL} from '../util'
+import {FIND_USER_DETAILS_URL, LOG_IN_URL} from '../util'
 
+/**
+ * Acción que realizar el inicio de sesión en la aplicación.
+ *
+ * @param username Nombre de usuario.
+ * @param password Contraseña.
+ * @returns {Function}
+ */
 export default function logInAction(username, password) {
     return (dispatch) => {
-        /**
-         * Caso 2: Comprobar si tiene conexión a internet ✔
-         * Caso 3: Hace la peticion y todo va bien ✔
-         * Caso 4: Hace la peticion y no existe ningun usuario ✔
-         * Caso 5: Hace la peticion pero el servicio esta caido ✔
-         */
+
         dispatch(loading())
 
-        setTimeout(function () {
+        setTimeout(() => {
             logIn(username, password, dispatch)
-        }, 1000);
+        }, 1000)
 
     }
 }
 
 /**
- * Método que realiza el log in en la aplicación
+ * Método para realizar el inicio de sesión en la aplicación.
+ *
+ * @param username Nombre de usuario.
+ * @param password Contraseña.
+ * @param dispatch Dispatcher.
  */
 function logIn(username, password, dispatch) {
-    let token
+    let bearerToken
+
     NetInfo.isConnected.fetch()
         .then((isConnected) => {
             if (isConnected) {
-                return
+                return makeLogInRequest(username, password)
             } else {
                 throw NO_CONNECTION
             }
         })
-        .then(() => {
-            return makeLogInRequest(username, password)
-        })
         .then((response) => {
-            token = response.headers.get('Authorization')
-            if (token !== null) {
-                return
+            bearerToken = response.headers.get('Authorization')
+            if (bearerToken !== null) {
+                return makeFindUserDetailsRequest(username, bearerToken)
             } else {
                 throw WRONG_CREDENTIALS
             }
         })
-        .then(() => {
-            return makeFindUserDetailsRequest(username, token)
-        })
         .then((response) => {
-            id = response.id
-            dni = response.dni
-            firstname = response.firstName
-            lastname = response.lastName
-            firstnameAndLastname = response.firstName + ' ' + response.lastName
-            email = username + '@uniovi.es'
-            role = response.role
-            dispatch(authenticate(token, id, dni, username, firstname, lastname, firstnameAndLastname, email, role))
+            let id = response.id
+            let dni = response.dni
+            let firstname = response.firstName
+            let lastname = response.lastName
+            let firstnameAndLastname = response.firstName + ' ' + response.lastName
+            let email = username + '@uniovi.es'
+            let role = response.role
+            dispatch(authenticate(bearerToken, id, dni, username, firstname, lastname,
+                firstnameAndLastname, email, role))
         })
         .catch((error) => {
             switch (error) {
@@ -79,10 +80,15 @@ function logIn(username, password, dispatch) {
                     dispatch(unknownError())
             }
         })
+
 }
 
 /**
  * Método que realiza la petición del log in.
+ *
+ * @param username Nombre de usuario.
+ * @param password Contraseña.
+ * @returns {Promise<Response>}
  */
 async function makeLogInRequest(username, password) {
     try {
@@ -103,14 +109,18 @@ async function makeLogInRequest(username, password) {
 
 /**
  * Método que realiza la petición de buscar los datos del usuario.
+ *
+ * @param username Nombre de usuario.
+ * @param bearerToken Token de seguridad.
+ * @returns {Promise<any>}
  */
-async function makeFindUserDetailsRequest(username, token) {
+async function makeFindUserDetailsRequest(username, bearerToken) {
     try {
         let response = await fetch(String.format(FIND_USER_DETAILS_URL, username), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': bearerToken
             },
         })
         return await response.json()
