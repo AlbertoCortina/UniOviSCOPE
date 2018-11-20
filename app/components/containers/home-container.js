@@ -1,17 +1,13 @@
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import HomeScreen from '../screens/home-screen'
 
 const mapStateToProps = (state, props) => {
-    return {
-        
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
-    const actions = {
-         
-    }
+    const actions = {}
     return bindActionCreators(actions, dispatch)
 }
 

@@ -64,6 +64,7 @@ function logIn(username, password, dispatch) {
             let firstnameAndLastname = response.firstName + ' ' + response.lastName
             let email = username + '@uniovi.es'
             let role = response.role
+
             dispatch(authenticate(bearerToken, id, dni, username, firstname, lastname,
                 firstnameAndLastname, email, role))
         })

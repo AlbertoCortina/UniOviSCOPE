@@ -8,6 +8,7 @@ const mapStateToProps = (state, props) => {
         bearerToken: state.userData.bearerToken,
         idStudent: state.userData.id,
         subjects: state.subjects,
+        isLoading: state.isLoading,
     }
 }
 

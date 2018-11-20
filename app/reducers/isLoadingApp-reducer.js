@@ -1,21 +1,28 @@
 import {
-    LOADING,
-    NOT_LOADING,
     AUTHENTICATE,
     DONT_AUTHENTICATE,
+    LOADING,
     NO_CONNECTION,
-    WRONG_CREDENTIALS,
-    UNKNOWN_ERROR,
+    NOT_LOADING,
     SUBJECTS,
-    LANDING_SCREEN_CERTIFY_SCREEN,
-    LANDING_SCREEN_HOME_SCREEN,
-    FACE_RECOGNITION_OFF,
-    FACE_RECOGNITION_ON,
-    NOTIFICATION,
+    UNKNOWN_ERROR,
+    WRONG_CREDENTIALS,
 } from '../actions'
 
+/**
+ * Estado inicial.
+ *
+ * @type {boolean}
+ */
 const initialState = false
 
+/**
+ * Reducer para modificar el estado de la carga de la aplicación.
+ *
+ * @param state
+ * @param action
+ * @returns {boolean}
+ */
 export default function isLoadingAppReducer(state = initialState, action) {
     switch (action.type) {
         case LOADING:
@@ -26,10 +33,6 @@ export default function isLoadingAppReducer(state = initialState, action) {
         case NO_CONNECTION:
         case WRONG_CREDENTIALS:
         case UNKNOWN_ERROR:
-        case FACE_RECOGNITION_OFF:
-        case FACE_RECOGNITION_ON:
-        case NOTIFICATION:
-        case SUBJECTS:
             return false
         default:
             return state

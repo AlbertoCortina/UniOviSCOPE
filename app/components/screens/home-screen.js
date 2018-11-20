@@ -1,20 +1,22 @@
-/**
- * Home Screen
- *
- * Pantalla de principal a la aplicación.
- */
 import React from 'react'
-import {ImageBackground, StatusBar} from 'react-native'
-import {Container, Icon, Content, Text, Button,} from 'native-base'
-import {homeStyles as styles, statusBarDarkGreenColor} from '../../resources/styles'
-import I18n from '../../resources/i18n'
+import {ImageBackground} from 'react-native'
+import {Container, Content,} from 'native-base'
+import {homeStyles as styles} from '../../resources/styles'
 
+/**
+ * Clase HomeScreen.
+ *
+ * Componente para visualizar la bienvenida a la aplicación.
+ *
+ * @author Alberto Cortina Eduarte
+ */
 class HomeScreen extends React.Component {
 
     render() {
         return (
             <Container>
-                <Content padder contentContainerStyle={styles.content}>
+                <Content padder
+                         contentContainerStyle={styles.content}>
                     <ImageBackground resizeMode={'contain'}
                                      style={styles.imageBackground}
                                      source={require('../../resources/images/logo.png')}/>

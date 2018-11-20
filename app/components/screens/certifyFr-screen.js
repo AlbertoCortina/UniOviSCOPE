@@ -1,12 +1,32 @@
 import React from 'react'
-import {StatusBar, Text, View} from 'react-native'
+import {Platform, Text, TouchableOpacity, View} from 'react-native'
 import {RNCamera} from 'react-native-camera'
-import {withNavigationFocus} from 'react-navigation'
 import {Container} from 'native-base'
-import Error from '../containers/notification-container'
-import {certifyQRStyles as styles, statusBarDarkGreenColor} from '../../resources/styles'
-import {OFF, ON} from '../../actions'
+import {black, certifyQRStyles as styles, white} from '../../resources/styles'
+import {Icon} from 'react-native-elements'
+import {withNavigationFocus, NavigationActions} from 'react-navigation'
 
+/**
+ * Componente para mostrar un icono u otro dependiendo del sistema
+ * operativo del dispositivo móvil en el que se ejecute.
+ */
+const CameraIcon = Platform.select({
+    ios: () => (
+        <Icon type='ionicon' name='ios-camera' color={white} size={40}/>
+    ),
+    android: () => (
+        <Icon type='ionicon' name='md-camera' color={black} size={40}/>
+    )
+})
+
+/**
+ * Componente que se muestra cuando el usuario no autorizo el uso de la
+ * cámara o la cámara todavía no se abrió.
+ *
+ * @param text Texto opcional
+ * @returns {*}
+ * @constructor
+ */
 const CommonView = ({text}) => (
     <View style={styles.container}>
         <Text>{text}</Text>
@@ -22,14 +42,24 @@ const CommonView = ({text}) => (
  */
 class CertifyFrScreen extends React.Component {
 
-    qrCodeRead(sessionToken) {
-        this.props.verifyQRCode(sessionToken, this.props.bearerToken, this.props.username)
+    resetStackNavigator() {
+        const resetAction = NavigationActions.reset({
+            index: 1,
+            actions: [
+                NavigationActions.navigate({ routeName: 'CertifyQR' })
+            ]
+        })
 
-        if (this.props.certificate.validated && this.props.faceRecognition === OFF) {
-            this.props.certifyAttendance(this.props.certificate, this.props.bearerToken)
+        this.props.navigation.dispatch(resetAction)
+    }
+
+    takePicture = async function () {
+        if (this.camera) {
+            const options = {quality: 0.5, doNotSave: true, base64: true};
+            const data = await this.camera.takePictureAsync(options)
+            this.props.certifyAttendance(data.base64, this.props.certificate, this.props.bearerToken)
             this.props.navigation.navigate('Home')
-        } else if (this.props.certificate.validated && this.props.faceRecognition === ON) {
-            //Navegar a la pantalla de reconocimiento facial
+            this.resetStackNavigator()
         }
     }
 
@@ -37,7 +67,7 @@ class CertifyFrScreen extends React.Component {
         const isFocused = this.props.navigation.isFocused();
 
         if (!isFocused) {
-            return null
+            return <CommonView/>
         } else if (isFocused) {
             return (
                 <RNCamera
@@ -46,12 +76,16 @@ class CertifyFrScreen extends React.Component {
                     }}
                     style={styles.camera}
                     autoFocus={RNCamera.Constants.AutoFocus.on}
-                    type={RNCamera.Constants.Type.back}
+                    type={RNCamera.Constants.Type.front}
                     flashMode={RNCamera.Constants.FlashMode.off}
-                    onBarCodeRead={(code) => this.qrCodeRead(code.data)}
-                    barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
                     notAuthorizedView={<CommonView/>}
                     pendingAuthorizationView={<CommonView/>}>
+                    <View style={styles.cameraButtonContainer}>
+                        <TouchableOpacity style={styles.cameraIcon}
+                                          onPress={this.takePicture.bind(this)}>
+                            <CameraIcon/>
+                        </TouchableOpacity>
+                    </View>
                 </RNCamera>
             )
         }
@@ -60,7 +94,6 @@ class CertifyFrScreen extends React.Component {
     render() {
         return (
             <Container>
-                <StatusBar opaque animated backgroundColor={statusBarDarkGreenColor}/>
                 {this.renderCamera()}
             </Container>
         )
@@ -68,4 +101,4 @@ class CertifyFrScreen extends React.Component {
 
 }
 
-export default CertifyFrScreen;
+export default withNavigationFocus(CertifyFrScreen)

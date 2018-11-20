@@ -1,19 +1,22 @@
 import * as actions from '../../app/actions/index'
 import logInAction from '../../app/actions/logIn-action'
 import fetchMock from 'fetch-mock'
-import {FIND_USER_DETAILS_URL, LOG_IN_URL} from "../../app/util";
-import store from '../util/redux-mock-store'
+import {FIND_USER_DETAILS_URL, LOG_IN_URL} from '../../app/util'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+
+const mockStore = configureMockStore([thunk])
 
 describe('LogIn Action Tests', () => {
+    let store
 
     beforeEach(() => {
-
+        store = mockStore()
     })
 
     afterEach(() => {
         fetchMock.reset()
         fetchMock.restore()
-        store.clearActions()
         jest.resetModules()
     })
 
@@ -177,7 +180,6 @@ describe('LogIn Action Tests', () => {
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
-
             done()
         }, 1500)
 
@@ -225,7 +227,6 @@ describe('LogIn Action Tests', () => {
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
-
             done()
         }, 1500)
 

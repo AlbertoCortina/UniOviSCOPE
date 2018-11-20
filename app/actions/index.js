@@ -111,35 +111,14 @@ export function faceRecognitionOff() {
 export function subjects(subjects) {
     return {
         type: SUBJECTS,
-        subjects
+        subjects:subjects
     }
 }
 
-export function theorySessions(sessionsValues) {
+export function sessions(sessionType, sessionsValues) {
     return {
-        type: THEORY_SESSIONS,
-        sessionsValues,
-    }
-}
-
-export function practiceSessions(sessionsValues) {
-    return {
-        type: PRACTICE_SESSIONS,
-        sessionsValues,
-    }
-}
-
-export function seminarSessions(sessionsValues) {
-    return {
-        type: SEMINAR_SESSIONS,
-        sessionsValues:sessionsValues,
-    }
-}
-
-export function groupTutorshipSessions(sessionsValues) {
-    return {
-        type: GROUP_TUTORSHIP_SESSIONS,
-        sessionsValues,
+        type: sessionType,
+        sessionsValues: sessionsValues
     }
 }
 

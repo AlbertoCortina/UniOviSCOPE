@@ -1,48 +1,40 @@
 import reducer from '../../app/reducers/isLoadingApp-reducer'
-import {
-    loading,
-    notLoading,
-    authenticate,
-    dontAuthenticate,
-    noConnectionError,
-    wrongCredentialsError,
-    unknownError
-} from "../../app/actions";
+import * as actions from '../../app/actions'
 
 const initialState = false
 
 describe('IsLoadingApp Reducer', () => {
 
-    it('Should return default state', () => {
+    test('Should return default state', () => {
         expect(reducer(undefined, {})).toEqual(initialState)
     })
 
-    it('Should handle LOADING', () => {
-        expect(reducer(initialState, loading())).toEqual(true)
+    test('Should handle LOADING', () => {
+        expect(reducer(initialState, actions.loading())).toEqual(true)
     })
 
-    it('Should handle NOT_LOADING', () => {
-        expect(reducer(initialState, notLoading())).toEqual(false)
+    test('Should handle NOT_LOADING', () => {
+        expect(reducer(initialState, actions.notLoading())).toEqual(false)
     })
 
-    it('Should handle AUTHENTICATE', () => {
-        expect(reducer(initialState, authenticate())).toEqual(false)
+    test('Should handle AUTHENTICATE', () => {
+        expect(reducer(initialState, actions.authenticate())).toEqual(false)
     })
 
-    it('Should handle DONT_AUTHENTICATE', () => {
-        expect(reducer(initialState, dontAuthenticate())).toEqual(false)
+    test('Should handle DONT_AUTHENTICATE', () => {
+        expect(reducer(initialState, actions.dontAuthenticate())).toEqual(false)
     })
 
-    it('Should handle NO_CONNECTION', () => {
-        expect(reducer(initialState, noConnectionError())).toEqual(false)
+    test('Should handle NO_CONNECTION', () => {
+        expect(reducer(initialState, actions.noConnectionError())).toEqual(false)
     })
 
-    it('Should handle WRONG_CREDENTIALS', () => {
-        expect(reducer(initialState, wrongCredentialsError())).toEqual(false)
+    test('Should handle WRONG_CREDENTIALS', () => {
+        expect(reducer(initialState, actions.wrongCredentialsError())).toEqual(false)
     })
 
-    it('Should handle UNKNOWN_ERROR', () => {
-        expect(reducer(initialState, unknownError())).toEqual(false)
+    test('Should handle UNKNOWN_ERROR', () => {
+        expect(reducer(initialState, actions.unknownError())).toEqual(false)
     })
 
 })

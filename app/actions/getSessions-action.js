@@ -1,71 +1,59 @@
 import {
-    loading,
+    GROUP_TUTORSHIP_SESSIONS,
+    groupTutorshipSessions,
     NO_CONNECTION,
     noConnectionError,
+    PRACTICE_SESSIONS,
+    practiceSessions,
+    SEMINAR_SESSIONS,
+    seminarSessions,
+    THEORY_SESSIONS,
+    theorySessions,
     UNKNOWN_ERROR,
     unknownError,
-    theorySessions,
-    notLoading,
-    practiceSessions,
-    seminarSessions,
-    groupTutorshipSessions,
 } from "../actions";
 import {NetInfo} from "react-native";
 import {
-    API_URL,
     FIND_LAST_YEAR_SUBJECTS_SESSIONS_URL,
-    FIND_LAST_YEAR_SUBJECTS_URL,
     FIND_STUDENT_SESSION_ATTENDANCE_URL
-} from "../util";
+} from '../util'
+import {sessions} from "./index";
 
-export default function getSessionsAction(token, idStudent, idSubject) {
+export default function getSessionsAction(bearerToken, idStudent, idSubject, sessionType) {
     return (dispatch) => {
-        dispatch(loading())
-
-        setTimeout(function () {
-            getSessions(token, idStudent, idSubject, dispatch)
-        }, 1000);
+        getSessions(bearerToken, idStudent, idSubject, sessionType, dispatch)
     }
 }
 
-function getSessions(token, idStudent, idSubject, dispatch) {
+function getSessions(bearerToken, idStudent, idSubject, sessionType, dispatch) {
     NetInfo.isConnected.fetch()
         .then((isConnected) => {
             if (isConnected) {
-                return
+                return makeFindLastYearSubjectSessionsRequest(bearerToken, idStudent, idSubject, sessionType)
             } else {
                 throw NO_CONNECTION
             }
         })
-        .then(() => {
-            return makeFindLastYearSubjectTheorySessionsRequest(token, idStudent, idSubject)
+        .then((sessionsResponse) => {
+            return transformResponse(sessionsResponse, bearerToken, idStudent)
         })
         .then((sessionsResponse) => {
-            return transformResponse(sessionsResponse)
-        })
-        .then(() => {
-            return makeFindLastYearSubjectPracticeSessionsRequest(token, idStudent, idSubject)
-        })
-        .then((sessionsResponse) => {
-            return transformResponse(sessionsResponse)
-        })
-        .then(() => {
-            return makeFindLastYearSubjectSeminarSessionsRequest(token, idStudent, idSubject)
-        })
-        .then((sessionsResponse) => {
-            return transformResponse(sessionsResponse)
-        })
-        .then(() => {
-            return makeFindLastYearSubjectGroupTutorshipSessionsRequest(token, idStudent, idSubject)
-        })
-        .then((sessionsResponse) => {
-            return transformResponse(sessionsResponse)
-        })
-        .then((sessionsResponse) => {
-            dispatch(theorySessions(sessionsResponse))
-            dispatch(practiceSessions(sessionsResponse))
-            dispatch(seminarSessions(sessionsResponse))
-            dispatch(groupTutorshipSessions(sessionsResponse))
+            switch (sessionType) {
+                case 'THEORY':
+                    dispatch(sessions(THEORY_SESSIONS, sessionsResponse))
+                    break
+                case 'PRACTICE':
+                    dispatch(sessions(PRACTICE_SESSIONS, sessionsResponse))
+                    break
+                case 'SEMINAR':
+                    dispatch(sessions(SEMINAR_SESSIONS, sessionsResponse))
+                    break
+                case 'GROUP_TUTORSHIP':
+                    dispatch(sessions(GROUP_TUTORSHIP_SESSIONS, sessionsResponse))
+                    break
+                default:
+                    break
+            }
         })
         .catch((error) => {
             switch (error) {
@@ -74,20 +62,28 @@ function getSessions(token, idStudent, idSubject, dispatch) {
                 case UNKNOWN_ERROR:
                 default:
                     dispatch(unknownError())
+                    break
             }
         })
-        .finally(() => {
-            dispatch(notLoading())
-        })
 }
 
-async function makeFindLastYearSubjectTheorySessionsRequest(token, idStudent, idSubject) {
+/**
+ * Método que realiza la petición para buscar las sesiones de una
+ * determinada asignatura y un tipo de sesión.
+ *
+ * @param bearerToken Token de seguridad.
+ * @param idStudent Identificador del estudiante.
+ * @param idSubject Identificador de la asignatura.
+ * @param sessionType Tipo de sesión.
+ * @returns {Promise<any>}
+ */
+async function makeFindLastYearSubjectSessionsRequest(bearerToken, idStudent, idSubject, sessionType) {
     try {
-        let response = await fetch(String.format(FIND_LAST_YEAR_SUBJECTS_SESSIONS_URL, idStudent, idSubject, 'THEORY'), {
+        let response = await fetch(String.format(FIND_LAST_YEAR_SUBJECTS_SESSIONS_URL, idStudent, idSubject, sessionType), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': bearerToken
             },
         })
         return await response.json()
@@ -96,79 +92,50 @@ async function makeFindLastYearSubjectTheorySessionsRequest(token, idStudent, id
     }
 }
 
-async function makeFindLastYearSubjectPracticeSessionsRequest(token, idStudent, idSubject) {
-    try {
-        let response = await fetch(String.format(FIND_LAST_YEAR_SUBJECTS_SESSIONS_URL, idStudent, idSubject, 'PRACTICE'), {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token
-            },
-        })
-        return await response.json()
-    } catch (error) {
-        throw UNKNOWN_ERROR
-    }
-}
-
-async function makeFindLastYearSubjectSeminarSessionsRequest(token, idStudent, idSubject) {
-    try {
-        let response = await fetch(String.format(FIND_LAST_YEAR_SUBJECTS_SESSIONS_URL, idStudent, idSubject, 'SEMINAR'), {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token
-            },
-        })
-        return await response.json()
-    } catch (error) {
-        throw UNKNOWN_ERROR
-    }
-}
-
-async function makeFindLastYearSubjectGroupTutorshipSessionsRequest(token, idStudent, idSubject) {
-    try {
-        let response = await fetch(String.format(FIND_LAST_YEAR_SUBJECTS_SESSIONS_URL, idStudent, idSubject, 'GROUP_TUTORSHIP'), {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token
-            },
-        })
-        return await response.json()
-    } catch (error) {
-        throw UNKNOWN_ERROR
-    }
-}
-
-async function makeFindStudentSessionAttendanceRequest(token, idStudent, idSession) {
+/**
+ * Método que realiza la petición para buscar si se asistió o no a una determinada
+ * sesión.
+ *
+ * @param bearerToken Token de seguridad.
+ * @param idStudent Identificador del estudiante.
+ * @param idSubject Identificador de la asignatura.
+ * @returns {Promise<boolean>}
+ */
+async function makeFindStudentSessionAttendanceRequest(bearerToken, idStudent, idSession) {
     try {
         let response = await fetch(String.format(FIND_STUDENT_SESSION_ATTENDANCE_URL, idStudent, idSession), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': bearerToken
             },
         })
-        return await response.json()
+        return response.bodyText != '';
     } catch (error) {
         throw UNKNOWN_ERROR
     }
 }
 
-function transformResponse(response) {
+/**
+ * Método que transforma la respuesta del servidor para que sea más manejable.
+ *
+ * @param response
+ * @param bearerToken Token de seguridad.
+ * @param idStudent Identificador del estudiante.
+ * @returns {Promise<Array>}
+ */
+async function transformResponse(response, bearerToken, idStudent) {
     let sessions = []
     for (let i = 0; i < response.length; i++) {
         sessions[i] = {
             id: response[i].id,
-            start: response[i].start,
+            start: new Date(response[i].start).toLocaleDateString(),
             end: response[i].end,
             location: response[i].location,
-            groupId: response[i].group.id,
-            groupCode: response[i].group.id,
-            subjectId: response[i].group.subject.subject.id,
-            assistence: null,
+            groupCode: response[i].group.code,
+            assistence: await makeFindStudentSessionAttendanceRequest(bearerToken, idStudent, response[i].id),
         }
     }
+
     return sessions
 }

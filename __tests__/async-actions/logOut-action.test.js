@@ -1,8 +1,9 @@
 import * as actions from '../../app/actions/index'
 import logOutAction from '../../app/actions/logOut-action'
-import mockStore from "../util/redux-mock-store";
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 
-jest.useFakeTimers()
+const mockStore = configureMockStore([thunk])
 
 describe('LogOut Action', () => {
     let store
@@ -11,16 +12,19 @@ describe('LogOut Action', () => {
         store = mockStore()
     })
 
-
-    it('Should dispatch loading and dontAuthenticate action', () => {
+    test('Should dispatch loading and dontAuthenticate action', (done) => {
         const expectedActions = [
             {type: actions.LOADING},
             {type: actions.DONT_AUTHENTICATE}
         ]
 
         store.dispatch(logOutAction())
-        jest.runAllTimers()
-        expect(store.getActions()).toEqual(expectedActions)
+
+        setTimeout(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+            done()
+        }, 2000)
+
     })
 
 })

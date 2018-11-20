@@ -1,6 +1,0 @@
-npm start -> Arrancar el servidor
-npm run android -> Ejecutar la aplicación en dispositivo android (emulador o dispositivo físico)
-react-native log-android -> Ver logging de la aplicación
-adb uninstall com.unioviscope -> cuando da error de signature
-ncu -> verificar dependencias
-ncu -u -> actualizar dependencias

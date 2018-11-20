@@ -1,5 +1,5 @@
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import logInAction from '../../actions/logIn-action'
 import LoginScreen from '../screens/login-screen'
 

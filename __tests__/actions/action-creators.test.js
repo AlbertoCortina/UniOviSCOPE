@@ -1,4 +1,5 @@
 import * as actions from '../../app/actions'
+import {SUBJECTS} from '../../app/actions'
 
 describe('Action Creators', () => {
 
@@ -133,6 +134,28 @@ describe('Action Creators', () => {
 
     })
 
+    test('Should create subjects action', () => {
+
+        const expectedAction = {
+            type: actions.SUBJECTS,
+            subjects: [{id: 1}, {id: 2}]
+        }
+
+        expect(actions.subjects([{id: 1}, {id: 2}])).toEqual(expectedAction)
+
+    })
+
+    test('Should create sessions action', () => {
+
+        const expectedAction = {
+            type: 'any',
+            sessionsValues: [{id: 1}, {id: 2}]
+        }
+
+        expect(actions.sessions('any', [{id: 1}, {id: 2}])).toEqual(expectedAction)
+
+    })
+
     test('Should create validateAttendaceCertificate action', () => {
 
         const expectedAction = {
@@ -176,15 +199,5 @@ describe('Action Creators', () => {
         expect(actions.dontCertifyAttendance()).toEqual(expectedAction)
 
     })
-
-    // test('Should create action', () => {
-    //
-    //     const expectedAction = {
-    //         type:
-    //     }
-    //
-    //     expect(actions.).toEqual(expectedAction)
-    //
-    // })
 
 })

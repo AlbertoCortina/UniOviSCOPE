@@ -1,8 +1,5 @@
 import reducer from '../../app/reducers/userData-reducer'
-import {
-    authenticate,
-    dontAuthenticate
-} from "../../app/actions";
+import * as actions from '../../app/actions'
 
 const initialState = {
     bearerToken: null,
@@ -23,7 +20,7 @@ describe('UserData Reducer', () => {
     })
 
     it('Should handle AUTHENTICATE', () => {
-        expect(reducer(initialState, authenticate('test bearerToken', 'test id', 'test dni', 'test username', 'test firstname', 'test lastname', 'test firstnameAndLastname', 'test email', 'test role'))).toEqual(
+        expect(reducer(initialState, actions.authenticate('test bearerToken', 'test id', 'test dni', 'test username', 'test firstname', 'test lastname', 'test firstnameAndLastname', 'test email', 'test role'))).toEqual(
             {
                 bearerToken: 'test bearerToken',
                 id: 'test id',
@@ -39,7 +36,7 @@ describe('UserData Reducer', () => {
     })
 
     it('Should handle DONT_AUTHENTICATE', () => {
-        expect(reducer(initialState, dontAuthenticate())).toEqual(initialState)
+        expect(reducer(initialState, actions.dontAuthenticate())).toEqual(initialState)
     })
 
 })

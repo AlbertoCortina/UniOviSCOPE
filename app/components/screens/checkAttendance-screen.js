@@ -1,30 +1,27 @@
-/**
- * CheckAttendance Screen
- *
- * Pantalla de perfil a la aplicación.
- */
 import React from 'react'
-import {View, ScrollView, SectionList, StatusBar} from 'react-native'
-import {Container, Content, Form, Item, Input, Label, Text, Button, TouchableWithoutFeedback, Row} from 'native-base';
-import {profileStyles as styles, statusBarDarkGreenColor, lightGreen, darkGreen} from '../../resources/styles'
-import I18n from "../../resources/i18n";
-import ActivityIndicator from "../custom/custom-activityIndicator"
-import {List, ListItem, SearchBar, Avatar} from 'react-native-elements'
+import {SectionList, Text, View} from 'react-native'
+import {checkAttendanceStyles as styles} from '../../resources/styles'
+import {Avatar, ListItem} from 'react-native-elements'
+import I18n from '../../resources/i18n'
 
-let first_semester = {data: [], title: 'Primer semestre'}
-let second_semester = {data: [], title: 'Segundo semestre'}
+/**
+ * Componente que se emplea cuando el estudiante no está matriculado en
+ * ninguna asignatura.
+ */
+const EmptyList = (
+    <View style={styles.emptyList}>
+        <Text>{I18n.t('error_sin_asignaturas')}</Text>
+    </View>
+)
 
-function quitarAcentos(origen) {
-    return origen
-        .replace(/á|Á/, 'a')
-        .replace(/é|É/, 'e')
-}
-
+/**
+ * Clase CheckAttendanceScreen.
+ *
+ * Componente para seleccionar una asignatura y ver sus detalles.
+ *
+ * @author Alberto Cortina Eduarte
+ */
 class CheckAttendanceScreen extends React.Component {
-
-    componentDidMount() {
-        this.props.getSubjects(this.props.bearerToken, this.props.idStudent)
-    }
 
     getSubjectInitials = (subjectName) => {
         let words = subjectName.split(' ')
@@ -37,99 +34,73 @@ class CheckAttendanceScreen extends React.Component {
         return initials
     }
 
+    componentDidMount() {
+        this.props.getSubjects(this.props.bearerToken, this.props.idStudent)
+    }
+
     render() {
         return (
-            <View style={{flex: 1, justifyContent: 'center', backgroundColor: {lightGreen}}}>
-                <StatusBar opaque animated backgroundColor={statusBarDarkGreenColor}/>
-                <SectionList stlyle={{flex: 1}} renderItem={({item, index}) => (
+            <View style={styles.sectionListContainer}>
+                <SectionList renderItem={({item, index}) => (
                     <ListItem
                         underlayColor='#E9CF8E'
-                        containerStyle={{flex: 1, backgroundColor: lightGreen,}}
+                        containerStyle={styles.itemContainer}
                         avatarContainerStyle={{paddingRight: 5}}
                         roundAvatar
                         title={
-                            <Text style={{
-                                fontFamily: 'Montserrat',
-                                color: '#000000',
-                                fontWeight: 'bold',
-                                fontSize: 16
-                            }}>{item.denomination}</Text>
+                            <Text style={styles.itemTitle}>
+                                {item.denomination}
+                            </Text>
                         }
                         subtitle={
-                            <Text style={{
-                                fontFamily: 'Montserrat',
-                                fontSize: 14,
-                            }}>Curso: {item.course}</Text>
+                            <Text style={styles.itemSubtitle}>
+                                {I18n.t('curso')}{item.course}
+                            </Text>
                         }
                         avatar={
-                            <View style={{paddingRight: 10}}>
-                                <Avatar overlayContainerStyle={{backgroundColor: '#b7c9b9'}}
-                                        titleStyle={{fontSize: 15}}
-                                        medium
-                                        rounded
-                                        title={this.getSubjectInitials(item.denomination)}
-                                        activeOpacity={0.7}/>
+                            <View style={styles.avatarContainer}>
+                                <Avatar
+                                    overlayContainerStyle={styles.avatarOverLayContainer}
+                                    titleStyle={styles.avatarTitle}
+                                    medium
+                                    rounded
+                                    title={this.getSubjectInitials(item.denomination)}
+                                    activeOpacity={0.7}/>
                             </View>
                         }
+                        onPress={() => this.props.navigation.navigate('CheckAttendanceDetail', {
+                            subject: item.denomination,
+                            idSubject: item.id
+                        })}
                     />
                 )}
                              renderSectionHeader={({section}) => (
-                                 <View style={{
-                                     padding: 5,
-                                     paddingTop: 10,
-                                     paddingBottom: 10,
-                                     backgroundColor: '#d3a01ecc'
-                                 }}>
-                                     <Text
-                                         style={{
-                                             fontFamily: 'Montserrat',
-                                             fontWeight: 'bold',
-                                             fontSize: 16
-                                         }}> {section.title}</Text>
+                                 <View style={styles.sectionContainer}>
+                                     <Text style={styles.sectionTitle}>
+                                         {section.title}
+                                     </Text>
                                  </View>
                              )}
                              sections={[
                                  {
-                                     data: this.props.subjects.filter(subject => subject.temporality === 'FIRST_SEMESTER').sort((a, b) => quitarAcentos(a.denomination).localeCompare(quitarAcentos(b.denomination))),
-                                     title: 'Primer Semestre'
+                                     data: this.props.subjects.filter(subject => subject.temporality === 'FIRST_SEMESTER').sort((a, b) => a.denomination.localeCompare(b.denomination)),
+                                     title: I18n.t('primer_semestre')
                                  },
                                  {
-                                     data: this.props.subjects.filter(subject => subject.temporality === 'SECOND_SEMESTER').sort((a, b) => quitarAcentos(a.denomination).localeCompare(quitarAcentos(b.denomination))),
-                                     title: 'Segundo Semestre'
+                                     data: this.props.subjects.filter(subject => subject.temporality === 'SECOND_SEMESTER').sort((a, b) => a.denomination.localeCompare(b.denomination)),
+                                     title: I18n.t('segundo_semestre')
                                  }
                              ]}
                              keyExtractor={(item, index) => item.code}
                              contentContainerStyle={{flexGrow: 1}}
-
-
-                             ListEmptyComponent={
-                                 <View style={{
-                                     flex: 1,
-                                     justifyContent: 'center',
-                                     backgroundColor: '#e5fce8',
-                                     alignItems: 'center'
-                                 }}>
-                                     <Text>No se han encontrado asignaturas</Text>
-                                 </View>
-                             }
-                             refreshing={this.props.isLoading}
-                             onRefresh={() => this.props.getSubjects(this.props.bearerToken, this.props.idStudent)}
-                >
+                             ListEmptyComponent={<EmptyList/>}
+                             refreshing={false}
+                             onRefresh={() => this.props.getSubjects(this.props.bearerToken, this.props.idStudent)}>
                 </SectionList>
             </View>
         )
-
     }
+
 }
 
 export default CheckAttendanceScreen
-
-// renderSectionHeader={({section: {title}}) => (
-//     <Text style={{fontWeight: 'bold'}}>{title}</Text>
-// )}
-// keyExtractor={item => item.code}
-// ListEmptyComponent={
-// <View>
-//     <Text>No se han encontrado asignaturas</Text>
-// </View>
-// }

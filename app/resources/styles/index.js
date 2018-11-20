@@ -255,5 +255,72 @@ export const certifyQRStyles = StyleSheet.create({
     text: {
         fontFamily: 'Montserrat',
         fontSize: 16
+    },
+    cameraButtonContainer: {
+        flexDirection: 'column',
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        marginBottom: 10
+    },
+    cameraIcon: {
+        borderWidth: 1,
+        borderColor: 'rgba(0,0,0,0.2)',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 70,
+        height: 70,
+        backgroundColor: '#fff',
+        borderRadius: 100,
+    }
+})
+
+// Estilos usados en CheckAttendance Screen
+export const checkAttendanceStyles = StyleSheet.create({
+    emptyList: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: lightGreen,
+        alignItems: 'center'
+    },
+    sectionListContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: lightGreen
+    },
+    itemContainer: {
+        flex: 1,
+        backgroundColor: lightGreen,
+    },
+    itemTitle: {
+        fontFamily: 'Montserrat',
+        color: black,
+        fontWeight: 'bold',
+        fontSize: 16
+    },
+    itemSubtitle: {
+        fontFamily: 'Montserrat',
+        fontSize: 14,
+    },
+    avatarContainer: {
+        paddingRight: 10
+    },
+    avatarOverLayContainer: {
+        backgroundColor: statusBarLightGreenColor
+    },
+    avatarTitle: {
+        fontFamily: 'Montserrat',
+        fontSize: 15
+    },
+    sectionContainer: {
+        padding: 5,
+        paddingTop: 10,
+        paddingBottom: 10,
+        backgroundColor: '#d3a01ecc'
+    },
+    sectionTitle: {
+        fontFamily: 'Montserrat',
+        fontWeight: 'bold',
+        fontSize: 16
     }
 })

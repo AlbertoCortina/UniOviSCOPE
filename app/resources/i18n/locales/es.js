@@ -12,6 +12,7 @@ export default {
     error_datos_invalidos: 'Usuario o contraseña incorrectos',
     error_qr_invalido: 'Código QR inválido. Por favor inténtelo de nuevo',
     error_desconocido: 'Algo ha salido mal. Por favor inténtelo más tarde',
+    error_sin_asignaturas: 'No está matriculado de ninguna asignatura',
     acerca_de: 'Acerca de',
     version: 'Versión:',
     universidad_oviedo: 'Universidad de Oviedo',
@@ -21,6 +22,7 @@ export default {
     perfil: 'Perfil',
     certificar_presencia: 'Certificar presencia',
     certificar_presencia_qr: 'Escanee el código QR',
+    certificar_presencia_fr: 'Hazte un selfie',
     certificar_presencia_short: 'Certificar',
     revisar_asistencias: 'Revisar asistencias',
     revisar_asistencias_short: 'Revisar',
@@ -36,5 +38,12 @@ export default {
     error_codigo_qr_invalido: 'Código QR inválido',
     error_codigo_qr_invalido_descripcion: 'El código QR escaneado es inválido. Por favor inténtelo de nuevo.',
     error_certificar_presencia: 'No se ha podido certificar su presencia. Ya ha confirmado su asistencia a esta sesion.',
-    certificar_presencia_correcto: 'Se ha certificado su presencia a esta sesión correctamente'
+    certificar_presencia_correcto: 'Se ha certificado su presencia a esta' +
+        ' sesión correctamente',
+    curso: 'Curso: ',
+    teoria: 'Teoría',
+    practica: 'Práctica',
+    seminario: 'Seminario',
+    tutoria: 'Tutoría'
+
 }

@@ -1,11 +1,11 @@
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import Notification from '../custom/custom-notification'
 import deleteNotificationAction from '../../actions/deleteNotification-action'
 
 const mapStateToProps = (state, props) => {
     return {
-       notifications: state.notifications,
+        notifications: state.notifications,
     }
 }
 

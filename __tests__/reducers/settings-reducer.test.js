@@ -1,81 +1,81 @@
 import reducer from '../../app/reducers/settings-reducer'
-import {landingScreenHomeScreen, landingScreenCertifyScreen, faceRecognitionOn, faceRecognitionOff} from "../../app/actions";
+import * as actions from '../../app/actions'
 
 const initialState = {
-    landingScreen: 'HOME',
-    faceRecognition: 'ON'
+    landingScreen: 'Home',
+    faceRecognition: 'OFF'
 }
 
-describe('Settings Reducer',() => {
+describe('Settings Reducer', () => {
 
-    it('Should return default state', () => {
+    test('Should return default state', () => {
         expect(reducer(undefined, {})).toEqual(initialState)
     })
 
-    it('Should handle LANDING_SCREEN_HOME_SCREEN', () => {
-        expect(reducer(initialState, landingScreenHomeScreen())).toEqual({
-            landingScreen: 'HOME',
-            faceRecognition: 'ON'
-        })
-
-        expect(reducer(initialState, landingScreenCertifyScreen())).toEqual({
-            landingScreen: 'CERTIFY',
-            faceRecognition: 'ON'
-        })
-
-        expect(reducer(initialState, landingScreenHomeScreen())).toEqual({
-            landingScreen: 'HOME',
-            faceRecognition: 'ON'
-        })
-    })
-
-    it('Should handle LANDING_SCREEN_CERTIFY_SCREEN', () => {
-        expect(reducer(initialState, landingScreenCertifyScreen())).toEqual({
-            landingScreen: 'CERTIFY',
-            faceRecognition: 'ON'
-        })
-
-        expect(reducer(initialState, landingScreenHomeScreen())).toEqual({
-            landingScreen: 'HOME',
-            faceRecognition: 'ON'
-        })
-
-        expect(reducer(initialState, landingScreenCertifyScreen())).toEqual({
-            landingScreen: 'CERTIFY',
-            faceRecognition: 'ON'
-        })
-    })
-
-    it('Should handle FACE_RECOGNITION_ON', () => {
-        expect(reducer(initialState, faceRecognitionOn())).toEqual({
-            landingScreen: 'HOME',
-            faceRecognition: 'ON'
-        })
-
-        expect(reducer(initialState, faceRecognitionOff())).toEqual({
-            landingScreen: 'HOME',
+    test('Should handle LANDING_SCREEN_HOME_SCREEN', () => {
+        expect(reducer(initialState, actions.landingScreenHomeScreen())).toEqual({
+            landingScreen: 'Home',
             faceRecognition: 'OFF'
         })
 
-        expect(reducer(initialState, faceRecognitionOn())).toEqual({
-            landingScreen: 'HOME',
+        expect(reducer(initialState, actions.landingScreenCertifyScreen())).toEqual({
+            landingScreen: 'CertifyAttendance',
+            faceRecognition: 'OFF'
+        })
+
+        expect(reducer(initialState, actions.landingScreenHomeScreen())).toEqual({
+            landingScreen: 'Home',
+            faceRecognition: 'OFF'
+        })
+    })
+
+    test('Should handle LANDING_SCREEN_CERTIFY_SCREEN', () => {
+        expect(reducer(initialState, actions.landingScreenCertifyScreen())).toEqual({
+            landingScreen: 'CertifyAttendance',
+            faceRecognition: 'OFF'
+        })
+
+        expect(reducer(initialState, actions.landingScreenHomeScreen())).toEqual({
+            landingScreen: 'Home',
+            faceRecognition: 'OFF'
+        })
+
+        expect(reducer(initialState, actions.landingScreenCertifyScreen())).toEqual({
+            landingScreen: 'CertifyAttendance',
+            faceRecognition: 'OFF'
+        })
+    })
+
+    test('Should handle FACE_RECOGNITION_ON', () => {
+        expect(reducer(initialState, actions.faceRecognitionOn())).toEqual({
+            landingScreen: 'Home',
+            faceRecognition: 'ON'
+        })
+
+        expect(reducer(initialState, actions.faceRecognitionOff())).toEqual({
+            landingScreen: 'Home',
+            faceRecognition: 'OFF'
+        })
+
+        expect(reducer(initialState, actions.faceRecognitionOn())).toEqual({
+            landingScreen: 'Home',
             faceRecognition: 'ON'
         })
     })
 
-    it('Should handle FACE_RECOGNITION_OFF', () => {
-        expect(reducer(initialState, faceRecognitionOff())).toEqual({
-            landingScreen: 'HOME',
+    test('Should handle FACE_RECOGNITION_OFF', () => {
+        expect(reducer(initialState, actions.faceRecognitionOff())).toEqual({
+            landingScreen: 'Home',
             faceRecognition: 'OFF'
         })
 
-        expect(reducer(initialState, faceRecognitionOn())).toEqual({
-            landingScreen: 'HOME',
+        expect(reducer(initialState, actions.faceRecognitionOn())).toEqual({
+            landingScreen: 'Home',
             faceRecognition: 'ON'
         })
 
-        expect(reducer(initialState, faceRecognitionOff())).toEqual({
-            landingScreen: 'HOME',
+        expect(reducer(initialState, actions.faceRecognitionOff())).toEqual({
+            landingScreen: 'Home',
             faceRecognition: 'OFF'
         })
     })

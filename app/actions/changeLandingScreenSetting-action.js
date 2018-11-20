@@ -1,7 +1,13 @@
-import {CERTIFY_SCREEN, HOME_SCREEN, landingScreenCertifyScreen, landingScreenHomeScreen, loading} from "../actions";
+import {
+    CERTIFY_SCREEN,
+    HOME_SCREEN,
+    landingScreenCertifyScreen,
+    landingScreenHomeScreen
+} from '../actions'
 
 /**
- * Método que cambia la preferencia del usuario de pantalla de inicio de la aplicacion.
+ * Acción que cambia la preferencia del usuario de pantalla de inicio de la
+ * aplicacion.
  *
  * @param currentSetting Preferencia actual del usuario.
  * @returns {Function}

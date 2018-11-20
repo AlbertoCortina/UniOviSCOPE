@@ -1,8 +1,8 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import CertifyQrScreen from '../screens/certifyQr-screen'
-import verifyQRCodeAction from "../../actions/verifyQRCode-action";
-import certifyAttendanceAction from "../../actions/certifyAttendance-action";
+import verifyQRCodeAction from '../../actions/verifyQRCode-action'
+import certifyAttendanceAction from '../../actions/certifyAttendance-action'
 
 const mapStateToProps = (state, props) => {
     return {

@@ -1,5 +1,13 @@
-import {DONT_VALIDATE_ATTENDANCE_CERTIFICATE, VALIDATE_ATTENDANCE_CERTIFICATE} from "../actions";
+import {
+    DONT_VALIDATE_ATTENDANCE_CERTIFICATE,
+    VALIDATE_ATTENDANCE_CERTIFICATE
+} from '../actions'
 
+/**
+ * Estado inicial.
+ *
+ * @type {{validated: boolean, username: null, sessionToken: null, timestamp: null}}
+ */
 const initialState = {
     validated: false,
     username: null,
@@ -7,6 +15,13 @@ const initialState = {
     timestamp: null,
 }
 
+/**
+ * Reducer para modificar el estado del certificado de asistencia.
+ *
+ * @param state
+ * @param action
+ * @returns {{validated: boolean, username: null, sessionToken: null, timestamp: null}}
+ */
 export default function attendanceCertificateReducer(state = initialState, action) {
     switch (action.type) {
         case VALIDATE_ATTENDANCE_CERTIFICATE:

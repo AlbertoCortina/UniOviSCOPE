@@ -9,9 +9,21 @@ import {
 } from '../actions'
 import I18n from '../resources/i18n'
 
+/**
+ * Estado inicial.
+ *
+ * @type {Array}
+ */
 const initialState = []
 
-export default function errorReducer(state = initialState, action) {
+/**
+ * Reducer para modificar el estado de las notificaciones.
+ *
+ * @param state
+ * @param action
+ * @returns {*}
+ */
+export default function notificationReducer(state = initialState, action) {
     switch (action.type) {
         case NO_CONNECTION:
             return [...state, {

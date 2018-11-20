@@ -1,4 +1,4 @@
-import {NetInfo} from "react-native";
+import {NetInfo} from 'react-native'
 import {
     dontValidateAttendaceCertificate,
     NO_CONNECTION,
@@ -8,30 +8,41 @@ import {
     validateAttendaceCertificate,
     WRONG_CREDENTIALS,
     wrongCredentialsError
-} from "./index";
-import {VERIFY_ATTENDANCE_CERTIFICATE_URL} from "../util";
+} from './index'
+import {VERIFY_ATTENDANCE_CERTIFICATE_URL} from '../util'
 
+/**
+ * Acción que verifica que el código QR escaneado se válido.
+ *
+ * @param sessionToken Token de la sesión (contenido del código QR).
+ * @param bearerToken Token de seguridad del usuario.
+ * @param username Nombre de usuario.
+ * @returns {Function}
+ */
 export default function verifyQRCodeAction(sessionToken, bearerToken, username) {
     return (dispatch) => {
-        // dispatch(loading())
-
         verifyQRCode(sessionToken, bearerToken, username, dispatch)
     }
 }
 
+/**
+ * Método que verifica la validez del código QR escaneado
+ *
+ * @param sessionToken Token de la sesión (contenido del código QR).
+ * @param bearerToken Token de seguridad del usuario.
+ * @param username Nombre de usuario.
+ * @param dispatch Dispatcher.
+ */
 function verifyQRCode(sessionToken, bearerToken, username, dispatch) {
     let timestamp = new Date().getTime()
 
     NetInfo.isConnected.fetch()
         .then((isConnected) => {
             if (isConnected) {
-                return
+                return makeVerifyAttendanceCertificateRequest(bearerToken, username, sessionToken, timestamp)
             } else {
                 throw NO_CONNECTION
             }
-        })
-        .then(() => {
-            return makeVerifyAttendanceCertificateRequest(bearerToken, username, sessionToken, timestamp)
         })
         .then((response) => {
             if (response._bodyText) {
@@ -42,10 +53,7 @@ function verifyQRCode(sessionToken, bearerToken, username, dispatch) {
         })
         .catch((error) => {
             switch (error) {
-                case WRONG_CREDENTIALS:
-                    dispatch(wrongCredentialsError())
-                    break
-                case NO_CONNECTION:
+               case NO_CONNECTION:
                     dispatch(noConnectionError())
                     break
                 case UNKNOWN_ERROR:
@@ -56,6 +64,15 @@ function verifyQRCode(sessionToken, bearerToken, username, dispatch) {
         })
 }
 
+/**
+ * Método que realiza la petición para verificar la validez.
+ *
+ * @param sessionToken Token de la sesión (contenido del código QR).
+ * @param bearerToken Token de seguridad del usuario.
+ * @param username Nombre de usuario.
+ * @param timestamp Momento en el que fue escanedo el código QR.
+ * @returns {Promise<Response>}
+ */
 async function makeVerifyAttendanceCertificateRequest(bearerToken, username, sessionToken, timestamp) {
     try {
         return await fetch(VERIFY_ATTENDANCE_CERTIFICATE_URL, {

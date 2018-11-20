@@ -1,37 +1,41 @@
 import {
-    subjects,
-    loading,
     NO_CONNECTION,
     noConnectionError,
-    UNKNOWN_ERROR, unknownError,
-    notLoading
+    subjects,
+    UNKNOWN_ERROR,
+    unknownError
 } from '../actions'
-import {NetInfo} from "react-native";
-import {API_URL, FIND_LAST_YEAR_SUBJECTS_URL} from "../util";
+import {NetInfo} from 'react-native'
+import {FIND_LAST_YEAR_SUBJECTS_URL} from '../util'
 
-export default function getSubjectsAction(token, idStudent) {
+/**
+ * Acción que realiza la búsqueda de asignaturas para un estudiante.
+ *
+ * @param bearerToken Token de seguridad.
+ * @param idStudent Identificador del estudiante.
+ * @returns {Function}
+ */
+export default function getSubjectsAction(bearerToken, idStudent) {
     return (dispatch) => {
-
-        dispatch(loading())
-
-        setTimeout(function () {
-            findSubjects(token, idStudent, dispatch)
-        }, 1000);
-        
+        findSubjects(bearerToken, idStudent, dispatch)
     }
 }
 
-function findSubjects(token, idStudent, dispatch) {
+/**
+ * Método que realiza la busqueda de asignaturas.
+ *
+ * @param bearerToken Token de seguridad.
+ * @param idStudent Identificador del estudiante.
+ * @param dispatch Dispatcher.
+ */
+function findSubjects(bearerToken, idStudent, dispatch) {
     NetInfo.isConnected.fetch()
         .then((isConnected) => {
             if (isConnected) {
-                return
+                return makeFindLastYearSubjectsRequest(bearerToken, idStudent)
             } else {
                 throw NO_CONNECTION
             }
-        })
-        .then(() => {
-            return makeFindLastYearSubjectsRequest(token, idStudent)
         })
         .then((response) => {
             return transformResponse(response)
@@ -43,20 +47,29 @@ function findSubjects(token, idStudent, dispatch) {
             switch (error) {
                 case NO_CONNECTION:
                     dispatch(noConnectionError())
+                    break
                 case UNKNOWN_ERROR:
                 default:
                     dispatch(unknownError())
+                    break
             }
         })
 }
 
-async function makeFindLastYearSubjectsRequest(token, idStudent) {
+/**
+ * Método que realiza la petición de buscar las asignaturas.
+ *
+ * @param bearerToken Token de seguridad.
+ * @param idStudent Identificador del estudiante.
+ * @returns {Promise<any>}
+ */
+async function makeFindLastYearSubjectsRequest(bearerToken, idStudent) {
     try {
         let response = await fetch(String.format(FIND_LAST_YEAR_SUBJECTS_URL, idStudent), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': bearerToken
             },
         })
         return await response.json()
@@ -65,6 +78,13 @@ async function makeFindLastYearSubjectsRequest(token, idStudent) {
     }
 }
 
+/**
+ * Transforma la respuesta del servidor para adaptarlo al estado de la
+ * aplicacion.
+ *
+ * @param response Respuesta del servidor.
+ * @returns {Array}
+ */
 function transformResponse(response) {
     let subjects = []
     for (let i = 0; i < response.length; i++) {
@@ -79,6 +99,12 @@ function transformResponse(response) {
     return subjects
 }
 
+/**
+ * Transforma el número de curso a letra.
+ *
+ * @param course Curso.
+ * @returns {string}
+ */
 function transformCourseToString(course) {
     switch (course) {
         case 1:

@@ -4,17 +4,16 @@ import BottomTabNavigator from '../navigation/index'
 
 const mapStateToProps = (state, props) => {
     return {
-       landingScreen: state.settings.landingScreen,
+        landingScreen: state.settings.landingScreen,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    const actions = {
-
-    }
+    const actions = {}
     return bindActionCreators(actions, dispatch)
 }
 
-const BottomTabNavigatorContainer = connect(mapStateToProps, mapDispatchToProps)(BottomTabNavigator)
+const BottomTabNavigatorContainer =
+    connect(mapStateToProps, mapDispatchToProps)(BottomTabNavigator)
 
 export default BottomTabNavigatorContainer

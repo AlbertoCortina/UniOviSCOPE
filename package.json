@@ -1,6 +1,7 @@
 {
   "name": "UniOviSCOPE",
   "version": "1.0.0",
+  "author": "Alberto Cortina Eduarte",
   "private": true,
   "scripts": {
     "start": "react-native start --reset-cache",
@@ -17,6 +18,7 @@
     "react-native-elements": "^0.19.1",
     "react-native-i18n": "^2.0.15",
     "react-native-paper": "^2.1.1",
+    "react-native-simple-table": "0.0.3",
     "react-native-splash-screen": "^3.1.1",
     "react-native-vector-icons": "^6.0.1",
     "react-navigation": "^2.17.0",

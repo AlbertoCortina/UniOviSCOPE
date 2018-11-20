@@ -3,7 +3,7 @@ import {Image, Platform, ScrollView} from 'react-native'
 import {Button, Input, InputGroup, Text, Toast} from 'native-base'
 import {loginStyles as styles} from '../../resources/styles'
 import I18n from '../../resources/i18n'
-import {Icon} from "react-native-elements";
+import {Icon} from 'react-native-elements'
 
 /**
  * Clase LoginScreen.

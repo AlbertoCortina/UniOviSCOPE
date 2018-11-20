@@ -1,17 +1,27 @@
 import React from 'react'
-import {createStackNavigator} from 'react-navigation'
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
+import {createStackNavigator, createTabNavigator} from 'react-navigation'
+import {createMaterialBottomTabNavigator,} from 'react-navigation-material-bottom-tabs'
 import {Alert, Platform, Text, TouchableOpacity, View} from 'react-native'
 import {Icon} from 'react-native-elements'
 import {APP_AUTHOR, APP_NAME, APP_VERSION} from '../../util'
-import {navigationStyles as styles, orange, white} from '../../resources/styles'
+import {
+    darkGreen,
+    navigationStyles as styles,
+    orange,
+    white
+} from '../../resources/styles'
 import I18n from '../../resources/i18n'
 import HomeContainer from '../containers/home-container'
 import ProfileContainer from '../containers/profile-container'
 import SettingsContainer from '../containers/settings-container'
 import CheckAttendanceContainer from '../containers/checkAttendance-container'
 import CertifyQrContainer from '../containers/certifyQr-container'
-import CertifyFrContainer from "../containers/certifyFr-container"
+import CertifyFrContainer from '../containers/certifyFr-container'
+import TheorySessionsContainer from '../containers/theorySessions-container'
+import PracticeSessionsContainer from '../containers/practiceSessions-container'
+import SeminarSessionsContainer from '../containers/seminarSessions-container'
+import GroupTutorshipSessionsContainer
+    from "../containers/groupTutorshipSessions-container";
 
 /**
  * Método para mostrar la información de la aplicación.
@@ -19,7 +29,9 @@ import CertifyFrContainer from "../containers/certifyFr-container"
 function showAbout() {
     Alert.alert(
         I18n.t('acerca_de') + ' ' + APP_NAME,
-        I18n.t('version') + ' ' + APP_VERSION + '\n' + I18n.t('universidad_oviedo') + '\n' + I18n.t('autor') + ' ' + APP_AUTHOR,
+        I18n.t('version') + ' ' + APP_VERSION + '\n' +
+        I18n.t('universidad_oviedo') + '\n' +
+        I18n.t('autor') + ' ' + APP_AUTHOR,
         [
             {text: I18n.t('toast_aceptar')},
         ],
@@ -45,29 +57,31 @@ const CustomHeader = ({title, subtitle}) => (
 )
 
 /**
- * Componente personalizado para la parte izquierda de la cabecera.
+ * Componente personalizado para la parte izquierda de la cabecera en
+ * CertifyFr Screen.
  *
  * @constructor
  */
-const CustomHeaderLeft = Platform.select({
-    ios: () => (
+const CustomHeaderLeft = ({navigation}) => Platform.select({
+    ios:
         <TouchableOpacity transparent
                           style={styles.customHeaderLeft}
                           onPress={() => navigation.goBack()}>
             <Icon type='ionicon' name='ios-arrow-back' color={white}/>
         </TouchableOpacity>
-    ),
-    android: () => {
+    ,
+    android:
         <TouchableOpacity transparent
                           style={styles.customHeaderLeft}
                           onPress={() => navigation.goBack()}>
             <Icon type='ionicon' name='md-arrow-back' color={white}/>
         </TouchableOpacity>
-    }
 })
 
+
 /**
- * Componente personalizado para la parte derecha de la cabecera.
+ * Componente personalizado para la parte derecha de la cabecera en
+ * Settings Screen.
  *
  * @constructor
  */
@@ -92,6 +106,9 @@ const CustomHeaderRight = Platform.select({
     )
 })
 
+/**
+ * Pila de navegación para Home Screen.
+ */
 const HomeStack = createStackNavigator(
     {
         Home: {
@@ -105,6 +122,9 @@ const HomeStack = createStackNavigator(
     }
 )
 
+/**
+ * Pila de navegación para CertifyQR y CertifyFR.
+ */
 const CertifyAttendanceStack = createStackNavigator(
     {
         CertifyQR: {
@@ -121,9 +141,10 @@ const CertifyAttendanceStack = createStackNavigator(
             navigationOptions: ({navigation}) => ({
                 headerTitle: <CustomHeader
                     title={I18n.t('certificar_presencia')}
-                    subtitle={I18n.t('certificar_presencia_qr')}/>,
+                    subtitle={I18n.t('certificar_presencia_fr')}/>,
                 headerStyle: styles.headerStyle,
-                headerLeft: <CustomHeaderLeft/>
+                headerLeft: <CustomHeaderLeft
+                    navigation={navigation}/>
             })
         }
     },
@@ -132,6 +153,59 @@ const CertifyAttendanceStack = createStackNavigator(
     }
 )
 
+/**
+ * Pestañas de navegación para Check Attendance Detail.
+ */
+const CheckAttendanceDetailTabNavigator = createTabNavigator(
+    {
+        Theory: {
+            screen: TheorySessionsContainer,
+            navigationOptions: ({navigation}) => ({
+                tabBarLabel: I18n.t('teoria'),
+            })
+        },
+        Practice: {
+            screen: PracticeSessionsContainer,
+            navigationOptions: ({navigation}) => ({
+                tabBarLabel: I18n.t('practica'),
+            })
+        },
+        Seminar: {
+            screen: SeminarSessionsContainer,
+            navigationOptions: ({navigation}) => ({
+                tabBarLabel: I18n.t('seminario'),
+            })
+        },
+        GropTutorship: {
+            screen: GroupTutorshipSessionsContainer,
+            navigationOptions: ({navigation}) => ({
+                tabBarLabel: I18n.t('tutoria'),
+            })
+        }
+    },
+    {
+        tabBarOptions: {
+            labelStyle: {
+                fontFamily: 'Montserrat',
+                fontSize: 10,
+                color: white,
+            },
+            tabStyle: {
+                width: 90,
+            },
+            style: {
+                backgroundColor: darkGreen,
+            },
+            indicatorStyle: {
+                backgroundColor: orange
+            }
+        }
+    }
+)
+
+/**
+ * Pila de navegación para Check Attendance Screen.
+ */
 const CheckAttendanceStack = createStackNavigator(
     {
         CheckAttendance: {
@@ -141,12 +215,21 @@ const CheckAttendanceStack = createStackNavigator(
                 headerStyle: styles.headerStyle,
                 headerTitleStyle: styles.headerTitleStyle
             })
+        },
+        CheckAttendanceDetail: {
+            screen: CheckAttendanceDetailTabNavigator,
+            navigationOptions: ({navigation}) => ({
+                title: navigation.getParam('subject'),
+                headerStyle: styles.headerStyle,
+                headerTitleStyle: styles.headerTitleStyle,
+                headerLeft: <CustomHeaderLeft navigation={navigation}/>
+            })
         }
     }
 )
 
 /**
- * Pila de navegación para Settings Screen
+ * Pila de navegación para Settings Screen.
  */
 const SettingsStack = createStackNavigator(
     {
@@ -162,6 +245,9 @@ const SettingsStack = createStackNavigator(
     }
 )
 
+/**
+ * Pila de navegación para Profile Screen
+ */
 const ProfileStack = createStackNavigator(
     {
         Profile: {
