@@ -9,6 +9,9 @@ const mockStore = configureMockStore([thunk])
 
 describe('LogIn Action Tests', () => {
     let store
+    let username = 'UO123456'
+    let password = '123456'
+    let bearerToken = 'bearerToken'
 
     beforeEach(() => {
         store = mockStore()
@@ -17,6 +20,7 @@ describe('LogIn Action Tests', () => {
     afterEach(() => {
         fetchMock.reset()
         fetchMock.restore()
+        store.clearActions()
         jest.resetModules()
     })
 
@@ -37,9 +41,9 @@ describe('LogIn Action Tests', () => {
                     }
                 }
             }
-        });
+        })
 
-        store.dispatch(logInAction('UO123456', '123456'))
+        store.dispatch(logInAction(username, password))
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
@@ -65,15 +69,14 @@ describe('LogIn Action Tests', () => {
                     }
                 }
             }
-        });
+        })
 
         fetchMock.mock(LOG_IN_URL, 200)
 
-        store.dispatch(logInAction('username', 'password'))
+        store.dispatch(logInAction(username, password))
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
-
             done()
         }, 1500)
 
@@ -88,11 +91,11 @@ describe('LogIn Action Tests', () => {
                 bearerToken: 'bearerToken',
                 id: 'id',
                 dni: 'dni',
-                username: 'username',
+                username: username,
                 firstname: 'firstname',
                 lastname: 'lastname',
                 firstnameAndLastname: 'firstname lastname',
-                email: 'username@uniovi.es',
+                email: username + '@uniovi.es',
                 role: 'role'
             }
         ]
@@ -107,48 +110,36 @@ describe('LogIn Action Tests', () => {
                     }
                 }
             }
-        });
+        })
 
         fetchMock
             .mock(LOG_IN_URL,
                 {
                     headers: {
-                        'Authorization': 'bearerToken'
-                    }
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': bearerToken
                     },
                     body: {
-                        userName: 'username',
-                        password: 'password'
+                        userName: username,
+                        password: password
                     }
                 })
-            .mock(String.format(FIND_USER_DETAILS_URL, 'username'),
+            .mock(String.format(FIND_USER_DETAILS_URL, username),
                 {
-                    headers: {
-                        'Authorization': 'bearerToken'
-                    },
+
                     id: 'id',
                     dni: 'dni',
                     userName: 'username',
                     firstName: 'firstname',
                     lastName: 'lastname',
                     role: 'role'
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'bearerToken'
-                    },
-                })
+                }
+            )
 
-        store.dispatch(logInAction('username', 'password'))
+        store.dispatch(logInAction(username, password))
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
-
             done()
         }, 1500)
 
@@ -176,7 +167,7 @@ describe('LogIn Action Tests', () => {
 
         fetchMock.mock(LOG_IN_URL, {throws: 'Server not found'})
 
-        store.dispatch(logInAction('username', 'password'))
+        store.dispatch(logInAction(username, password))
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
@@ -203,27 +194,23 @@ describe('LogIn Action Tests', () => {
                     }
                 }
             }
-        });
+        })
 
         fetchMock
             .mock(LOG_IN_URL,
                 {
                     headers: {
-                        'Authorization': 'bearerToken'
-                    }
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': bearerToken
                     },
                     body: {
-                        userName: 'username',
-                        password: 'password'
+                        userName: username,
+                        password: password
                     }
                 })
-            .mock(String.format(FIND_USER_DETAILS_URL, 'username'), {throws: 'Server not found'})
+            .mock(String.format(FIND_USER_DETAILS_URL, username), {throws: 'Server not found'})
 
-        store.dispatch(logInAction('username', 'password'))
+        store.dispatch(logInAction(username, password))
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)

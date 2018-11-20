@@ -13,6 +13,7 @@ describe('LogOut Action', () => {
     })
 
     test('Should dispatch loading and dontAuthenticate action', (done) => {
+
         const expectedActions = [
             {type: actions.LOADING},
             {type: actions.DONT_AUTHENTICATE}

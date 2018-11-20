@@ -3,7 +3,6 @@ import changeLandingScreenSettingAction
     from '../../app/actions/changeLandingScreenSetting-action'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import {LANDING_SCREEN_CERTIFY_SCREEN} from "../../app/actions/index";
 
 const mockStore = configureMockStore([thunk])
 

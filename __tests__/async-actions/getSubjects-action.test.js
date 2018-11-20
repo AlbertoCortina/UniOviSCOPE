@@ -9,6 +9,8 @@ const mockStore = configureMockStore([thunk])
 
 describe('GetSubjects Action', () => {
     let store
+    const bearerToken = 'bearerToken'
+    const idStudent = 1
 
     beforeEach(() => {
         store = mockStore()
@@ -17,10 +19,11 @@ describe('GetSubjects Action', () => {
     afterEach(() => {
         fetchMock.reset()
         fetchMock.restore()
+        store.clearActions()
         jest.resetModules()
     })
 
-    test('Should dispatch noConnection', () => {
+    test('Should dispatch noConnection', (done) => {
 
         const expectedActions = [
             {type: actions.NO_CONNECTION}
@@ -38,18 +41,37 @@ describe('GetSubjects Action', () => {
             }
         });
 
-        store.dispatch(getSubjectsAction('bearerToken', 1))
+        store.dispatch(getSubjectsAction(bearerToken, idStudent))
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
-        }, 1000)
+            done()
+        }, 500)
 
     })
 
     test('Should dispatch subjects', (done) => {
 
         const expectedActions = [
-            {type: actions.SUBJECTS}
+            {
+                type: actions.SUBJECTS,
+                subjects: [
+                    {
+                        id: 1,
+                        code: 'code1',
+                        denomination: 'denomination1',
+                        course: 'Primero',
+                        temporality: 'temporality1'
+                    },
+                    {
+                        id: 2,
+                        code: 'code2',
+                        denomination: 'denomination2',
+                        course: 'Segundo',
+                        temporality: 'temporality2'
+                    }
+                ]
+            }
         ]
 
         jest.mock('NetInfo', () => {
@@ -65,20 +87,31 @@ describe('GetSubjects Action', () => {
         })
 
         fetchMock
-            .mock(String.format(FIND_LAST_YEAR_SUBJECTS_URL, 1), 200, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'bearerToken'
-                },
-            })
+            .mock(String.format(FIND_LAST_YEAR_SUBJECTS_URL, idStudent),
+                [
+                    {
+                        id: 1,
+                        code: 'code1',
+                        denomination: 'denomination1',
+                        course: 1,
+                        temporality: 'temporality1'
+                    },
+                    {
+                        id: 2,
+                        code: 'code2',
+                        denomination: 'denomination2',
+                        course: 2,
+                        temporality: 'temporality2'
+                    }
+                ]
+            )
 
-        store.dispatch(getSubjectsAction('bearerToken', 1))
+        store.dispatch(getSubjectsAction(bearerToken, idStudent))
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
             done()
-        }, 2000)
-
+        }, 500)
 
     })
 
@@ -100,14 +133,15 @@ describe('GetSubjects Action', () => {
             }
         });
 
-        fetchMock.mock(String.format(FIND_LAST_YEAR_SUBJECTS_URL, 1), {throws: 'Server not found'})
+        fetchMock.mock(String.format(FIND_LAST_YEAR_SUBJECTS_URL, idStudent), {throws: 'Server not found'})
 
-        store.dispatch(getSubjectsAction('bearerToken', 1))
+        store.dispatch(getSubjectsAction(bearerToken, idStudent))
 
         setTimeout(() => {
             expect(store.getActions()).toEqual(expectedActions)
             done()
-        }, 1500)
+        }, 500)
+
     })
 
 })
