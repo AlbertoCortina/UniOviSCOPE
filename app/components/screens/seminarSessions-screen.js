@@ -1,5 +1,6 @@
 import React from 'react'
 import {Text, View} from 'react-native'
+import CustomTable from "../custom/custom-table";
 
 /**
  * Clase SeminarSessionsScreen.
@@ -14,12 +15,11 @@ class SeminarSessionsScreen extends React.Component {
         const idSubject = this.props.navigation.getParam('idSubject')
 
         this.props.getSessions(this.props.bearerToken, this.props.idStudent, idSubject, 'SEMINAR')
-        console.log('seminario')
     }
 
     render() {
         return (
-            <View><Text>{this.props.theorySessions}</Text></View>
+            <CustomTable data={this.props.seminarSessions}/>
         )
     }
 

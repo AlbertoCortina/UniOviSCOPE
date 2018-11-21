@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
+    "intl": "^1.2.5",
+    "moment": "^2.22.2",
     "native-base": "^2.8.1",
     "react": "16.5.0",
     "react-native": "0.57.1",

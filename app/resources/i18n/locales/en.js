@@ -39,9 +39,15 @@ export default {
     error_certificar_presencia: 'Could not certificate your attendance. You have confirmed it before.',
     certificar_presencia_correcto: 'Attendance certificated sucessfully',
     primer_semestre: 'First term',
-    segundo_semestre: 'Seconde term',
+    segundo_semestre: 'Second term',
+    curso: 'Course: ',
     teoria: 'Theory',
     practica: 'Practice',
     seminario: 'Seminar',
-    tutoria: 'Tutor'
+    tutoria: 'Tutor',
+    hola: '¡Hi ',
+    bienvenido: 'Welcome to UniOviSCOPE',
+    grupo: 'Group',
+    localizacion: 'Location',
+    fecha: 'Date'
 }

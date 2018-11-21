@@ -1,8 +1,10 @@
 import {
     GROUP_TUTORSHIP_SESSIONS,
     groupTutorshipSessions,
+    loading,
     NO_CONNECTION,
     noConnectionError,
+    notLoading,
     PRACTICE_SESSIONS,
     practiceSessions,
     SEMINAR_SESSIONS,
@@ -18,9 +20,12 @@ import {
     FIND_STUDENT_SESSION_ATTENDANCE_URL
 } from '../util'
 import {sessions} from "./index";
+import moment, {Moment} from "moment";
 
 export default function getSessionsAction(bearerToken, idStudent, idSubject, sessionType) {
     return (dispatch) => {
+        dispatch(loading())
+
         getSessions(bearerToken, idStudent, idSubject, sessionType, dispatch)
     }
 }
@@ -51,19 +56,23 @@ function getSessions(bearerToken, idStudent, idSubject, sessionType, dispatch) {
                 case 'GROUP_TUTORSHIP':
                     dispatch(sessions(GROUP_TUTORSHIP_SESSIONS, sessionsResponse))
                     break
-                default:
-                    break
             }
         })
         .catch((error) => {
             switch (error) {
                 case NO_CONNECTION:
                     dispatch(noConnectionError())
+                    break
                 case UNKNOWN_ERROR:
                 default:
                     dispatch(unknownError())
                     break
             }
+        })
+        .finally(() => {
+            setTimeout(() => {
+                dispatch(notLoading())
+            }, 3000)
         })
 }
 
@@ -110,7 +119,7 @@ async function makeFindStudentSessionAttendanceRequest(bearerToken, idStudent, i
                 'Authorization': bearerToken
             },
         })
-        return response.bodyText != '';
+        return response._bodyText == '' ? '\u274C' : '\u2714';
     } catch (error) {
         throw UNKNOWN_ERROR
     }
@@ -129,13 +138,40 @@ async function transformResponse(response, bearerToken, idStudent) {
     for (let i = 0; i < response.length; i++) {
         sessions[i] = {
             id: response[i].id,
-            start: new Date(response[i].start).toLocaleDateString(),
-            end: response[i].end,
+            date: transformDate(response[i].start),
             location: response[i].location,
             groupCode: response[i].group.code,
-            assistence: await makeFindStudentSessionAttendanceRequest(bearerToken, idStudent, response[i].id),
+            assistence: await getAssistence(response[i].start, bearerToken, idStudent, response[i].id)
         }
     }
+    return sessions.sort((a, b) => a.id > b.id)
+}
 
-    return sessions
+/**
+ * Método para obtener un símbolo que represente la asistencia.
+ *
+ * @param startDate
+ * @param bearerToken
+ * @param idStudent
+ * @param idSession
+ * @returns {Promise<*>}
+ */
+async function getAssistence(startDate, bearerToken, idStudent, idSession) {
+    if (new Date(startDate) > new Date()) {
+        return '-'
+    } else {
+        return await makeFindStudentSessionAttendanceRequest(bearerToken, idStudent, idSession)
+    }
+}
+
+/**
+ * Método para transformar la fecha a cadena de texto.
+ *
+ * @param startDate
+ * @returns {string}
+ */
+function transformDate(startDate) {
+    return moment(new Date(startDate).toLocaleString('es')).format('DD/MM/YYYY')
+        .concat(' ')
+        .concat(moment(new Date(startDate).toLocaleString('es')).format('H:mm'))
 }

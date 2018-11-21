@@ -31,6 +31,7 @@ describe('GetSessions Actions', () => {
     test('Should dispatch noConnection', (done) => {
 
         const expectedActions = [
+            {type: actions.LOADING},
             {type: actions.NO_CONNECTION}
         ]
 
@@ -59,17 +60,17 @@ describe('GetSessions Actions', () => {
         sessionType = 'THEORY'
 
         const expectedActions = [
+            {type: actions.LOADING},
             {
                 type: actions.THEORY_SESSIONS,
                 sessionsValues:
                     [
                         {
                             id: 1,
-                            start: 12345,
-                            end: 12345,
+                            date: '01/01/1970 1:00',
                             location: 'location1',
                             groupCode: 'code1',
-                            assistence: true
+                            assistence: '\u2714'
                         }
                     ]
             }
@@ -93,7 +94,6 @@ describe('GetSessions Actions', () => {
                     {
                         id: 1,
                         start: 12345,
-                        end: 12345,
                         location: 'location1',
                         group: {
                             code: 'code1'
@@ -116,17 +116,17 @@ describe('GetSessions Actions', () => {
         sessionType = 'PRACTICE'
 
         const expectedActions = [
+            {type: actions.LOADING},
             {
                 type: actions.PRACTICE_SESSIONS,
                 sessionsValues:
                     [
                         {
                             id: 1,
-                            start: 12345,
-                            end: 12345,
+                            date: '01/01/1970 1:00',
                             location: 'location1',
                             groupCode: 'code1',
-                            assistence: true
+                            assistence: '\u2714'
                         }
                     ]
             }
@@ -174,17 +174,17 @@ describe('GetSessions Actions', () => {
         sessionType = 'SEMINAR'
 
         const expectedActions = [
+            {type: actions.LOADING},
             {
                 type: actions.SEMINAR_SESSIONS,
                 sessionsValues:
                     [
                         {
                             id: 1,
-                            start: 12345,
-                            end: 12345,
+                            date: '01/01/1970 1:00',
                             location: 'location1',
                             groupCode: 'code1',
-                            assistence: true
+                            assistence: '\u2714'
                         }
                     ]
             }
@@ -232,17 +232,17 @@ describe('GetSessions Actions', () => {
         sessionType = 'GROUP_TUTORSHIP'
 
         const expectedActions = [
+            {type: actions.LOADING},
             {
                 type: actions.GROUP_TUTORSHIP_SESSIONS,
                 sessionsValues:
                     [
                         {
                             id: 1,
-                            start: 12345,
-                            end: 12345,
+                            date: '01/01/1970 1:00',
                             location: 'location1',
                             groupCode: 'code1',
-                            assistence: true
+                            assistence: '\u2714'
                         }
                     ]
             }
@@ -290,6 +290,7 @@ describe('GetSessions Actions', () => {
         sessionType = 'THEORY'
 
         const expectedActions = [
+            {type: actions.LOADING},
             {type: actions.UNKNOWN_ERROR}
         ]
 
@@ -326,6 +327,7 @@ describe('GetSessions Actions', () => {
         sessionType = 'THEORY'
 
         const expectedActions = [
+            {type: actions.LOADING},
             {type: actions.UNKNOWN_ERROR}
         ]
 

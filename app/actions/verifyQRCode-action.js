@@ -75,7 +75,7 @@ function verifyQRCode(sessionToken, bearerToken, username, dispatch) {
  */
 async function makeVerifyAttendanceCertificateRequest(bearerToken, username, sessionToken, timestamp) {
     try {
-        return await fetch(VERIFY_ATTENDANCE_CERTIFICATE_URL, {
+        let response = await fetch(VERIFY_ATTENDANCE_CERTIFICATE_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,6 +87,7 @@ async function makeVerifyAttendanceCertificateRequest(bearerToken, username, ses
                 scanned: timestamp
             }),
         })
+        return response
     } catch (error) {
         throw UNKNOWN_ERROR
     }

@@ -3,7 +3,9 @@ import {connect} from 'react-redux'
 import HomeScreen from '../screens/home-screen'
 
 const mapStateToProps = (state, props) => {
-    return {}
+    return {
+        name: state.userData.firstname
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {

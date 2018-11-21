@@ -4,12 +4,7 @@ import {createMaterialBottomTabNavigator,} from 'react-navigation-material-botto
 import {Alert, Platform, Text, TouchableOpacity, View} from 'react-native'
 import {Icon} from 'react-native-elements'
 import {APP_AUTHOR, APP_NAME, APP_VERSION} from '../../util'
-import {
-    darkGreen,
-    navigationStyles as styles,
-    orange,
-    white
-} from '../../resources/styles'
+import {navigationStyles as styles, orange, white} from '../../resources/styles'
 import I18n from '../../resources/i18n'
 import HomeContainer from '../containers/home-container'
 import ProfileContainer from '../containers/profile-container'
@@ -185,20 +180,10 @@ const CheckAttendanceDetailTabNavigator = createTabNavigator(
     },
     {
         tabBarOptions: {
-            labelStyle: {
-                fontFamily: 'Montserrat',
-                fontSize: 10,
-                color: white,
-            },
-            tabStyle: {
-                width: 90,
-            },
-            style: {
-                backgroundColor: darkGreen,
-            },
-            indicatorStyle: {
-                backgroundColor: orange
-            }
+            labelStyle: styles.labelStyle,
+            tabStyle: styles.tabStyle,
+            style: styles.tabBarContainer,
+            indicatorStyle: styles.tabIndicatorStyle
         }
     }
 )

@@ -40,10 +40,17 @@ export default {
     error_certificar_presencia: 'No se ha podido certificar su presencia. Ya ha confirmado su asistencia a esta sesion.',
     certificar_presencia_correcto: 'Se ha certificado su presencia a esta' +
         ' sesión correctamente',
+    primer_semestre: 'Primer semestre',
+    segundo_semestre: 'Segundo semestre',
     curso: 'Curso: ',
     teoria: 'Teoría',
     practica: 'Práctica',
     seminario: 'Seminario',
-    tutoria: 'Tutoría'
+    tutoria: 'Tutoría',
+    hola: '¡Hola ',
+    bienvenido: 'Bienvenido a UniOviSCOPE',
+    grupo: 'Grupo',
+    localizacion: 'Localizacion',
+    fecha: 'Fecha'
 
 }

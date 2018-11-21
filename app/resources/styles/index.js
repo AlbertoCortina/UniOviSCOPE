@@ -34,6 +34,14 @@ export const activityIndicatorStyles = StyleSheet.create({
     },
 })
 
+// Estilos usados en Custom Table
+export const tableStyles = StyleSheet.create({
+    container: {
+        flex:1,
+        backgroundColor:lightGreen
+    }
+})
+
 //Estilos usados en Start Screen
 export const startStyles = StyleSheet.create({
     container: {
@@ -111,7 +119,7 @@ export const homeStyles = StyleSheet.create({
     },
     imageBackground: {
         height: widthscreen * 90 / 100,
-        opacity: 0.1,
+        opacity: 0.05,
         position: 'absolute',
         width: widthscreen * 90 / 100,
     },
@@ -122,6 +130,16 @@ export const homeStyles = StyleSheet.create({
     },
     buttonIcon: {},
     buttonText: {},
+    title: {
+        fontFamily: 'Montserrat',
+        fontWeight: 'bold',
+        fontSize: 35
+    },
+    subtitle: {
+        fontFamily: 'Montserrat',
+        fontWeight: 'bold',
+        fontSize: 25
+    }
 })
 
 //Estilos usados en Profile Screen
@@ -157,7 +175,7 @@ export const profileStyles = StyleSheet.create({
     buttonRow: {
         flexDirection: 'row',
         justifyContent: 'center',
-        flex: 1,
+        flex: 3,
     },
     button: {
         backgroundColor: orange,
@@ -238,6 +256,20 @@ export const navigationStyles = StyleSheet.create({
     },
     barStyle: {
         backgroundColor: darkGreen
+    },
+    labelStyle: {
+        fontFamily: 'Montserrat',
+        fontSize: 10,
+        color: white,
+    },
+    tabStyle: {
+        width: 90
+    },
+    tabBarContainer: {
+        backgroundColor: darkGreen
+    },
+    tabIndicatorStyle: {
+        backgroundColor: orange
     }
 })
 
