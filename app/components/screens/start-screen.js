@@ -4,7 +4,7 @@ import BottomTabNavigatorContainer
     from '../containers/bottomTabNavigator-container'
 import {StatusBar, View} from 'react-native'
 import ActivityIndicator from '../custom/custom-activityIndicator'
-import Notification from '../containers/notification-container'
+import MyNotification from '../containers/notification-container'
 import {
     startStyles as styles,
     statusBarDarkGreenColor,
@@ -30,7 +30,7 @@ class StartScreen extends React.Component {
                     <LoginContainer/>
                     <ActivityIndicator isLoading={this.props.isLoading}
                                        size={80}/>
-                    <Notification/>
+                    <MyNotification/>
                 </View>
             )
         } else {
@@ -42,7 +42,7 @@ class StartScreen extends React.Component {
                     <BottomTabNavigatorContainer/>
                     <ActivityIndicator isLoading={this.props.isLoading}
                                        size={80}/>
-                    <Notification/>
+                    <MyNotification/>
                 </View>
             )
         }

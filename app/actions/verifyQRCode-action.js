@@ -45,7 +45,7 @@ function verifyQRCode(sessionToken, bearerToken, username, dispatch) {
             }
         })
         .then((response) => {
-            if (response._bodyText) {
+            if (response._bodyText === 'true') {
                 dispatch(validateAttendaceCertificate(username, sessionToken, timestamp))
             } else {
                 dispatch(dontValidateAttendaceCertificate())
@@ -83,7 +83,7 @@ async function makeVerifyAttendanceCertificateRequest(bearerToken, username, ses
             },
             body: JSON.stringify({
                 userName: username,
-                bearerToken: sessionToken,
+                token: sessionToken,
                 scanned: timestamp
             }),
         })

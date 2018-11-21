@@ -1,9 +1,9 @@
 import {NetInfo} from 'react-native'
 import {
     certify,
-    dontCertifyAttendance,
+    dontCertifyAttendance, dontValidateAttendaceCertificate,
     NO_CONNECTION,
-    noConnectionError,
+    noConnectionError, resetAttendanceCertificate,
     UNKNOWN_ERROR,
     unknownError
 } from './index'

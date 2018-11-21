@@ -34,4 +34,13 @@ describe('AttendanceCertificate Reducer', () => {
         )
     })
 
+    test('Should handle DONT_CERTIFY', () => {
+        expect(reducer(initialState, actions.dontCertifyAttendance())).toEqual({
+                validated: false,
+                username: null,
+                sessionToken: null,
+                timestamp: null
+            }
+        )
+    })
 })

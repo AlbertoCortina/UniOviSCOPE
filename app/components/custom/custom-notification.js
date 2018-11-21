@@ -3,14 +3,14 @@ import {Toast} from 'native-base'
 import I18n from '../../resources/i18n'
 
 /**
- * Clase Notification.
+ * Clase MyNotification.
  *
  * Componente personalizado para mostrar las notificaiones de tipo toast de la
  * aplicación.
  *
  * @author Alberto Cortina Eduarte
  */
-class Notification extends React.Component {
+class MyNotification extends React.Component {
 
     componentDidUpdate() {
         if (this.props.notifications.length != 0) {
@@ -31,4 +31,4 @@ class Notification extends React.Component {
 
 }
 
-export default Notification
+export default MyNotification

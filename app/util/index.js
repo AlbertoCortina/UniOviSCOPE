@@ -7,7 +7,7 @@ export const APP_AUTHOR = json.author
 
 //API URLs
 export const API_URL = 'http://ec2-52-203-177-158.compute-1.amazonaws.com:8080/UniOviSCOPE'
-// export const API_URL = 'http://192.168.1.48:8080/uniovi-scope'
+// export const API_URL = 'http://192.168.0.19:8080/uniovi-scope'
 export const LOG_IN_URL = API_URL + '/common/logIn'
 export const FIND_USER_DETAILS_URL = API_URL + '/common/findUserDetails?userName={0}'
 export const FIND_LAST_YEAR_SUBJECTS_URL = API_URL + '/student/findLastYearSubjects?studentId={0}'

@@ -1,4 +1,5 @@
 import {
+    DONT_CERTIFY_ATTENDANCE,
     DONT_VALIDATE_ATTENDANCE_CERTIFICATE,
     VALIDATE_ATTENDANCE_CERTIFICATE
 } from '../actions'
@@ -32,6 +33,7 @@ export default function attendanceCertificateReducer(state = initialState, actio
                 sessionToken: action.sessionToken,
                 timestamp: action.timestamp
             }
+        case DONT_CERTIFY_ATTENDANCE:
         case DONT_VALIDATE_ATTENDANCE_CERTIFICATE:
             return {
                 ...state,

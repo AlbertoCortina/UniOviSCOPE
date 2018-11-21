@@ -1,6 +1,6 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import Notification from '../custom/custom-notification'
+import MyNotification from '../custom/custom-notification'
 import deleteNotificationAction from '../../actions/deleteNotification-action'
 
 const mapStateToProps = (state, props) => {
@@ -16,6 +16,6 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(actions, dispatch)
 }
 
-const NotificationContainer = connect(mapStateToProps, mapDispatchToProps)(Notification)
+const NotificationContainer = connect(mapStateToProps, mapDispatchToProps)(MyNotification)
 
 export default NotificationContainer

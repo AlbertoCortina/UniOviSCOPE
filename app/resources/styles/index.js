@@ -263,7 +263,7 @@ export const navigationStyles = StyleSheet.create({
         color: white,
     },
     tabStyle: {
-        width: 90
+        width: widthscreen/4
     },
     tabBarContainer: {
         backgroundColor: darkGreen

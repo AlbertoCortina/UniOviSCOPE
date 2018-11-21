@@ -55,12 +55,12 @@ class ProfileScreen extends React.Component {
                 </View>
 
                 <View style={styles.buttonRow}>
-                    <Button style={styles.button}
-                            onPress={() => {
-                                this.props.logOut()
-                            }}>
-                        <Text>{I18n.t('cerrar_sesion')}</Text>
-                    </Button>
+                    {/*<Button style={styles.button}*/}
+                            {/*onPress={() => {*/}
+                                {/*this.props.logOut()*/}
+                            {/*}}>*/}
+                        {/*<Text>{I18n.t('cerrar_sesion')}</Text>*/}
+                    {/*</Button>*/}
                 </View>
             </ScrollView>
         )

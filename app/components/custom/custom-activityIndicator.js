@@ -52,14 +52,14 @@ class ActivityIndicator extends React.Component {
                                          width: this.props.size,
                                          height: this.props.size
                                      }}
-                                     source={require('../../resources/images/logo-letras.png')}>
+                                     source={require('../../resources/images/logo_letras.png')}>
                         <Animated.Image resizeMode={'contain'}
                                         style={{
                                             width: this.props.size,
                                             height: this.props.size,
                                             transform: [{rotate: spin}]
                                         }}
-                                        source={require('../../resources/images/logo-circulo.png')}/>
+                                        source={require('../../resources/images/logo_circulo.png')}/>
                     </ImageBackground>
                 </View>
             </Modal>
