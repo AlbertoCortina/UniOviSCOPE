@@ -1,5 +1,5 @@
 import React from 'react'
-import {createStackNavigator, createTabNavigator} from 'react-navigation'
+import {createStackNavigator, createTabNavigator, TabBarTop} from 'react-navigation'
 import {createMaterialBottomTabNavigator,} from 'react-navigation-material-bottom-tabs'
 import {Alert, Platform, Text, TouchableOpacity, View} from 'react-native'
 import {Icon} from 'react-native-elements'
@@ -61,6 +61,7 @@ const CustomHeaderLeft = ({navigation}) => Platform.select({
     ios:
         <TouchableOpacity transparent
                           style={styles.customHeaderLeft}
+                          style={{marginTop: -13, padding:20}}
                           onPress={() => navigation.goBack()}>
             <Icon type='ionicon' name='ios-arrow-back' color={white}/>
         </TouchableOpacity>
@@ -84,10 +85,11 @@ const CustomHeaderRight = Platform.select({
     ios: () => (
         <TouchableOpacity transparent
                           style={styles.customHeaderRight}
+                          style={{marginTop: -22, padding:20}}
                           onPress={() => {
                               showAbout()
                           }}>
-            <Icon type='ionicon' name='ios-help' color={white} size={25}/>
+            <Icon type='ionicon' name='ios-help' color={white} size={40}/>
         </TouchableOpacity>
     ),
     android: () => (
@@ -179,6 +181,8 @@ const CheckAttendanceDetailTabNavigator = createTabNavigator(
         }
     },
     {
+        tabBarComponent: TabBarTop,
+        tabBarPosition: 'top',
         tabBarOptions: {
             labelStyle: styles.labelStyle,
             tabStyle: styles.tabStyle,

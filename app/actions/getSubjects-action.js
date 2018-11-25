@@ -7,6 +7,7 @@ import {
 } from '../actions'
 import {NetInfo} from 'react-native'
 import {FIND_LAST_YEAR_SUBJECTS_URL} from '../util'
+import I18n from '../resources/i18n'
 
 /**
  * Acción que realiza la búsqueda de asignaturas para un estudiante.
@@ -108,13 +109,13 @@ function transformResponse(response) {
 function transformCourseToString(course) {
     switch (course) {
         case 1:
-            return 'Primero'
+            return I18n.t('primero')
         case 2:
-            return 'Segundo'
+            return I18n.t('segundo')
         case 3:
-            return 'Tercero'
+            return I18n.t('tercero')
         case 4:
-            return 'Cuarto'
+            return I18n.t('cuarto')
         default:
             return ''
     }

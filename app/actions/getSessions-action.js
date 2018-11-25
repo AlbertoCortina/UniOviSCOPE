@@ -171,7 +171,7 @@ async function getAssistence(startDate, bearerToken, idStudent, idSession) {
  * @returns {string}
  */
 function transformDate(startDate) {
-    return moment(new Date(startDate).toLocaleString('es')).format('DD/MM/YYYY')
+    return moment(new Date(startDate).toLocaleString('en')).format('DD/MM/YYYY')
         .concat(' ')
-        .concat(moment(new Date(startDate).toLocaleString('es')).format('H:mm'))
+        .concat(moment(new Date(startDate).toLocaleString('en')).format('H:mm'))
 }

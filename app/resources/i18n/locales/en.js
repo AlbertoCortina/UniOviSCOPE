@@ -49,5 +49,9 @@ export default {
     bienvenido: 'Welcome to UniOviSCOPE',
     grupo: 'Group',
     localizacion: 'Location',
-    fecha: 'Date'
+    fecha: 'Date',
+    primero: 'First',
+    segundo: 'Second',
+    tercero: 'Third',
+    cuarto:'Fourth'
 }

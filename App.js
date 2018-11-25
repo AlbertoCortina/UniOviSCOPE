@@ -17,6 +17,7 @@ class App extends React.Component {
 
     renderLoading() {
         setTimeout(() => SplashScreen.hide(), 1000);
+        console.disableYellowBox = true;
     }
 
     render() {

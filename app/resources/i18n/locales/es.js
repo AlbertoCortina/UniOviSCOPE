@@ -51,6 +51,9 @@ export default {
     bienvenido: 'Bienvenido a UniOviSCOPE',
     grupo: 'Grupo',
     localizacion: 'Localizacion',
-    fecha: 'Fecha'
-
+    fecha: 'Fecha',
+    primero: 'Primero',
+    segundo: 'Segundo',
+    tercero: 'Tercero',
+    cuarto:'Cuarto'
 }
